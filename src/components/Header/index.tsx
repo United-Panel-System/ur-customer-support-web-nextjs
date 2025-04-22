@@ -41,19 +41,15 @@ const Header = () => {
   return (
     <>
       <header
-        className={`header top-0 left-0 z-40 flex w-full items-center ${
-          sticky
-            ? "dark:bg-gray-dark dark:shadow-sticky-dark shadow-sticky fixed z-9999 bg-white/80 backdrop-blur-xs transition"
-            : "absolute bg-transparent"
-        }`}
+        className={`header dark:bg-gray-dark/80 sticky top-0 left-0 z-1200 flex w-full items-center bg-white/80 shadow-sm backdrop-blur-xs transition-all`}
       >
         <div className="container">
           <div className="relative -mx-4 flex items-center justify-between">
-            <div className="max-w-full px-4 xl:mr-12">
+            <div className="px-4 xl:mr-12">
               <Link
                 href="/"
-                className={`header-logo flex w-full items-center ${
-                  sticky ? "py-5 lg:py-2" : "py-8"
+                className={`header-logo flex items-center ${
+                  sticky ? "py-5 lg:py-2" : "py-5 lg:py-2"
                 }`}
               >
                 <Image
@@ -63,17 +59,17 @@ const Header = () => {
                   height={20}
                 />
                 <div className="ml-3 flex flex-col">
-                  <span className="font-medium">
+                  <span className="text-lg font-medium">
                     UNITED PANEL-SYSTEM(M) SDN BHD
                   </span>
-                  <span className="text-xs">
+                  <span className="hidden text-xs text-wrap lg:block">
                     ASEAN&apos;s First & Only PIR Double Belt Continuous Line
                   </span>
                 </div>
               </Link>
             </div>
 
-            <div className="flex w-full items-center justify-between px-4">
+            <div className="flex items-center justify-between px-4">
               <div>
                 <button
                   onClick={navbarToggleHandler}
@@ -159,19 +155,7 @@ const Header = () => {
                   </ul>
                 </nav>
               </div>
-              <div className="flex items-center justify-end pr-16 lg:pr-0">
-                <Link
-                  href="/signin"
-                  className="text-dark hidden px-7 py-3 text-base font-medium hover:opacity-70 md:block dark:text-white"
-                >
-                  Sign In
-                </Link>
-                <Link
-                  href="/signup"
-                  className="ease-in-up shadow-btn hover:shadow-btn-hover bg-primary hover:bg-primary/90 hidden rounded-xs px-8 py-3 text-base font-medium text-white transition duration-300 md:block md:px-9 lg:px-6 xl:px-9"
-                >
-                  Sign Up
-                </Link>
+              <div className="flex items-center justify-end pr-16 pl-4 lg:pr-0">
                 <div>
                   <ThemeToggler />
                 </div>

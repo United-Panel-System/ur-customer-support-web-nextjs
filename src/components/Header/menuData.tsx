@@ -1,5 +1,22 @@
 import { Menu } from "@/types/menu";
 
+const mockCategories = [
+  { id: 21, title: "Panels", path: "/products/panels", newTab: false },
+  { id: 22, title: "Doors", path: "/products/doors", newTab: false },
+  {
+    id: 23,
+    title: "Coldroom Panels",
+    path: "/products/coldroom-panels",
+    newTab: false,
+  },
+  {
+    id: 24,
+    title: "Accessories",
+    path: "/products/accessories",
+    newTab: false,
+  },
+];
+
 const menuData: Menu[] = [
   {
     id: 1,
@@ -9,20 +26,32 @@ const menuData: Menu[] = [
   },
   {
     id: 2,
-    title: "About",
+    title: "About Us",
     path: "/about",
     newTab: false,
   },
   {
-    id: 33,
-    title: "Blog",
-    path: "/blog",
+    id: 3,
+    title: "Products",
+    newTab: false,
+    submenu: mockCategories,
+  },
+  {
+    id: 4,
+    title: "Services",
+    path: "/services",
     newTab: false,
   },
   {
-    id: 3,
-    title: "Support",
-    path: "/contact",
+    id: 5,
+    title: "News",
+    path: "/news",
+    newTab: false,
+  },
+  {
+    id: 6,
+    title: "Contact Us",
+    path: "/contact-us",
     newTab: false,
   },
   {
@@ -39,7 +68,7 @@ const menuData: Menu[] = [
       {
         id: 42,
         title: "Contact Page",
-        path: "/contact",
+        path: "/contact-us",
         newTab: false,
       },
       {

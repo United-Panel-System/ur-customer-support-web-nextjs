@@ -1,7 +1,7 @@
 import { SortByOption } from "@/lib/enum/sortByOption";
 import { ApiResponse, PagedResponse } from "@/types/apiResponse";
 import { News } from "@/types/news";
-import { Products } from "@/types/products";
+import { ProductCategory, Products } from "@/types/products";
 import { Projects } from "@/types/projects";
 
 const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:5000/api/v1";
@@ -39,7 +39,7 @@ function toQueryString(params: Record<string, any>): string {
 /** Get Product Category */
 export async function getProductCategory(options?: RequestInit) {
   const url = `${API_BASE_URL}/productCategory`;
-  return fetcher(url, options);
+  return fetcher<ApiResponse<ProductCategory[]>>(url, options);
 }
 
 /** Get Product List */
@@ -117,7 +117,7 @@ export async function addEnquiry(
   options?: RequestInit,
 ) {
   const url = `${API_BASE_URL}/enquiry`;
-  return fetcher(url, {
+  return fetcher<ApiResponse<string>>(url, {
     method: "POST",
     body: JSON.stringify(body),
     ...options,

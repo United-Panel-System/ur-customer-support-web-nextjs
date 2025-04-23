@@ -9,17 +9,15 @@ export const metadata: Metadata = {
 };
 
 const NewsPage = async ({
-  children,
-  params,
-}: Readonly<{
-  children: React.ReactNode;
-  params: { page?: string; year?: string; search?: string };
-}>) => {
-  const searchParams = await params;
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | undefined }>;
+}) => {
+  const params = await searchParams;
 
-  const currentPage = Number(searchParams.page) || 1;
-  const searchQuery = searchParams.search || "";
-  const yearParam = searchParams.year || "";
+  const currentPage = Number(params.page) || 1;
+  const searchQuery = params.search || "";
+  const yearParam = params.year || "";
   const filterYear = yearParam ? Number(yearParam) : undefined;
 
   const news = await getNews(
@@ -30,9 +28,9 @@ const NewsPage = async ({
       title: searchQuery,
       year: filterYear,
     },
-    {
-      cache: "no-store",
-    },
+    // {
+    //   cache: "no-store",
+    // },
   );
 
   return (
@@ -45,6 +43,7 @@ const NewsPage = async ({
       <NewsList
         newsData={news.data}
         currentPage={currentPage}
+        pageSize={news.pageSize}
         totalCount={news.totalCount}
         searchQuery={searchQuery}
         filterYear={yearParam}

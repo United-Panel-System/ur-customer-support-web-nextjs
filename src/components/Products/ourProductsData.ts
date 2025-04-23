@@ -41,18 +41,21 @@ const ourProductsData = [
   {
     image: "/images/products/pir-panel.jpg",
     title: "Insulated Panel Systems",
+    url: "/products?category=panel",
     description:
       "We offer a range of high-performance insulated panels — including PIR, PU, and PS types — for various industrial applications. Each panel type is engineered for durability, thermal efficiency, and fire safety, making them ideal for both interior and exterior use.",
   },
   {
     image: "/images/products/cold-room-storage-needs.png",
     title: "Cold Storage & Refrigeration Solutions",
+    url: "/products?category=refrigeration-systems",
     description:
       "Our tailored cold storage and refrigeration solutions are designed for exceptional temperature control and energy efficiency. Perfect for food processing, warehousing, and other industrial needs.",
   },
   {
     image: "/images/products/door.png",
     title: "Insulated Doors & Accessories",
+    url: "/products?category=door",
     description:
       "Complement your storage systems with our insulated doors and accessories. Engineered to maintain thermal integrity and enhance the performance of cold storage and refrigeration systems.",
   },

@@ -4,9 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
-import menuData from "./menuData";
+import { getMenuData } from "./menuData";
+import { ProductCategory } from "@/types/products";
 
-const Header = () => {
+interface HeaderProps {
+  productCategories: ProductCategory[];
+}
+
+const Header = ({ productCategories }: HeaderProps) => {
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
   const navbarToggleHandler = () => {
@@ -37,6 +42,7 @@ const Header = () => {
   };
 
   const usePathName = usePathname();
+  const menuData = getMenuData(productCategories);
 
   return (
     <>

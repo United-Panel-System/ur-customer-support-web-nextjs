@@ -2,44 +2,43 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { News } from "@/types/news";
 import NewsCard from "../Card/NewsCard";
 import { getVisiblePages } from "@/lib/helper/getVisiblePages";
 import { useEffect, useState } from "react";
 import Pagination from "../Common/Pagination";
+import { ProductCategory, Products } from "@/types/products";
+import ProductCard from "../Card/ProductCard";
+import slugify from "slugify";
 
-interface NewsListProps {
-  newsData: News[];
+interface ProductListSectionProps {
+  products: Products[];
   currentPage: number;
   pageSize: number;
   totalCount?: number;
+  categories?: ProductCategory[];
   searchQuery?: string;
-  filterYear?: string;
+  filterCategory?: string;
 }
 
-export default function NewsList({
-  newsData = [],
+export default function ProductListSection({
+  products = [],
   currentPage = 1,
   pageSize = 10,
   totalCount = 1,
+  categories = [],
   searchQuery = "",
-  filterYear = "",
-}: NewsListProps) {
+  filterCategory = "",
+}: ProductListSectionProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [localSearchQuery, setLocalSearchQuery] = useState(searchQuery);
   const totalPages = Math.ceil(totalCount / pageSize);
-
-  const currentYear = new Date().getFullYear();
-  const availableYears = Array.from(
-    { length: currentYear - 2019 },
-    (_, i) => currentYear - i,
-  );
+  const pages = getVisiblePages(currentPage, totalPages);
 
   const buildQueryString = (params: {
     page?: number;
     search?: string;
-    year?: string;
+    category?: string;
   }) => {
     const newParams = new URLSearchParams(searchParams.toString());
     if (params.page) newParams.set("page", params.page.toString());
@@ -48,24 +47,24 @@ export default function NewsList({
         ? newParams.set("search", params.search.trim())
         : newParams.delete("search");
     }
-    if (params.year !== undefined) {
-      params.year
-        ? newParams.set("year", params.year)
-        : newParams.delete("year");
+    if (params.category !== undefined) {
+      params.category
+        ? newParams.set("category", params.category)
+        : newParams.delete("category");
     }
     return newParams.toString();
   };
 
   const handleSearch = (query: string) => {
     router.push(
-      `/news?${buildQueryString({ page: 1, search: query, year: filterYear })}`,
+      `/products?${buildQueryString({ page: 1, search: query, category: "" })}`,
       { scroll: false },
     );
   };
 
-  const handleFilter = (year: string) => {
+  const handleCategoryFilter = (category: string) => {
     router.push(
-      `/news?${buildQueryString({ page: 1, search: searchQuery, year })}`,
+      `/products?${buildQueryString({ page: 1, search: searchQuery, category: slugify(category, { lower: true }) })}`,
       { scroll: false },
     );
   };
@@ -83,7 +82,7 @@ export default function NewsList({
 
   // Generate pagination href safely
   const getPaginationHref = (page: number) => {
-    return `/news?${buildQueryString({ page, search: searchQuery, year: filterYear })}`;
+    return `/products?${buildQueryString({ page, search: searchQuery, category: filterCategory })}`;
   };
 
   return (
@@ -91,64 +90,44 @@ export default function NewsList({
       <div className="container">
         <div className="flex flex-col gap-8 lg:flex-row">
           {/* Year Selection Sidebar */}
+
           <div className="w-full lg:w-1/5">
-            <div className="shadow-three dark:bg-gray-dark mb-10 rounded-xs bg-white dark:shadow-none">
-              <h3 className="border-body-color/10 border-b px-8 py-4 text-lg font-semibold text-black dark:border-white/10 dark:text-white">
-                Filter by Year
-              </h3>
-              <ul className="space-y-2 p-4">
-                <li>
-                  <button
-                    onClick={() => handleFilter("")}
-                    className={`w-full rounded-md px-4 py-2 text-left transition ${
-                      filterYear === ""
-                        ? "bg-primary text-white"
-                        : "text-body-color hover:bg-gray-100 dark:hover:bg-gray-700"
-                    }`}
-                  >
-                    All Years
-                  </button>
-                </li>
-                {availableYears.map((year) => (
-                  <li key={year}>
+            {categories && categories.length > 0 && (
+              <div className="shadow-three dark:bg-gray-dark mb-10 rounded-xs bg-white dark:shadow-none">
+                <h3 className="border-body-color/10 border-b px-8 py-4 text-lg font-semibold text-black dark:border-white/10 dark:text-white">
+                  Categories
+                </h3>
+                <ul className="space-y-2 p-4">
+                  <li>
                     <button
-                      onClick={() => handleFilter(year.toString())}
-                      className={`w-full cursor-pointer rounded-md px-4 py-2 text-left transition ${
-                        filterYear === year.toString()
+                      onClick={() => handleCategoryFilter("")}
+                      className={`w-full cursor-pointer rounded-md px-4 py-2 text-left text-base font-medium transition ${
+                        filterCategory === ""
                           ? "bg-primary text-white"
-                          : "text-body-color hover:bg-gray-100 dark:hover:bg-gray-700"
+                          : "text-body-color dark:text-body-color-dark hover:bg-gray-100 dark:hover:bg-gray-700"
                       }`}
                     >
-                      {year}
+                      All Category
                     </button>
                   </li>
-                ))}
-              </ul>
-            </div>
-            {/* Mobile Dropdown */}
-            <div className="mb-6 block lg:hidden">
-              <label
-                htmlFor="year-filter"
-                className="text-dark mb-3 block text-sm font-medium dark:text-white"
-              >
-                Filter by Year
-              </label>
-              <select
-                id="year-filter"
-                onChange={(e) => handleFilter(e.target.value)}
-                value={filterYear}
-                className="border-stroke text-body-color focus:border-primary dark:text-body-color-dark dark:shadow-two dark:focus:border-primary w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base outline-hidden dark:border-transparent dark:bg-[#2C303B] dark:focus:shadow-none"
-              >
-                <option value="">All Years</option>
-                {availableYears.map((year) => (
-                  <option key={year} value={year}>
-                    {year}
-                  </option>
-                ))}
-              </select>
-            </div>
+                  {categories.map((item, index) => (
+                    <li key={item.id || index}>
+                      <button
+                        onClick={() => handleCategoryFilter(item.name)}
+                        className={`w-full cursor-pointer rounded-md px-4 py-2 text-left text-base font-medium transition ${
+                          filterCategory === slugify(item.name, { lower: true })
+                            ? "bg-primary text-white"
+                            : "text-body-color dark:text-body-color-dark hover:bg-gray-100 dark:hover:bg-gray-700"
+                        }`}
+                      >
+                        {item.name}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
-
           {/* Main Content Area */}
           <div className="w-full lg:w-4/5">
             {/* Search Bar with Button */}
@@ -187,16 +166,16 @@ export default function NewsList({
               </div>
             </div>
 
-            {/* News Cards or Not Found Message */}
-            {newsData.length > 0 ? (
+            {/* Products Cards or Not Found Message */}
+            {products.length > 0 ? (
               <>
                 <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
-                  {newsData.map((news, index) => (
-                    <NewsCard key={index} news={news} />
+                  {products.map((product, index) => (
+                    <ProductCard key={index} product={product} />
                   ))}
                 </div>
 
-                {/* Pagination (only shown when there are news items) */}
+                {/* Pagination (only shown when there are product items) */}
                 <Pagination
                   currentPage={currentPage}
                   totalPages={totalPages}
@@ -206,7 +185,7 @@ export default function NewsList({
             ) : (
               <div className="flex h-64 flex-col items-center justify-center">
                 <div className="text-body-color dark:text-body-color-dark text-center text-xl font-medium">
-                  No news articles found
+                  No products found
                 </div>
                 <p className="text-body-color dark:text-body-color-dark mt-2 text-center">
                   Try adjusting your search or filter criteria

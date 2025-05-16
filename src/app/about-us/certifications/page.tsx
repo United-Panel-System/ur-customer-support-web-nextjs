@@ -5,7 +5,7 @@ import BreadcrumbWithBgImg from "@/components/Common/BreadcrumbWithBgImg";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Quality Certification and Approvals Page",
+  title: "Quality Certification and Approvals",
   description:
     "Our UR® panels are certified to meet international quality and safety standards, ensuring reliability and durability.",
   // other metadata
@@ -20,7 +20,7 @@ const CertificationPage = () => {
         image="/images/banner/manufacturingPlant.png"
         breadcrumbs={[
           { label: "Home", href: "/" },
-          { label: "About Us", href: "/about" },
+          { label: "About Us", href: "/about-us" },
           { label: "Quality Certifications & Approvals" },
         ]}
       />

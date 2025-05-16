@@ -1,14 +1,13 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import Link from "next/link";
-import NewsCard from "../Card/NewsCard";
 import { getVisiblePages } from "@/lib/helper/getVisiblePages";
 import { useEffect, useState } from "react";
 import Pagination from "../Common/Pagination";
 import { ProductCategory, Products } from "@/types/products";
 import ProductCard from "../Card/ProductCard";
 import slugify from "slugify";
+import ProductSideBar from "./ProductSideBar";
 
 interface ProductListSectionProps {
   products: Products[];
@@ -89,45 +88,15 @@ export default function ProductListSection({
     <section className="pt-[50px] pb-[120px]">
       <div className="container">
         <div className="flex flex-col gap-8 lg:flex-row">
-          {/* Year Selection Sidebar */}
+          <ProductSideBar
+            categories={categories}
+            currentCategory={filterCategory}
+            searchQuery={searchQuery}
+            className="mb-8"
+            title="Product Categories"
+            allCategoryText="Show All"
+          />
 
-          <div className="w-full lg:w-1/5">
-            {categories && categories.length > 0 && (
-              <div className="shadow-three dark:bg-gray-dark mb-10 rounded-xs bg-white dark:shadow-none">
-                <h3 className="border-body-color/10 border-b px-8 py-4 text-lg font-semibold text-black dark:border-white/10 dark:text-white">
-                  Categories
-                </h3>
-                <ul className="space-y-2 p-4">
-                  <li>
-                    <button
-                      onClick={() => handleCategoryFilter("")}
-                      className={`w-full cursor-pointer rounded-md px-4 py-2 text-left text-base font-medium transition ${
-                        filterCategory === ""
-                          ? "bg-primary text-white"
-                          : "text-body-color dark:text-body-color-dark hover:bg-gray-100 dark:hover:bg-gray-700"
-                      }`}
-                    >
-                      All Category
-                    </button>
-                  </li>
-                  {categories.map((item, index) => (
-                    <li key={item.id || index}>
-                      <button
-                        onClick={() => handleCategoryFilter(item.name)}
-                        className={`w-full cursor-pointer rounded-md px-4 py-2 text-left text-base font-medium transition ${
-                          filterCategory === slugify(item.name, { lower: true })
-                            ? "bg-primary text-white"
-                            : "text-body-color dark:text-body-color-dark hover:bg-gray-100 dark:hover:bg-gray-700"
-                        }`}
-                      >
-                        {item.name}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
           {/* Main Content Area */}
           <div className="w-full lg:w-4/5">
             {/* Search Bar with Button */}

@@ -100,7 +100,7 @@ export default function NewsList({
                 <li>
                   <button
                     onClick={() => handleFilter("")}
-                    className={`w-full rounded-md px-4 py-2 text-left transition ${
+                    className={`w-full cursor-pointer rounded-md px-4 py-2 text-left transition ${
                       filterYear === ""
                         ? "bg-primary text-white"
                         : "text-body-color hover:bg-gray-100 dark:hover:bg-gray-700"

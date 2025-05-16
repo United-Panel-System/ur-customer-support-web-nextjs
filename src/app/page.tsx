@@ -20,8 +20,8 @@ import { Metadata } from "next";
 
 // Metadata for SEO
 export const metadata: Metadata = {
-  title: "Free Next.js Template for Startup and SaaS",
-  description: "This is Home for Startup Nextjs Template",
+  title: "United-Panel System (M) Sdn. Bhd. Home Page",
+  description: "This is Home for United-Panel System (M) Sdn. Bhd. website",
 };
 
 // SSG: Fetch data at build time using async function

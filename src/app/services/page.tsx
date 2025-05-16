@@ -5,8 +5,9 @@ import ServiceSection from "@/components/OurService/serviceSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Our Service",
-  description: "Service page description",
+  title: "Services",
+  description:
+    "Explore our high-performance insulated panels engineered for industrial and commercial excellence.",
   // other metadata
 };
 

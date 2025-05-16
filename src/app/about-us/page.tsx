@@ -1,15 +1,15 @@
 import AboutUs1 from "@/components/About/AboutUs1";
 import AboutUs2 from "@/components/About/AboutUs2";
+import CertificationPreview from "@/components/About/CertificationPreview";
 import VisionMission from "@/components/About/VisionMission";
-import Breadcrumb from "@/components/Common/Breadcrumb";
 import BreadcrumbWithBgImg from "@/components/Common/BreadcrumbWithBgImg";
 
 import { Metadata } from "next";
-import { title } from "process";
 
 export const metadata: Metadata = {
-  title: "About Page | Free Next.js Template for Startup and SaaS",
-  description: "This is About Page for Startup Nextjs Template",
+  title: "About Us",
+  description:
+    "Since 1978, UNITED PANEL-SYSTEM (M) SDN. BHD. has been specializing in the production of high-quality insulated panels and refrigeration systems for the industrial sector.",
   // other metadata
 };
 
@@ -46,6 +46,7 @@ const AboutPage = () => {
         }}
       />
       <VisionMission />
+      <CertificationPreview />
     </>
   );
 };

@@ -7,9 +7,9 @@ const ProductCard = ({ product }: { product: Products }) => {
   const { name, imageUrls, manufacturer, description } = product;
 
   return (
-    <div className="group shadow-one hover:shadow-two dark:bg-dark dark:hover:shadow-gray-dark relative overflow-hidden rounded-xs bg-white duration-300">
+    <div className="group shadow-one hover:shadow-two dark:bg-dark dark:hover:shadow-gray-dark relative overflow-hidden rounded-xs bg-white duration-300 cursor-pointer">
       <Link
-        href={`/product/${slugify(product.name, { lower: true })}-${product.id}`}
+        href={`/products/${slugify(product.name, { lower: true })}-${product.id}`}
         className="relative block w-full"
       >
         <img
@@ -25,7 +25,7 @@ const ProductCard = ({ product }: { product: Products }) => {
       <div className="p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:px-5 xl:py-8 2xl:p-8">
         <h3>
           <Link
-            href={`/product/${slugify(product.name, { lower: true })}-${product.id}`}
+            href={`/products/${slugify(product.name, { lower: true })}-${product.id}`}
             className="mb-4 block text-xl font-bold text-black hover:text-red-500 sm:text-2xl dark:text-white dark:hover:text-red-500"
           >
             {name}

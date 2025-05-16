@@ -17,7 +17,7 @@ const ServiceCTA = () => {
               </p>
               <div className="mt-5 flex justify-start">
                 <Link
-                  href="/contact-us"
+                  href="/contact-us#enquiry"
                   className="group relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-red-600 px-8 py-4 font-bold text-white shadow-lg transition-all duration-300 hover:bg-gray-100 hover:bg-red-700 hover:shadow-xl"
                 >
                   <span className="relative">Get Quote</span>

@@ -109,7 +109,7 @@ const ContactSection = () => {
   return (
     <>
       {/* Section 1 */}
-      <section id="contact" className="pt-8 md:pt-12 lg:pt-20">
+      <section id="contact1" className="pt-8 md:pt-12 lg:pt-20">
         <div className="container">
           <div className="border-body-color/[.15] border-b pb-8 md:pb-12 lg:pb-20 dark:border-white/[.15]">
             <div className="flex flex-wrap items-center">
@@ -207,7 +207,7 @@ const ContactSection = () => {
       </section>
 
       {/* Section 2 */}
-      <section id="about2" className="pt-16 md:pt-20 lg:pt-28">
+      <section id="contact2" className="pt-16 md:pt-20 lg:pt-28">
         <div className="container">
           <div className="border-body-color/[.15] border-b pb-16 md:pb-20 lg:pb-28 dark:border-white/[.15]">
             <div className="-mx-4 flex flex-wrap items-center">
@@ -263,7 +263,7 @@ const ContactSection = () => {
       </section>
 
       {/* Section 3 */}
-      <section id="contact" className="py-8 md:py-12 lg:py-20">
+      <section id="contact3" className="py-8 md:py-12 lg:py-20">
         <div className="container">
           <div className="border-body-color/[.15] pb-8 md:pb-12 lg:pb-20 dark:border-white/[.15]">
             <div className="flex flex-wrap items-center">
@@ -280,7 +280,7 @@ const ContactSection = () => {
                   <ContactNoHref
                     icon={addressIcon}
                     label="Address"
-                    text="No.6,Jalan 6/152, Taman Perindustrian Bukit OUG, 58200 Kuala Lumpur,Wilayah Persekutuan Kuala Lumpur, Malaysia."
+                    text="No.6, Jalan 6/152, Taman Perindustrian Bukit OUG, 58200 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia."
                   />
 
                   {/* Phone Numbers */}

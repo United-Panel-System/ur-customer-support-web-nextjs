@@ -8,8 +8,8 @@ import { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
-  title: "Contact Page | Free Next.js Template for Startup and SaaS",
-  description: "This is Contact Page for Startup Nextjs Template",
+  title: "Contact Us",
+  description: "For product and service enquires, kindly contact us",
   // other metadata
 };
 

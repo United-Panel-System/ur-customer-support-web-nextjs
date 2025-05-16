@@ -20,18 +20,32 @@ export default async function RootLayout({
       */}
 
       <head>
-        <script
-          defer
-          src="https://cdn.botpress.cloud/webchat/v2.3/inject.js"
-        ></script>
-        <script
-          defer
-          src="https://files.bpcontent.cloud/2025/04/19/04/20250419045059-BJL35QGB.js"
-        ></script>
         <link rel="icon" type="image/png" href="/images/favicon.png" />
       </head>
 
       <body className={`bg-[#FCFCFC] dark:bg-black ${inter.className}`}>
+        {/* <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-XQTL49RNLM"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XQTL49RNLM');
+        `}
+        </Script> */}
+
+        {/* Botpress Chatbot */}
+        <Script
+          src="https://cdn.botpress.cloud/webchat/v2.3/inject.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="https://files.bpcontent.cloud/2025/04/19/04/20250419045059-BJL35QGB.js"
+          strategy="afterInteractive"
+        />
         <Providers>
           <Header productCategories={categories.data} />
           {children}
@@ -45,3 +59,4 @@ export default async function RootLayout({
 
 import { Providers } from "./providers";
 import { getProductCategory } from "@/api/api";
+import Script from "next/script";

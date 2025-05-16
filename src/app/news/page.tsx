@@ -4,8 +4,8 @@ import NewsList from "@/components/NewsSection/NewsList";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "News Page | Free Next.js Template for Startup and SaaS",
-  description: "This is News Page for Startup Nextjs Template",
+  title: "News",
+  description: "Keep up with our latest projects, innovations, and milestones.",
 };
 
 const NewsPage = async ({

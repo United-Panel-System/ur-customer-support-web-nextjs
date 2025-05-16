@@ -121,7 +121,7 @@ export default function NewsDetails({ news, moreNews }: NewsDetailsProps) {
                       <RelatedPost
                         title={item.title}
                         image={item.imageUrls[0] || "/images/blog/post-03.jpg"}
-                        slug={`/news/${slugify(news.title, { lower: true })}-${news.id}`}
+                        slug={`/news/${slugify(item.title, { lower: true })}-${item.id}`}
                         date={item.date || "No date"}
                       />
                     </li>

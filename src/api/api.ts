@@ -61,7 +61,7 @@ export async function getProducts(
 }
 
 /** Get Product by ID */
-export async function getProductById(id: string, options?: RequestInit) {
+export async function getProductById(id: number, options?: RequestInit) {
   const url = `${API_BASE_URL}/product/${id}`;
   return fetcher<ApiResponse<Products>>(url, options);
 }

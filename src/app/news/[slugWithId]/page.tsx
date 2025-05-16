@@ -2,6 +2,39 @@ import { getNews, getNewsById } from "@/api/api";
 import BreadcrumbWithBgImg from "@/components/Common/BreadcrumbWithBgImg";
 import NewsDetails from "@/components/NewsSection/NewsDetails";
 
+import type { Metadata, ResolvingMetadata } from "next";
+
+type Props = {
+  params: { slugWithId: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const { slugWithId } = await params;
+  const id = slugWithId.split("-").pop();
+
+  if (!id || isNaN(Number(id))) {
+    return {
+      title: "Invalid News ID",
+    };
+  }
+
+  const news = await getNewsById(Number(id));
+
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: news.data.title,
+    description: news.data.description,
+    openGraph: {
+      images: [news.data.imageUrls[0], ...previousImages],
+    },
+  };
+}
+
 const NewsDetailsPage = async ({
   children,
   params,

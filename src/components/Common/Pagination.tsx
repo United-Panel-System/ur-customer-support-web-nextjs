@@ -49,7 +49,7 @@ const Pagination = ({
           <li className="mx-1">
             <Link
               href={getPageHref(Math.max(currentPage - 1, 1))}
-              scroll={false}
+              // scroll={false}
               className={`${
                 totalPages <= 1
                   ? "pointer-events-none cursor-not-allowed opacity-50"
@@ -72,7 +72,7 @@ const Pagination = ({
               <li key={page} className="mx-1">
                 <Link
                   href={getPageHref(Number(page))}
-                  scroll={false}
+                  // scroll={false}
                   className={`${
                     page === currentPage
                       ? "bg-primary text-white"
@@ -89,7 +89,7 @@ const Pagination = ({
           <li className="mx-1">
             <Link
               href={getPageHref(Math.min(currentPage + 1, totalPages))}
-              scroll={false}
+              // scroll={false}
               className={`${
                 totalPages <= 1
                   ? "pointer-events-none cursor-not-allowed opacity-50"

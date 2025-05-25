@@ -5,7 +5,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "News",
-  description: "Keep up with our latest projects, innovations, and milestones.",
+  description:
+    "Stay informed with the latest company news, project highlights, press releases, and industry updates from United Panel System (M) Sdn. Bhd.",
 };
 
 const NewsPage = async ({
@@ -22,7 +23,7 @@ const NewsPage = async ({
 
   const news = await getNews(
     {
-      pageSize: 10,
+      pageSize: 9,
       pageNumber: currentPage,
       isActive: true,
       title: searchQuery,

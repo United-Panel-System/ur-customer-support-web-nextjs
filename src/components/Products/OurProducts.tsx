@@ -1,3 +1,4 @@
+import { AnimatedDiv } from "../Animation";
 import GeneralCard from "../Card/GeneralCard";
 import SectionTitle from "../Common/SectionTitle";
 import ourProductsData from "./ourProductsData";
@@ -13,11 +14,17 @@ const OurProducts = () => {
             center
           />
 
-          <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+          <AnimatedDiv
+            variant="slideUp"
+            staggerChildren={0.2}
+            className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3"
+          >
             {ourProductsData.map((product, index) => (
-              <GeneralCard key={index} item={product} />
+              <AnimatedDiv variant="slideUp" key={index} className="h-full">
+                <GeneralCard key={index} item={product} />
+              </AnimatedDiv>
             ))}
-          </div>
+          </AnimatedDiv>
         </div>
         <div className="absolute top-5 right-0 z-[-1]">
           <svg

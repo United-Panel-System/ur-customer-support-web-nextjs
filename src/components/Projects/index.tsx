@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import SectionTitle from "../Common/SectionTitle";
 import ProjectMap from "../Map/ProjectMap";
 import { Projects } from "@/types/projects";
+import { AnimatedDiv } from "../Animation";
 
 const checkIcon = (
   <svg width="16" height="13" viewBox="0 0 16 13" className="fill-current">
@@ -12,12 +13,15 @@ const checkIcon = (
 
 const OurProject = ({ projectData }: { projectData: Projects[] }) => {
   const List = ({ text }) => (
-    <p className="text-body-color mb-5 flex items-center text-lg font-medium">
+    <AnimatedDiv
+      variant="slideUp"
+      className="text-body-color dark:text-body-color-dark mb-5 flex items-center text-lg font-medium"
+    >
       <span className="bg-primary/10 text-primary mr-4 inline-flex h-[30px] w-[30px] flex-shrink-0 items-center justify-center rounded-md shadow-md transition duration-200 ease-in-out hover:shadow-xl">
         {checkIcon}
       </span>
       {text}
-    </p>
+    </AnimatedDiv>
   );
 
   return (
@@ -31,26 +35,25 @@ const OurProject = ({ projectData }: { projectData: Projects[] }) => {
               mb="44px"
             />
 
-            <div className="mb-12 max-w-[570px] lg:mb-0" data-wow-delay=".15s">
-              <div className="mx-[-12px] flex flex-wrap">
-                <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
-                  <List text="Delivered on time & within budget" />
-                  <List text="Sustainable & eco-friendly practices" />
-                  <List text="Customized client-focused solutions" />
-                </div>
-
-                <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
-                  <List text="Experienced & certified professionals" />
-                  <List text="End-to-end project management" />
-                  <List text="Innovative technology integration" />
-                </div>
-              </div>
+            <div className="mb-12 max-w-[570px] lg:mb-0">
+              <AnimatedDiv
+                variant="slideUp"
+                staggerChildren={0.2}
+                className="grid grid-cols-1 gap-x-6 sm:grid-cols-2"
+              >
+                <List text="Delivered on time & within budget" />
+                <List text="Sustainable & eco-friendly practices" />
+                <List text="Customized client-focused solutions" />
+                <List text="Experienced & certified professionals" />
+                <List text="End-to-end project management" />
+                <List text="Innovative technology integration" />
+              </AnimatedDiv>
             </div>
           </div>
 
-          <div className="w-full px-4 lg:w-1/2">
+          <AnimatedDiv variant="slideLeft" className="w-full px-4 lg:w-1/2">
             <ProjectMap projectData={projectData} />
-          </div>
+          </AnimatedDiv>
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 import BreadcrumbWithBgImg from "@/components/Common/BreadcrumbWithBgImg";
-import ServiceCTA from "@/components/CTA/serviceCTA";
-import ServiceSection from "@/components/OurService/serviceSection";
+import ServiceCTA from "@/components/CTA/ServiceCTA";
+import ServiceSection from "@/components/Services/ServiceSection";
 
 import { Metadata } from "next";
 

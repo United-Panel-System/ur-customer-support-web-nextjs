@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 const PartnershipCarousel = () => {
@@ -38,8 +39,8 @@ const PartnershipCarousel = () => {
   ];
 
   return (
-    <section className="bg-gray-light dark:bg-gray-dark flex py-16">
-      <div className="relative mx-auto flex w-1/2 w-full items-center justify-center px-5 py-[15px]">
+    <section className="dark:bg-gray-dark flex bg-slate-700 py-16">
+      <div className="relative mx-auto flex w-full items-center justify-center">
         <Swiper
           modules={[Navigation, Autoplay]}
           slidesPerView={itemsPerSlide}
@@ -54,14 +55,24 @@ const PartnershipCarousel = () => {
         >
           {images.map((src, index) => (
             <SwiperSlide key={index}>
-              <div className="flex h-full items-center justify-center">
-                <Image
-                  src={src}
-                  alt={`Partner ${index + 1}`}
-                  width={200}
-                  height={100}
-                  className="h-auto w-full max-w-[160px] rounded object-contain shadow-md transition-transform duration-300 hover:scale-105 sm:max-w-[180px] md:max-w-[220px]"
-                />
+              <div className="flex w-full items-center justify-center overflow-visible px-8 py-8">
+                <motion.div
+                  whileHover={{
+                    scale: 1.08,
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.12)",
+                    zIndex: 6,
+                  }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="flex w-full max-w-[160px] items-center justify-center sm:max-w-[180px] md:max-w-[220px]"
+                >
+                  <Image
+                    src={src}
+                    alt={`Partner ${index + 1}`}
+                    width={200}
+                    height={100}
+                    className="h-auto w-full rounded object-contain shadow-md"
+                  />
+                </motion.div>
               </div>
             </SwiperSlide>
           ))}

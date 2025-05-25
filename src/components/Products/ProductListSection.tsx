@@ -8,6 +8,7 @@ import { ProductCategory, Products } from "@/types/products";
 import ProductCard from "../Card/ProductCard";
 import slugify from "slugify";
 import ProductSideBar from "./ProductSideBar";
+import { AnimatedDiv } from "../Animation";
 
 interface ProductListSectionProps {
   products: Products[];
@@ -34,6 +35,9 @@ export default function ProductListSection({
   const totalPages = Math.ceil(totalCount / pageSize);
   const pages = getVisiblePages(currentPage, totalPages);
 
+  // Mobile filter sidebar toggle
+  const [showMobileFilter, setShowMobileFilter] = useState(false);
+
   const buildQueryString = (params: {
     page?: number;
     search?: string;
@@ -56,14 +60,7 @@ export default function ProductListSection({
 
   const handleSearch = (query: string) => {
     router.push(
-      `/products?${buildQueryString({ page: 1, search: query, category: "" })}`,
-      { scroll: false },
-    );
-  };
-
-  const handleCategoryFilter = (category: string) => {
-    router.push(
-      `/products?${buildQueryString({ page: 1, search: searchQuery, category: slugify(category, { lower: true }) })}`,
+      `/products?${buildQueryString({ page: 1, search: query, category: filterCategory })}`,
       { scroll: false },
     );
   };
@@ -87,62 +84,169 @@ export default function ProductListSection({
   return (
     <section className="pt-[50px] pb-[120px]">
       <div className="container">
-        <div className="flex flex-col gap-8 lg:flex-row">
-          <ProductSideBar
-            categories={categories}
-            currentCategory={filterCategory}
-            searchQuery={searchQuery}
-            className="mb-8"
-            title="Product Categories"
-            allCategoryText="Show All"
-          />
+        <div className="flex flex-col gap-8 md:flex-row">
+          {/* Sidebar: Show on md+ only */}
+          <div className="hidden md:block md:w-1/5">
+            <ProductSideBar
+              categories={categories}
+              currentCategory={filterCategory}
+              searchQuery={searchQuery}
+              className="mb-8"
+              title="Product Categories"
+              allCategoryText="Show All"
+            />
+          </div>
 
           {/* Main Content Area */}
-          <div className="w-full lg:w-4/5">
-            {/* Search Bar with Button */}
-            <div className="mb-8 flex items-center justify-between">
-              <h2 className="text-dark text-3xl font-bold dark:text-white">
-                {/* All News */}
-              </h2>
-
-              <div className="flex w-full max-w-md items-center">
+          <div className="w-full md:w-4/5">
+            {/* Mobile Search Bar & Filter */}
+            <div className="mb-4 flex items-center gap-2 md:hidden">
+              <div className="flex-1">
                 <input
                   type="text"
-                  placeholder="Search here..."
+                  placeholder="Search products..."
                   value={localSearchQuery}
                   onChange={(e) => setLocalSearchQuery(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  className="border-stroke dark:text-body-color-dark dark:shadow-two text-body-color focus:border-primary dark:focus:border-primary mr-4 w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base outline-hidden transition-all duration-300 dark:border-transparent dark:bg-[#2C303B] dark:focus:shadow-none"
+                  className="border-stroke dark:text-body-color-dark dark:shadow-two text-body-color focus:border-primary dark:focus:border-primary w-full rounded-xs border bg-[#f8f8f8] px-4 py-2 text-base outline-hidden transition-all duration-300 dark:border-transparent dark:bg-[#2C303B] dark:focus:shadow-none"
                 />
-                <button
-                  onClick={() => handleSearch(localSearchQuery)}
-                  aria-label="search button"
-                  className="bg-primary hover:bg-primary/90 flex h-[50px] w-full max-w-[50px] items-center justify-center rounded-xs text-white transition"
-                >
-                  <svg
-                    width="20"
-                    height="18"
-                    viewBox="0 0 20 18"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M19.4062 16.8125L13.9375 12.375C14.9375 11.0625 15.5 9.46875 15.5 7.78125C15.5 5.75 14.7188 3.875 13.2812 2.4375C10.3438 -0.5 5.5625 -0.5 2.59375 2.4375C1.1875 3.84375 0.40625 5.75 0.40625 7.75C0.40625 9.78125 1.1875 11.6562 2.625 13.0937C4.09375 14.5625 6.03125 15.3125 7.96875 15.3125C9.875 15.3125 11.75 14.5938 13.2188 13.1875L18.75 17.6562C18.8438 17.75 18.9688 17.7812 19.0938 17.7812C19.25 17.7812 19.4062 17.7188 19.5312 17.5938C19.6875 17.3438 19.6562 17 19.4062 16.8125ZM3.375 12.3438C2.15625 11.125 1.5 9.5 1.5 7.75C1.5 6 2.15625 4.40625 3.40625 3.1875C4.65625 1.9375 6.3125 1.3125 7.96875 1.3125C9.625 1.3125 11.2812 1.9375 12.5312 3.1875C13.75 4.40625 14.4375 6.03125 14.4375 7.75C14.4375 9.46875 13.7188 11.125 12.5 12.3438C10 14.8438 5.90625 14.8438 3.375 12.3438Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </button>
               </div>
+              <button
+                onClick={() => handleSearch(localSearchQuery)}
+                aria-label="search button"
+                className="bg-primary hover:bg-primary/90 ml-2 flex h-10 w-10 items-center justify-center rounded-xs text-white transition"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 20 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M19.4062 16.8125L13.9375 12.375C14.9375 11.0625 15.5 9.46875 15.5 7.78125C15.5 5.75 14.7188 3.875 13.2812 2.4375C10.3438 -0.5 5.5625 -0.5 2.59375 2.4375C1.1875 3.84375 0.40625 5.75 0.40625 7.75C0.40625 9.78125 1.1875 11.6562 2.625 13.0937C4.09375 14.5625 6.03125 15.3125 7.96875 15.3125C9.875 15.3125 11.75 14.5938 13.2188 13.1875L18.75 17.6562C18.8438 17.75 18.9688 17.7812 19.0938 17.7812C19.25 17.7812 19.4062 17.7188 19.5312 17.5938C19.6875 17.3438 19.6562 17 19.4062 16.8125ZM3.375 12.3438C2.15625 11.125 1.5 9.5 1.5 7.75C1.5 6 2.15625 4.40625 3.40625 3.1875C4.65625 1.9375 6.3125 1.3125 7.96875 1.3125C9.625 1.3125 11.2812 1.9375 12.5312 3.1875C13.75 4.40625 14.4375 6.03125 14.4375 7.75C14.4375 9.46875 13.7188 11.125 12.5 12.3438C10 14.8438 5.90625 14.8438 3.375 12.3438Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+              <button
+                className="border-primary text-primary hover:bg-primary ml-2 flex h-10 w-10 items-center justify-center rounded-xs border bg-white transition hover:text-white"
+                onClick={() => setShowMobileFilter(true)}
+                aria-label="Open filter"
+              >
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+                  <path
+                    d="M3 5h18M6 12h12M10 19h4"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </button>
             </div>
+
+            {/* Mobile Filter Sidebar */}
+            {showMobileFilter && (
+              <div className="fixed inset-0 z-[9999] flex md:hidden">
+                {/* Overlay */}
+                <div
+                  className="absolute inset-0 bg-black/40"
+                  onClick={() => setShowMobileFilter(false)}
+                />
+                {/* Sidebar */}
+                <AnimatedDiv
+                  variant="slideLeft"
+                  className="relative ml-auto h-full w-4/5 max-w-xs overflow-y-auto bg-white p-4 shadow-xl dark:bg-[#23272f]"
+                >
+                  <div className="mb-4 flex items-center justify-between">
+                    <span className="text-lg font-semibold">Filter</span>
+                    <button
+                      className="hover:text-primary text-2xl text-gray-500"
+                      onClick={() => setShowMobileFilter(false)}
+                      aria-label="Close filter"
+                    >
+                      &times;
+                    </button>
+                  </div>
+                  <ProductSideBar
+                    categories={categories}
+                    currentCategory={filterCategory}
+                    searchQuery={searchQuery}
+                    className=""
+                    title="Categories"
+                    allCategoryText="All"
+                  />
+                </AnimatedDiv>
+              </div>
+            )}
+
+            {/* Desktop Search Bar */}
+            <AnimatedDiv
+              variant="slideUp"
+              staggerChildren={0.2}
+              className="mb-8 hidden items-center justify-between md:flex"
+            >
+              <h2 className="text-dark text-3xl font-bold dark:text-white">
+                Products
+              </h2>
+              <div className="flex w-full max-w-md items-center justify-end">
+                <div>
+                  <div className="flex w-full max-w-md items-center">
+                    <input
+                      type="text"
+                      placeholder="Search here..."
+                      value={localSearchQuery}
+                      onChange={(e) => setLocalSearchQuery(e.target.value)}
+                      onKeyDown={handleKeyDown}
+                      className="border-stroke dark:text-body-color-dark dark:shadow-two text-body-color focus:border-primary dark:focus:border-primary mr-4 w-full rounded-xs border bg-[#f8f8f8] px-6 py-3 text-base outline-hidden transition-all duration-300 dark:border-transparent dark:bg-[#2C303B] dark:focus:shadow-none"
+                    />
+                    <button
+                      onClick={() => handleSearch(localSearchQuery)}
+                      aria-label="search button"
+                      className="bg-primary hover:bg-primary/90 flex h-[50px] w-full max-w-[50px] items-center justify-center rounded-xs text-white transition"
+                    >
+                      <svg
+                        width="20"
+                        height="18"
+                        viewBox="0 0 20 18"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M19.4062 16.8125L13.9375 12.375C14.9375 11.0625 15.5 9.46875 15.5 7.78125C15.5 5.75 14.7188 3.875 13.2812 2.4375C10.3438 -0.5 5.5625 -0.5 2.59375 2.4375C1.1875 3.84375 0.40625 5.75 0.40625 7.75C0.40625 9.78125 1.1875 11.6562 2.625 13.0937C4.09375 14.5625 6.03125 15.3125 7.96875 15.3125C9.875 15.3125 11.75 14.5938 13.2188 13.1875L18.75 17.6562C18.8438 17.75 18.9688 17.7812 19.0938 17.7812C19.25 17.7812 19.4062 17.7188 19.5312 17.5938C19.6875 17.3438 19.6562 17 19.4062 16.8125ZM3.375 12.3438C2.15625 11.125 1.5 9.5 1.5 7.75C1.5 6 2.15625 4.40625 3.40625 3.1875C4.65625 1.9375 6.3125 1.3125 7.96875 1.3125C9.625 1.3125 11.2812 1.9375 12.5312 3.1875C13.75 4.40625 14.4375 6.03125 14.4375 7.75C14.4375 9.46875 13.7188 11.125 12.5 12.3438C10 14.8438 5.90625 14.8438 3.375 12.3438Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </AnimatedDiv>
 
             {/* Products Cards or Not Found Message */}
             {products.length > 0 ? (
               <>
-                <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+                <AnimatedDiv
+                  key={`${currentPage}-${filterCategory}-${searchQuery}`}
+                  variant="slideUp"
+                  staggerChildren={0.2}
+                  className="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-2 md:gap-x-8 md:gap-y-14 lg:grid-cols-3"
+                >
                   {products.map((product, index) => (
-                    <ProductCard key={index} product={product} />
+                    <AnimatedDiv
+                      whileHover={{
+                        scale: 1.05,
+                        boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.15)",
+                      }}
+                      whileTap={{ scale: 0.97 }}
+                      transition={{ duration: 0.2 }}
+                      key={index}
+                      className="h-full"
+                    >
+                      <ProductCard key={index} product={product} />
+                    </AnimatedDiv>
                   ))}
-                </div>
+                </AnimatedDiv>
 
                 {/* Pagination (only shown when there are product items) */}
                 <Pagination

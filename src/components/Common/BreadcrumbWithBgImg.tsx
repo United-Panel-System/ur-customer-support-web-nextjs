@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AnimatedDiv } from "../Animation";
 
 type BreadcrumbItem = {
   label: string;
@@ -17,31 +18,35 @@ const BreadcrumbWithBgImg = ({
   breadcrumbs?: BreadcrumbItem[];
 }) => {
   return (
-    <div className="relative h-[310px]">
+    <div className="relative h-[250px] md:h-[310px]">
       {/* Background image */}
       <img
         src={image}
         alt="banner"
-        className="absolute inset-0 z-0 h-[310px] w-full object-cover"
+        className="absolute inset-0 z-0 h-[250px] w-full object-cover md:h-[310px]"
       />
       <div className="bg-opacity-50 absolute inset-0 z-6 bg-black/50"></div>
 
       {/* Overlay section */}
-      <section className="relative z-10 h-full pt-28 lg:pt-[150px]">
+      <section className="relative z-10 h-full pt-16 lg:pt-[150px]">
         <div className="container h-full">
           <div className="-mx-4 flex h-full flex-wrap items-center">
             <div className="w-full px-4 md:w-8/12 lg:w-7/12">
-              <div className="mb-8 max-w-[570px] md:mb-0 lg:mb-12">
+              <AnimatedDiv
+                variant="slideUp"
+                staggerChildren={0.3}
+                className="mb-8 max-w-[570px] md:mb-0 lg:mb-12"
+              >
                 <h1 className="mb-5 text-2xl font-bold text-white sm:text-3xl dark:text-white">
                   {pageName}
                 </h1>
                 <p className="text-base leading-relaxed font-medium text-white">
                   {description}
                 </p>
-              </div>
+              </AnimatedDiv>
             </div>
             <div className="w-full px-4 md:w-4/12 lg:w-5/12">
-              <div className="text-end">
+              <AnimatedDiv variant="slideUp" className="text-end">
                 <ul className="flex flex-wrap items-center gap-1 md:justify-end">
                   {breadcrumbs && breadcrumbs.length > 0 ? (
                     breadcrumbs.map((item, index) => (
@@ -49,7 +54,7 @@ const BreadcrumbWithBgImg = ({
                         {item.href ? (
                           <Link
                             href={item.href}
-                            className="text-base font-medium hover:text-red-300"
+                            className="hover:text-primary text-base font-medium"
                           >
                             {item.label}
                           </Link>
@@ -68,7 +73,7 @@ const BreadcrumbWithBgImg = ({
                       <li className="flex items-center">
                         <Link
                           href="/"
-                          className="pr-1 text-base font-medium text-white hover:text-red-300"
+                          className="hover:text-primary pr-1 text-base font-medium text-white"
                         >
                           Home
                         </Link>
@@ -80,7 +85,7 @@ const BreadcrumbWithBgImg = ({
                     </>
                   )}
                 </ul>
-              </div>
+              </AnimatedDiv>
             </div>
           </div>
         </div>

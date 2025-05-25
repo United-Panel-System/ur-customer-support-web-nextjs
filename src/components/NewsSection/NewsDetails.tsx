@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useRouter } from "next/navigation";
 import slugify from "slugify";
+import { AnimatedDiv } from "../Animation";
 interface NewsDetailsProps {
   news: News;
   moreNews: News[];
@@ -16,25 +17,18 @@ interface NewsDetailsProps {
 
 export default function NewsDetails({ news, moreNews }: NewsDetailsProps) {
   const { title, imageUrls, date, description } = news;
-  const [cleanDescription, setCleanDescription] = useState<string | null>(null);
 
   const router = useRouter();
   const handleYearSelection = (year: string) => {
     router.push(`/news?year=${year}`);
   };
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setCleanDescription(description);
-    }
-  }, [description]);
-
   return (
     <section className="overflow-hidden pt-16 pb-[120px]">
       <div className="container">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4 lg:w-8/12">
-            <div>
+            <AnimatedDiv staggerChildren={0.2}>
               <h1 className="mb-8 text-3xl leading-tight font-bold text-black sm:text-4xl sm:leading-tight dark:text-white">
                 {title}
               </h1>
@@ -93,10 +87,10 @@ export default function NewsDetails({ news, moreNews }: NewsDetailsProps) {
                 </Swiper>
               </div>
               <div className="border-body-color/10 mb-12 border-b pb-12 lg:border-0">
-                {cleanDescription ? (
+                {description ? (
                   <div
                     className="dark:text-body-color text-base font-medium dark:border-white/10"
-                    dangerouslySetInnerHTML={{ __html: cleanDescription }}
+                    dangerouslySetInnerHTML={{ __html: description }}
                   />
                 ) : (
                   <p className="text-gray-500 italic">
@@ -104,9 +98,9 @@ export default function NewsDetails({ news, moreNews }: NewsDetailsProps) {
                   </p>
                 )}
               </div>
-            </div>
+            </AnimatedDiv>
           </div>
-          <div className="w-full px-4 lg:w-4/12">
+          <AnimatedDiv staggerChildren={0.2} className="w-full px-4 lg:w-4/12">
             {moreNews && moreNews.length > 0 && (
               <div className="shadow-three dark:bg-gray-dark mb-10 rounded-xs bg-white dark:shadow-none">
                 <h3 className="border-body-color/10 border-b px-8 py-4 text-lg font-semibold text-black dark:border-white/10 dark:text-white">
@@ -133,7 +127,7 @@ export default function NewsDetails({ news, moreNews }: NewsDetailsProps) {
               <h3 className="border-body-color/10 border-b px-8 py-4 text-lg font-semibold text-black dark:border-white/10 dark:text-white">
                 Year Selection
               </h3>
-              <ul className="px-8 py-6">
+              <ul className="space-y-2 px-8 py-6">
                 {Array.from(
                   { length: 5 },
                   (_, i) => new Date().getFullYear() - i,
@@ -141,7 +135,7 @@ export default function NewsDetails({ news, moreNews }: NewsDetailsProps) {
                   <li key={year}>
                     <button
                       onClick={() => handleYearSelection(year.toString())}
-                      className="text-body-color hover:text-primary mb-3 inline-block cursor-pointer text-base font-medium"
+                      className="text-body-color hover:text-primary w-full cursor-pointer rounded-md px-2 py-2 text-left text-base font-medium transition-colors hover:bg-gray-100 dark:hover:bg-gray-800"
                     >
                       {year}
                     </button>
@@ -149,7 +143,7 @@ export default function NewsDetails({ news, moreNews }: NewsDetailsProps) {
                 ))}
               </ul>
             </div>
-          </div>
+          </AnimatedDiv>
         </div>
       </div>
     </section>

@@ -1,3 +1,5 @@
+import Image from "next/image";
+import { AnimatedDiv } from "../Animation";
 import SectionTitle from "../Common/SectionTitle";
 
 const Certification2 = () => {
@@ -7,15 +9,17 @@ const Certification2 = () => {
         <div className="border-body-color/[.15] border-b pb-16 md:pb-20 lg:pb-28 dark:border-white/[.15]">
           <div className="-mx-4 flex flex-wrap items-center">
             {/* Image Section */}
-            <div className="w-full px-4 lg:w-1/2">
+            <AnimatedDiv variant="slideUp" className="w-full px-4 lg:w-1/2">
               <div className="relative mx-auto w-full">
-                <img
-                  src="/images/about/all_certified.png" // Use the passed image URL
-                  alt="about-image"
-                  className="drop-shadow-three mx-auto mb-[44px] h-auto w-full rounded-lg object-cover shadow-lg lg:mr-0"
+                <Image
+                  src="/images/about/all_certified.png"
+                  alt="Certified Image"
+                  width={600}
+                  height={400}
+                  className="drop-shadow-three transform rounded-lg transition duration-200 ease-in-out hover:scale-105"
                 />
               </div>
-            </div>
+            </AnimatedDiv>
             {/* Text Section */}
             <div className="w-full px-4 lg:w-1/2">
               <SectionTitle
@@ -23,7 +27,11 @@ const Certification2 = () => {
                 paragraph="Additionally, we take pride in our commitment to environmental and safety standards:"
                 mb="44px"
               />
-              <div className="max-w-[600px]">
+              <AnimatedDiv
+                variant="slideUp"
+                staggerChildren={0.2}
+                className="max-w-[600px]"
+              >
                 <div className="mb-9">
                   <h3 className="mb-4 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl dark:text-white">
                     Climate and Environmental Responsibility
@@ -45,7 +53,7 @@ const Certification2 = () => {
                     improvement.
                   </p>
                 </div>
-              </div>
+              </AnimatedDiv>
             </div>
           </div>
         </div>

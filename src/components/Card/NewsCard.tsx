@@ -8,15 +8,8 @@ import slugify from "slugify";
 const NewsCard = ({ news }: { news: News }) => {
   const { title, imageUrls, date, description } = news;
 
-  const [cleanDescription, setCleanDescription] = useState<string | null>(null);
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setCleanDescription(description);
-    }
-  }, [description]);
-
   return (
-    <div className="group shadow-one hover:shadow-two dark:bg-dark dark:hover:shadow-gray-dark relative overflow-hidden rounded-xs bg-white duration-300">
+    <div className="group shadow-one hover:shadow-two dark:bg-dark dark:hover:shadow-gray-dark relative h-full overflow-hidden rounded-xs bg-white duration-300">
       <Link
         href={`/news/${slugify(news.title, { lower: true })}-${news.id}`}
         className="relative block w-full"
@@ -30,35 +23,41 @@ const NewsCard = ({ news }: { news: News }) => {
           alt="news-banner"
           className="h-48 w-full cursor-pointer object-cover"
         />
-      </Link>
-      <div className="p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:px-5 xl:py-8 2xl:p-8">
-        <h3>
-          <Link
-            href={`/news/${slugify(news.title, { lower: true })}-${news.id}`}
-            className="mb-4 block text-xl font-bold text-black hover:text-red-500 sm:text-2xl dark:text-white dark:hover:text-red-500"
-          >
-            {title}
-          </Link>
-        </h3>
-        <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
-          {formatDate(date)}
-        </p>
 
-        {cleanDescription ? (
-          <div
-            className="text-body-color line-clamp-3 text-base font-medium text-gray-700 dark:border-white/10"
-            style={{
-              display: "-webkit-box",
-              WebkitBoxOrient: "vertical",
-              WebkitLineClamp: 3,
-              overflow: "hidden",
-            }}
-            dangerouslySetInnerHTML={{ __html: cleanDescription }}
-          />
-        ) : (
-          <p className="text-gray-500 italic">No description available</p>
-        )}
-      </div>
+        <div className="p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:px-5 xl:py-8 2xl:p-8">
+          <h3>
+            <div
+              className="hover:text-primary dark:hover:text-primary mb-4 block text-xl font-bold text-black sm:text-2xl dark:text-white"
+              style={{
+                display: "-webkit-box",
+                WebkitBoxOrient: "vertical",
+                WebkitLineClamp: 2,
+                overflow: "hidden",
+              }}
+            >
+              {title}
+            </div>
+          </h3>
+          <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
+            {formatDate(date)}
+          </p>
+
+          {description ? (
+            <div
+              className="text-body-color line-clamp-3 text-base font-medium text-gray-700 dark:border-white/10 dark:text-gray-400"
+              style={{
+                display: "-webkit-box",
+                WebkitBoxOrient: "vertical",
+                WebkitLineClamp: 3,
+                overflow: "hidden",
+              }}
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
+          ) : (
+            <p className="text-gray-500 italic">No description available</p>
+          )}
+        </div>
+      </Link>
     </div>
   );
 };

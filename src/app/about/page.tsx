@@ -1,5 +1,6 @@
 import AboutUs1 from "@/components/About/AboutUs1";
 import AboutUs2 from "@/components/About/AboutUs2";
+import { AboutUsStickyScroll } from "@/components/About/AboutUsStickyScroll";
 import CertificationPreview from "@/components/About/CertificationPreview";
 import VisionMission from "@/components/About/VisionMission";
 import BreadcrumbWithBgImg from "@/components/Common/BreadcrumbWithBgImg";

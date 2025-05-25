@@ -38,7 +38,7 @@ const ProjectPopup: React.FC<ProjectPopupProps> = ({ project }) => {
           <div className="mt-2 w-full text-right">
             <Link
               href=""
-              className="text-xs text-red-600 hover:text-red-800 hover:underline"
+              className="hover:text-primary text-primary text-xs hover:underline"
             >
               View More
             </Link>

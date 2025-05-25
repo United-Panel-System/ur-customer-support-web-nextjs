@@ -3,6 +3,7 @@
 import { ProductCategory } from "@/types/products";
 import { useRouter, useSearchParams } from "next/navigation";
 import slugify from "slugify";
+import { AnimatedDiv } from "../Animation";
 
 interface CategoryFilterProps {
   categories: ProductCategory[];
@@ -56,9 +57,9 @@ const ProductSideBar = ({
   };
 
   return (
-    <div className={`w-full lg:w-1/5 ${className}`}>
+    <div className={`w-full ${className}`}>
       {categories.length > 0 && (
-        <div className="shadow-three dark:bg-gray-dark mb-10 rounded-xs bg-white dark:shadow-none">
+        <AnimatedDiv className="shadow-three dark:bg-gray-dark mb-10 rounded-xs bg-white dark:shadow-none">
           <h3 className="border-body-color/10 border-b px-8 py-4 text-lg font-semibold text-black dark:border-white/10 dark:text-white">
             {title}
           </h3>
@@ -90,7 +91,7 @@ const ProductSideBar = ({
               </li>
             ))}
           </ul>
-        </div>
+        </AnimatedDiv>
       )}
     </div>
   );

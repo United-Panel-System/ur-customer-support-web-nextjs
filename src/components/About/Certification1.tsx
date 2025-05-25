@@ -1,5 +1,6 @@
 import Image from "next/image";
 import SectionTitle from "../Common/SectionTitle";
+import { AnimatedDiv } from "../Animation";
 
 const checkIcon = (
   <svg width="16" height="13" viewBox="0 0 16 13" className="fill-current">
@@ -33,19 +34,27 @@ const Certification1 = () => {
 
               <div className="mx-auto max-w-[600px] lg:mx-0">
                 <div className="flex flex-wrap">
-                  <div className="w-full">
+                  <AnimatedDiv
+                    variant="slideUp"
+                    staggerChildren={0.2}
+                    className="w-full"
+                  >
                     <List text="TÜV Rheinland Standards: UR® panel complies with the renowned TÜV Rheinland standards." />
                     <List text="SIRIM QAS International: UR® panel is certified and listed by SIRIM QAS International, a recognized body for quality excellence." />
                     <List text="Bomba Malaysia Approval: Our insulation panels have been tested and approved by the Malaysian Fire Department (Bomba) for commercial and industrial use." />
                     <List text="FM Global (Factory Mutual): UR® PIR (polyisocyanurate) panel is approved by FM Global and adheres to superior fire performance standards recognized by investors, insurers, and constructors." />
-                  </div>
+                  </AnimatedDiv>
                 </div>
               </div>
             </div>
 
             {/* Right Column (Images) */}
             <div className="w-full px-4 lg:w-1/2">
-              <div className="flex flex-col items-center lg:items-start">
+              <AnimatedDiv
+                variant="slideUp"
+                staggerChildren={0.2}
+                className="flex flex-col items-center lg:items-start"
+              >
                 <div className="mb-10 flex w-full justify-center">
                   <Image
                     src="/images/about/all_certified.png"
@@ -64,7 +73,7 @@ const Certification1 = () => {
                     className="drop-shadow-three transform rounded-lg transition duration-200 ease-in-out hover:scale-105"
                   />
                 </div>
-              </div>
+              </AnimatedDiv>
             </div>
           </div>
         </div>

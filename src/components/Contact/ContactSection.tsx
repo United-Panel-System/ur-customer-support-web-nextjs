@@ -1,6 +1,7 @@
 import Image from "next/image";
 import SectionTitle from "../Common/SectionTitle";
 import { ContactInfoWithHref, ContactNoHref } from "./ContactInfo";
+import { AnimatedDiv } from "../Animation";
 
 const checkIcon = (
   <svg width="16" height="13" viewBox="0 0 16 13" className="fill-current">
@@ -113,7 +114,10 @@ const ContactSection = () => {
         <div className="container">
           <div className="border-body-color/[.15] border-b pb-8 md:pb-12 lg:pb-20 dark:border-white/[.15]">
             <div className="flex flex-wrap items-center">
-              <div className="w-full px-4 lg:w-1/2 lg:pr-10">
+              <AnimatedDiv
+                variant="slideLeft"
+                className="w-full px-4 lg:w-1/2 lg:pr-10"
+              >
                 <ContactSectionTitle
                   title="Johor Bahru (Headquarters)"
                   paragraph={
@@ -126,16 +130,12 @@ const ContactSection = () => {
                   mb="20px"
                   width=""
                 />
-
                 <div className="space-y-6">
-                  {/* Address */}
                   <ContactNoHref
                     icon={addressIcon}
                     label="Address"
                     text="PTD 124299, Jalan Kempas Lama, Kampung Seelong Jaya, 81300 Skudai, Johor, Malaysia."
                   />
-
-                  {/* Phone Numbers */}
                   <div className="flex items-center gap-4">
                     <div className="bg-primary/10 dark:bg-primary/20 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md p-2 shadow-sm">
                       {phoneIcon}
@@ -161,23 +161,17 @@ const ContactSection = () => {
                       </div>
                     </div>
                   </div>
-
-                  {/* Fax */}
                   <ContactNoHref
                     icon={faxIcon}
                     label="Facsimile"
                     text="+607 5951177 / 5951122"
                   />
-
-                  {/* Email */}
                   <ContactInfoWithHref
                     icon={mailIcon}
                     label="Email"
                     text="united@ur.com.my"
                     href="mailto:united@ur.com.my"
                   />
-
-                  {/* International Enquiry */}
                   <ContactInfoWithHref
                     icon={mailIcon}
                     label="Exports / International Enquiry"
@@ -185,10 +179,12 @@ const ContactSection = () => {
                     href="mailto:ireneloh@ur.com.my"
                   />
                 </div>
-              </div>
-
-              {/* Map Column */}
-              <div className="w-full px-4 lg:w-1/2 lg:pl-10">
+              </AnimatedDiv>
+              <AnimatedDiv
+                variant="slideRight"
+                trigger="onView"
+                className="w-full px-4 lg:w-1/2 lg:pl-10"
+              >
                 <div className="relative h-full min-h-[400px] w-full overflow-hidden rounded-xl shadow-lg">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.2371893294785!2d103.71369427475155!3d1.6130927606736212!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da7010ace6dbc1%3A0xb1e7c6e71e2429f8!2sUNITED%20PANEL-SYSTEM%20(M)%20SDN.%20BHD.!5e0!3m2!1sen!2smy!4v1738389921041!5m2!1sen!2smy"
@@ -200,7 +196,7 @@ const ContactSection = () => {
                     className="absolute inset-0 border-0"
                   />
                 </div>
-              </div>
+              </AnimatedDiv>
             </div>
           </div>
         </div>
@@ -211,8 +207,11 @@ const ContactSection = () => {
         <div className="container">
           <div className="border-body-color/[.15] border-b pb-16 md:pb-20 lg:pb-28 dark:border-white/[.15]">
             <div className="-mx-4 flex flex-wrap items-center">
-              {/* Map Section */}
-              <div className="w-full px-4 lg:w-1/2 lg:pr-10">
+              <AnimatedDiv
+                variant="slideLeft"
+                trigger="onView"
+                className="w-full px-4 lg:w-1/2 lg:pr-10"
+              >
                 <div className="relative h-full min-h-[400px] w-full overflow-hidden rounded-xl shadow-lg">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7968.19036804849!2d101.6517290697754!3d3.0692343000000184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4b01e89bd103%3A0xa7f486e51a48237e!2sUR%20Refrigeration%20Sdn.%20Bhd.!5e0!3m2!1sen!2smy!4v1738392788428!5m2!1sen!2smy"
@@ -224,9 +223,12 @@ const ContactSection = () => {
                     className="absolute inset-0 border-0"
                   ></iframe>
                 </div>
-              </div>
-              {/* Text Section */}
-              <div className="w-full px-4 lg:w-1/2 lg:pl-10">
+              </AnimatedDiv>
+              <AnimatedDiv
+                variant="slideRight"
+                trigger="onView"
+                className="w-full px-4 lg:w-1/2 lg:pl-10"
+              >
                 <ContactSectionTitle
                   title="Kuala Lumpur (Project Sales & Services)"
                   paragraph="UR REFRIGERATION SDN. BHD.(303292-A)"
@@ -234,29 +236,24 @@ const ContactSection = () => {
                   width=""
                 />
                 <div className="space-y-6">
-                  {/* Address */}
                   <ContactNoHref
                     icon={addressIcon}
                     label="Address"
                     text="PTD 124299, Jalan Kempas Lama, Kampung Seelong Jaya, 81300 Skudai, Johor, Malaysia."
                   />
-
-                  {/* Phone Numbers */}
                   <ContactInfoWithHref
                     icon={phoneIcon}
                     label="Telephone"
                     text="+603 77831181"
                     href="tel:+60377831181"
                   />
-
-                  {/* Fax */}
                   <ContactNoHref
                     icon={faxIcon}
                     label="Facsimile"
                     text="+603 77831161"
                   />
                 </div>
-              </div>
+              </AnimatedDiv>
             </div>
           </div>
         </div>
@@ -267,41 +264,41 @@ const ContactSection = () => {
         <div className="container">
           <div className="border-body-color/[.15] pb-8 md:pb-12 lg:pb-20 dark:border-white/[.15]">
             <div className="flex flex-wrap items-center">
-              <div className="w-full px-4 lg:w-1/2 lg:pr-10">
+              <AnimatedDiv
+                variant="slideLeft"
+                trigger="onView"
+                className="w-full px-4 lg:w-1/2 lg:pr-10"
+              >
                 <ContactSectionTitle
                   title="Johor Bahru (Headquarters)"
                   paragraph="UNITED COOLING SYSTEMS SDN. BHD.(904175-X)"
                   mb="20px"
                   width=""
                 />
-
                 <div className="space-y-6">
-                  {/* Address */}
                   <ContactNoHref
                     icon={addressIcon}
                     label="Address"
                     text="No.6, Jalan 6/152, Taman Perindustrian Bukit OUG, 58200 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia."
                   />
-
-                  {/* Phone Numbers */}
                   <ContactInfoWithHref
                     icon={phoneIcon}
                     label="Telephone"
                     text="+603 77702800"
                     href="tel:+60377702800"
                   />
-
-                  {/* Fax */}
                   <ContactNoHref
                     icon={faxIcon}
                     label="Facsimile"
                     text="+603 77706800"
                   />
                 </div>
-              </div>
-
-              {/* Map Column */}
-              <div className="w-full px-4 lg:w-1/2 lg:pl-10">
+              </AnimatedDiv>
+              <AnimatedDiv
+                variant="slideRight"
+                trigger="onView"
+                className="w-full px-4 lg:w-1/2 lg:pl-10"
+              >
                 <div className="relative h-full min-h-[400px] w-full overflow-hidden rounded-xl shadow-lg">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7968.181077065336!2d101.661089!3d3.07048!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4b022625740b%3A0xb716883d165078cb!2sUnited%20Cooling%20Systems%20Sdn.%20Bhd.!5e0!3m2!1sen!2smy!4v1738392658324!5m2!1sen!2smy"
@@ -313,7 +310,7 @@ const ContactSection = () => {
                     className="absolute inset-0 border-0"
                   ></iframe>
                 </div>
-              </div>
+              </AnimatedDiv>
             </div>
           </div>
         </div>

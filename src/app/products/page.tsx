@@ -6,7 +6,8 @@ import slugify from "slugify";
 
 export const metadata: Metadata = {
   title: "Product List",
-  description: "All products provided by UR",
+  description:
+    "Explore high-quality panel systems and construction solutions offered by United Panel System (M) Sdn. Bhd. Browse our full product range tailored for industrial and commercial applications.",
 };
 
 const ProductListPage = async ({
@@ -41,7 +42,7 @@ const ProductListPage = async ({
     <>
       <BreadcrumbWithBgImg
         pageName="Products"
-        description="List of products."
+        description="Explore high-quality panel systems and construction solutions offered by United Panel System (M) Sdn. Bhd. Browse our full product range tailored for industrial and commercial applications."
         image="/images/banner/productBanner.jpg"
       />
       <ProductListSection

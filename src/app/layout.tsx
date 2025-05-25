@@ -24,19 +24,6 @@ export default async function RootLayout({
       </head>
 
       <body className={`bg-[#FCFCFC] dark:bg-black ${inter.className}`}>
-        {/* <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-XQTL49RNLM"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-XQTL49RNLM');
-        `}
-        </Script> */}
-
         {/* Botpress Chatbot */}
         <Script
           src="https://cdn.botpress.cloud/webchat/v2.3/inject.js"
@@ -51,6 +38,7 @@ export default async function RootLayout({
           {children}
           <Footer />
           <ScrollToTop />
+          <WhatsAppBtn />
         </Providers>
       </body>
     </html>
@@ -60,3 +48,4 @@ export default async function RootLayout({
 import { Providers } from "./providers";
 import { getProductCategory } from "@/api/api";
 import Script from "next/script";
+import WhatsAppBtn from "@/components/CTA/WhatsappBtn";

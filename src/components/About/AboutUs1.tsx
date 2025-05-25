@@ -1,4 +1,6 @@
+import Image from "next/image";
 import SectionTitle from "../Common/SectionTitle";
+import { AnimatedDiv } from "../Animation";
 
 const AboutUs1 = ({ item }) => {
   const { title, description, image } = item;
@@ -6,26 +8,32 @@ const AboutUs1 = ({ item }) => {
     <section id="about" className="pt-16 md:pt-20 lg:pt-28">
       <div className="container">
         <div className="border-body-color/[.15] border-b pb-16 md:pb-20 lg:pb-28 dark:border-white/[.15]">
-          <div className="-mx-4 flex flex-wrap items-center">
-            {/* Text Section */}
-            <div className="w-full px-4 lg:w-1/2">
+          <div className="-mx-4 flex flex-col-reverse items-center lg:flex-row lg:flex-wrap">
+            <div className="mb-[44px] w-full px-4 lg:w-1/2">
               <SectionTitle
-                title={title} // Use the passed title
-                paragraph={description} // Use the passed description
-                mb="44px"
+                title={title}
+                paragraph={description}
+                className="text-justify"
+                mb="0"
+                width="870px"
               />
             </div>
 
-            {/* Image Section */}
-            <div className="w-full px-4 lg:w-1/2">
-              <div className="relative mx-auto max-w-full lg:mr-0">
-                <img
-                  src={image} // Use the passed image URL
+            <AnimatedDiv
+              variant="slideLeft"
+              className="mb-8 w-full px-4 lg:mb-0 lg:w-1/2"
+            >
+              <div className="relative aspect-video w-full overflow-hidden rounded-lg shadow-lg">
+                <Image
+                  src={image}
                   alt="about-image"
-                  className="drop-shadow-three mx-auto min-h-80 max-w-full rounded-lg lg:mr-0"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 700px"
+                  priority={false}
                 />
               </div>
-            </div>
+            </AnimatedDiv>
           </div>
         </div>
       </div>

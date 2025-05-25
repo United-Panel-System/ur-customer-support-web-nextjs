@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { EnquiryTypeEnum, EnquiryTypeMap } from "@/lib/enum/enquiryType";
 import { addEnquiry } from "@/api/api";
+import { AnimatedButton, AnimatedDiv } from "../Animation";
 
 const EnquiryForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -86,19 +87,31 @@ const EnquiryForm: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.getElementById(hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, []);
+
   return (
     <section id="enquiry" className="overflow-hidden py-16 md:py-20 lg:py-28">
       <div className="container">
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
-            <div
+            <AnimatedDiv
+              variant="slideUp"
+              trigger="onView"
+              staggerChildren={0.15}
               className="shadow-three dark:bg-gray-dark mb-12 rounded-xs bg-white px-8 py-11 sm:p-[55px] lg:mb-5 lg:px-8 xl:p-[55px]"
-              data-wow-delay=".15s"
             >
               <h2 className="mb-3 text-2xl font-bold text-black sm:text-3xl lg:text-2xl xl:text-3xl dark:text-white">
                 Enquiry Form
               </h2>
-              <p className="text-body-color mb-12 text-base font-medium">
+              <p className="text-body-color dark:text-body-color-dark mb-12 text-base font-medium">
                 Please fill out the form below and our team will get back to you
                 soon.
               </p>
@@ -334,16 +347,17 @@ const EnquiryForm: React.FC = () => {
 
                   {/* Submit Button */}
                   <div className="w-full px-4 text-center">
-                    <button
+                    <AnimatedButton
+                      variant="slideUp"
                       type="submit"
-                      className="bg-primary shadow-submit hover:bg-primary/90 dark:shadow-submit-dark rounded-xs px-9 py-4 text-base font-medium text-white duration-300"
+                      className="bg-primary shadow-submit hover:bg-primary/90 dark:shadow-submit-dark cursor-pointer rounded-lg px-9 py-4 text-base font-medium text-white"
                     >
                       Submit Enquiry
-                    </button>
+                    </AnimatedButton>
                   </div>
                 </div>
               </form>
-            </div>
+            </AnimatedDiv>
           </div>
         </div>
       </div>

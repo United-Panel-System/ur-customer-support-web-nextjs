@@ -1,3 +1,4 @@
+import { AnimatedDiv } from "../Animation";
 import GeneralIconCard from "../Card/GeneralIconCard";
 import SectionTitle from "../Common/SectionTitle";
 import ourServicesData from "./ourServicesData";
@@ -13,11 +14,17 @@ const OurServices = () => {
             center
           />
 
-          <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
+          <AnimatedDiv
+            variant="slideUp"
+            staggerChildren={0.2}
+            className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3"
+          >
             {ourServicesData.map((service, index) => (
-              <GeneralIconCard key={index} item={service} />
+              <AnimatedDiv variant="slideUp" key={index} className="h-full">
+                <GeneralIconCard key={index} item={service} />
+              </AnimatedDiv>
             ))}
-          </div>
+          </AnimatedDiv>
         </div>
       </section>
     </>

@@ -20,7 +20,7 @@ const CertificationPage = () => {
         image="/images/banner/manufacturingPlant.png"
         breadcrumbs={[
           { label: "Home", href: "/" },
-          { label: "About Us", href: "/about-us" },
+          { label: "About Us", href: "/about" },
           { label: "Quality Certifications & Approvals" },
         ]}
       />

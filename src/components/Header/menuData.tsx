@@ -18,14 +18,14 @@ export const getMenuData = (productCategories: ProductCategory[]): Menu[] => {
     },
     {
       id: 2,
-      title: "About Us",
-      path: "/about-us",
+      title: "About",
+      path: "/about",
       newTab: false,
       submenu: [
         {
           id: 21,
           title: "Certifications",
-          path: `/about-us/certifications`,
+          path: `/about/certifications`,
           newTab: false,
         },
       ],
@@ -36,6 +36,12 @@ export const getMenuData = (productCategories: ProductCategory[]): Menu[] => {
       path: "/products/category",
       newTab: false,
       submenu: mappedCategories,
+    },
+    {
+      id: 3,
+      title: "Projects",
+      path: "/projects",
+      newTab: false,
     },
     {
       id: 4,
@@ -51,8 +57,8 @@ export const getMenuData = (productCategories: ProductCategory[]): Menu[] => {
     },
     {
       id: 6,
-      title: "Contact Us",
-      path: "/contact-us",
+      title: "Contact",
+      path: "/contact",
       newTab: false,
     },
     // {
@@ -69,7 +75,7 @@ export const getMenuData = (productCategories: ProductCategory[]): Menu[] => {
     //     {
     //       id: 42,
     //       title: "Contact Page",
-    //       path: "/contact-us",
+    //       path: "/contact",
     //       newTab: false,
     //     },
     //     {

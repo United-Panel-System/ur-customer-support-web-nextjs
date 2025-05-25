@@ -4,8 +4,9 @@ import ProductCategorySection from "@/components/Products/ProductCategory";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Product Category",
-  description: "This is product category provided by UR",
+  title: "Product Categories",
+  description:
+    "Explore the range of product categories offered by United Panel System (M) Sdn. Bhd., including premium panel systems and construction solutions tailored for industrial and commercial needs.",
 };
 
 const ProductCategoryPage = async () => {
@@ -14,8 +15,8 @@ const ProductCategoryPage = async () => {
   return (
     <>
       <BreadcrumbWithBgImg
-        pageName="Product Category"
-        description="List of product category."
+        pageName="Product Categories"
+        description="Browse our wide range of panel system categories designed to meet the highest standards in industrial and commercial construction."
         image="/images/banner/productBanner.jpg"
       />
       <ProductCategorySection productCategories={categories.data} />

@@ -29,11 +29,11 @@ const Footer = () => {
                 </p>
                 <div className="flex items-center">
                   <a
-                    href="/"
+                    href="https://www.facebook.com/share/1AND4weQGb/"
                     aria-label="social-link"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mr-6 duration-300"
+                    className="text-body-color dark:text-body-color-dark mr-6 duration-300 hover:text-blue-800 dark:hover:text-blue-800"
                   >
                     <svg
                       width="18"
@@ -69,7 +69,7 @@ const Footer = () => {
                     aria-label="social-link"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary duration-300"
+                    className="text-body-color dark:text-body-color-dark duration-300 hover:text-blue-800 dark:hover:text-blue-800"
                   >
                     <svg
                       width="17"
@@ -126,7 +126,7 @@ const Footer = () => {
                 <ul>
                   <li>
                     <Link
-                      href="/products"
+                      href="/products?category=panel"
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
                       Panels
@@ -134,7 +134,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      href="/"
+                      href="/products?category=refrigeration-systems"
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
                       Refrigeration System
@@ -142,7 +142,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      href="/"
+                      href="/products?category=door"
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
                       Insulated Doors
@@ -168,7 +168,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      href="/contact-us"
+                      href="/contact"
                       className="text-body-color hover:text-primary dark:text-body-color-dark dark:hover:text-primary mb-4 inline-block text-base duration-300"
                     >
                       Contact Us

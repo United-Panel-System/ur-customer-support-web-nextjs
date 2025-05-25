@@ -1,8 +1,6 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import React from "react";
+import { AnimatedDiv } from "../Animation";
 
 interface ProductCategoryCardProps {
   name: string;
@@ -14,13 +12,20 @@ const ProductCategoryCard: React.FC<ProductCategoryCardProps> = ({
   name,
   image,
   href,
-}) => {
-  return (
+}) => (
+  <AnimatedDiv
+    whileHover={{
+      scale: 1.05,
+      boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.15)",
+    }}
+    whileTap={{ scale: 0.97 }}
+    transition={{ duration: 0.1 }}
+    className="group shadow-one hover:shadow-two dark:bg-dark dark:hover:shadow-gray-dark relative h-full overflow-hidden rounded-lg bg-white duration-300"
+  >
     <Link
       href={href}
-      className="drop-shadow-three relative mx-auto block w-full max-w-xs transform overflow-hidden rounded-lg transition-transform hover:scale-102 dark:block dark:drop-shadow-none"
+      className="drop-shadow-three relative block w-full overflow-hidden rounded-lg"
     >
-      {/* Image */}
       <Image
         src={image}
         alt={name}
@@ -29,13 +34,11 @@ const ProductCategoryCard: React.FC<ProductCategoryCardProps> = ({
         className="h-[200px] w-full rounded-lg object-cover"
         unoptimized
       />
-
-      {/* Overlay */}
       <div className="absolute bottom-0 left-0 flex w-full items-center justify-center bg-black/50 p-3">
         <h5 className="text-lg font-semibold text-white">{name}</h5>
       </div>
     </Link>
-  );
-};
+  </AnimatedDiv>
+);
 
 export default ProductCategoryCard;

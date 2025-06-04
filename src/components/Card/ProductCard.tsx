@@ -38,9 +38,10 @@ const ProductCard = ({ product }: { product: Products }) => {
                 WebkitLineClamp: 3,
                 overflow: "hidden",
               }}
-            >
-              {description}
-            </div>
+              dangerouslySetInnerHTML={{
+                __html: description,
+              }}
+            ></div>
           ) : (
             <p className="text-gray-500 italic"></p>
           )}

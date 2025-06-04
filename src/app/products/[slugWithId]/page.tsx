@@ -28,7 +28,7 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: product.data.name,
+    title: `${product.data.name} | United Panel-System (M) Sdn. Bhd.`,
     description: product.data.description,
     openGraph: {
       images: [product.data.imageUrls[0], ...previousImages],
@@ -61,19 +61,19 @@ const ProductDetailsPage = async ({
 
   const categoryName = slugify(category.name, { lower: true });
 
-  const allProduct = await getProducts(
-    {
-      pageSize: 4,
-      pageNumber: 1,
-      isActive: true,
-    },
-    { cache: "no-store" },
-  );
+  // const allProduct = await getProducts(
+  //   {
+  //     pageSize: 4,
+  //     pageNumber: 1,
+  //     isActive: true,
+  //   },
+  //   { cache: "no-store" },
+  // );
 
-  // Filter out the current detail products
-  const moreProduct = allProduct.data
-    .filter((product) => product.id !== Number(id))
-    .slice(0, 3);
+  // // Filter out the current detail products
+  // const moreProduct = allProduct.data
+  //   .filter((product) => product.id !== Number(id))
+  //   .slice(0, 3);
 
   return (
     <>

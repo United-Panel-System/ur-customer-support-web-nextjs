@@ -9,8 +9,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import type SwiperCore from "swiper";
-import { useRouter } from "next/navigation";
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { useRouter, useSearchParams } from "next/navigation";
 import { AnimatedDiv, AnimatedLink } from "../Animation";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface ProductDetailsProps {
   product: Products;
@@ -26,8 +28,43 @@ export default function ProductDetails({
   filterCategory = "",
 }: ProductDetailsProps) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const swiperRef = useRef<SwiperCore>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
+  const buildQueryString = (params: {
+    page?: number;
+    search?: string;
+    category?: string;
+  }) => {
+    const newParams = new URLSearchParams(searchParams.toString());
+    if (params.page) newParams.set("page", params.page.toString());
+    if (params.search !== undefined) {
+      params.search.trim()
+        ? newParams.set("search", params.search.trim())
+        : newParams.delete("search");
+    }
+    if (params.category !== undefined) {
+      params.category
+        ? newParams.set("category", params.category)
+        : newParams.delete("category");
+    }
+    return newParams.toString();
+  };
+
+  const handleCategoryFilter = (category: string) => {
+    router.push(
+      `/products?${buildQueryString({
+        page: 1,
+        search: searchQuery,
+        category: category ? slugify(category, { lower: true }) : "",
+      })}`,
+      { scroll: false },
+    );
+    // Close the sheet after selection
+    document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
+  };
 
   const handleThumbnailClick = (index: number) => {
     if (!swiperRef.current) {
@@ -57,8 +94,8 @@ export default function ProductDetails({
           <ProductSideBar
             categories={categories}
             currentCategory={filterCategory}
-            searchQuery={searchQuery}
-            className="mb-8 hidden lg:block lg:w-1/5"
+            handleCategoryFilter={handleCategoryFilter}
+            className="hidden lg:block lg:w-1/5"
             title="Product Categories"
             allCategoryText="Show All"
           />
@@ -73,33 +110,29 @@ export default function ProductDetails({
               >
                 {/* Image Gallery */}
                 <div className="space-y-4">
-                  <div className="relative overflow-hidden rounded-lg shadow-lg dark:shadow-gray-800/50">
+                  {/* Main Swiper */}
+                  <div className="group relative overflow-hidden rounded-md shadow-lg dark:shadow-gray-800/50">
                     <Swiper
-                      spaceBetween={20}
-                      slidesPerView={1}
-                      pagination={{
-                        clickable: true,
-                        bulletClass:
-                          "swiper-pagination-bullet !bg-gray-300 dark:!bg-gray-600",
-                        bulletActiveClass: "!bg-primary dark:!bg-primary-light",
+                      spaceBetween={10}
+                      thumbs={{
+                        swiper:
+                          thumbsSwiper && !thumbsSwiper.destroyed
+                            ? thumbsSwiper
+                            : null,
                       }}
-                      loop={true}
-                      autoplay={{
-                        delay: 5000,
-                        disableOnInteraction: false,
+                      modules={[FreeMode, Navigation, Thumbs]}
+                      navigation={{
+                        nextEl: ".swiper-button-next-custom",
+                        prevEl: ".swiper-button-prev-custom",
                       }}
+                      className="main-swiper rounded-md"
                       onSwiper={(swiper) => {
-                        swiperRef.current = swiper;
-                        setActiveIndex(swiper.realIndex || 0);
-                      }}
-                      onInit={(swiper) => {
                         swiperRef.current = swiper;
                         setActiveIndex(swiper.realIndex || 0);
                       }}
                       onSlideChange={(swiper) =>
                         setActiveIndex(swiper.realIndex)
                       }
-                      className="rounded-lg"
                     >
                       {product.imageUrls.map((imgUrl, index) => (
                         <SwiperSlide key={index}>
@@ -114,36 +147,71 @@ export default function ProductDetails({
                         </SwiperSlide>
                       ))}
                     </Swiper>
+
+                    {/* Navigation Buttons */}
+                    {product.imageUrls.length > 1 && (
+                      <>
+                        <button className="swiper-button-prev-custom absolute top-1/2 left-2 z-10 -translate-y-1/2 rounded-full bg-black/60 p-2 text-white opacity-0 transition-all duration-300 group-hover:opacity-100 hover:bg-black/80">
+                          <ChevronLeft />
+                        </button>
+                        <button className="swiper-button-next-custom absolute top-1/2 right-2 z-10 -translate-y-1/2 rounded-full bg-black/60 p-2 text-white opacity-0 transition-all duration-300 group-hover:opacity-100 hover:bg-black/80">
+                          <ChevronRight />
+                        </button>
+                      </>
+                    )}
+
                     {/* Page/Total Tag */}
                     <span className="absolute right-2 bottom-2 z-[10] rounded bg-black/60 px-2 py-1 text-xs font-semibold text-white">
                       {activeIndex + 1}/{product.imageUrls.length}
                     </span>
                   </div>
 
-                  {/* Thumbnail Navigation (optional) */}
+                  {/* Thumbnail Swiper */}
                   {product.imageUrls.length > 1 && (
-                    <div className="hidden grid-cols-4 gap-2 md:grid">
-                      {product.imageUrls.map((imgUrl, index) => (
-                        <button
-                          key={index}
-                          className="hover:border-primary relative aspect-square overflow-hidden rounded-md border-2 border-transparent transition-all"
-                          onClick={() => handleThumbnailClick(index)}
-                        >
-                          <img
-                            src={imgUrl}
-                            alt={`Thumbnail ${index + 1}`}
-                            className="h-full w-full object-cover"
-                            loading="lazy"
-                          />
-                        </button>
-                      ))}
+                    <div className="relative">
+                      <Swiper
+                        onSwiper={setThumbsSwiper}
+                        spaceBetween={10}
+                        slidesPerView={5}
+                        freeMode={true}
+                        watchSlidesProgress={true}
+                        navigation={{
+                          nextEl: ".thumbs-button-next",
+                          prevEl: ".thumbs-button-prev",
+                        }}
+                        modules={[FreeMode, Navigation, Thumbs]}
+                        className="thumbs-swiper"
+                      >
+                        {product.imageUrls.map((imgUrl, index) => (
+                          <SwiperSlide key={index}>
+                            <button
+                              className={`relative aspect-square cursor-pointer overflow-hidden rounded-md border-2 transition-all ${
+                                index === activeIndex
+                                  ? "border-primary ring-primary/20 ring-2"
+                                  : "border-transparent hover:border-gray-300 dark:hover:border-gray-600"
+                              }`}
+                            >
+                              <img
+                                src={imgUrl}
+                                alt={`Thumbnail ${index + 1}`}
+                                className="h-full w-full object-cover"
+                                loading="lazy"
+                              />
+                              {/* Active indicator overlay */}
+                              {index === activeIndex && (
+                                <div className="bg-primary/10 absolute inset-0" />
+                              )}
+                            </button>
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
                     </div>
                   )}
                 </div>
 
                 {/* Product Details */}
                 <div className="space-y-6">
-                  <div className="rounded-lg bg-gray-50 py-4 dark:bg-gray-800/50">
+                  <div className="border-b py-4">
                     <div className="flex items-center justify-between">
                       <span className="text-3xl font-bold text-gray-900 dark:text-white">
                         {product.name}
@@ -158,12 +226,13 @@ export default function ProductDetails({
                     </h2>
                     {product.description ? (
                       <div
+                        className="text-body-color dark:text-body-color-dark"
                         dangerouslySetInnerHTML={{
                           __html: product.description,
                         }}
                       />
                     ) : (
-                      <p className="text-gray-500 italic dark:text-gray-400">
+                      <p className="text-body-color dark:text-body-color-dark italic dark:text-gray-400">
                         No description available
                       </p>
                     )}
@@ -174,7 +243,7 @@ export default function ProductDetails({
                     <AnimatedDiv variant="slideUp" className="w-full">
                       <AnimatedLink
                         href="/contact#enquiry"
-                        className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-lg bg-red-600 px-8 py-4 font-bold text-white shadow-lg hover:bg-red-600 hover:shadow-xl"
+                        className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-md bg-red-600 px-8 py-4 font-bold text-white shadow-lg hover:bg-red-600 hover:shadow-xl"
                       >
                         <span className="relative">Get Quote</span>
                         <span className="ml-3 transition-transform duration-300 group-hover:translate-x-1">

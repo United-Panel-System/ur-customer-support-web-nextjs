@@ -2,6 +2,7 @@
 layer(base);
 
 @import "tailwindcss";
+@plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
 

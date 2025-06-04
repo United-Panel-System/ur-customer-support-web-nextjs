@@ -9,7 +9,7 @@ const SectionTitle = ({
   className = "",
   trigger = "onView",
 }: {
-  title: string;
+  title: React.ReactNode;
   paragraph: React.ReactNode;
   width?: string;
   center?: boolean;
@@ -25,9 +25,9 @@ const SectionTitle = ({
         className={`w-full ${center ? "mx-auto text-center" : ""} ${className}`}
         style={{ maxWidth: width, marginBottom: mb }}
       >
-        <div className="mb-4 text-3xl leading-tight! font-bold text-black sm:text-4xl md:text-[45px] dark:text-white">
+        <h1 className="mb-4 text-3xl leading-tight! font-bold text-black sm:text-4xl md:text-[45px] dark:text-white">
           {title}
-        </div>
+        </h1>
         <div className="text-body-color dark:text-body-color-dark text-base leading-relaxed! md:text-lg">
           {paragraph}
         </div>

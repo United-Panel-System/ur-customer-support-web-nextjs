@@ -27,7 +27,7 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: news.data.title,
+    title: `${news.data.title} | United Panel-System (M) Sdn. Bhd.`,
     description: news.data.description,
     openGraph: {
       images: [news.data.imageUrls[0], ...previousImages],

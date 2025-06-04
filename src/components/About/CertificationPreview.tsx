@@ -1,5 +1,6 @@
 import Image from "next/image";
 import SectionTitle from "../Common/SectionTitle";
+import { ArrowRight } from "lucide-react";
 import { AnimatedDiv, AnimatedLink } from "../Animation";
 
 const CertificationPreview = () => {
@@ -19,25 +20,26 @@ const CertificationPreview = () => {
                 <div className="">
                   <AnimatedLink
                     href="/about/certifications"
-                    className="group bg-primary hover:bg-primary/90 relative inline-flex items-center justify-center overflow-hidden rounded-lg px-8 py-4 font-bold text-white shadow-lg hover:shadow-xl"
+                    className="group bg-primary hover:bg-primary/90 relative inline-flex items-center justify-center overflow-hidden rounded-md px-8 py-4 font-bold text-white shadow-lg hover:shadow-xl"
                   >
                     <span className="relative">Learn More</span>
-                    <span className="ml-3 transition-transform duration-300 group-hover:translate-x-1">
-                      →
-                    </span>
+                    <ArrowRight className="ml-3 transition-transform duration-300 group-hover:translate-x-1" />
                   </AnimatedLink>
                 </div>
               </AnimatedDiv>
             </AnimatedDiv>
 
             {/* Image Section */}
-            <AnimatedDiv variant="slideUp" className="w-full px-4 lg:w-1/2">
+            <AnimatedDiv
+              variant="slideUp"
+              className="bg-gray-light w-full rounded-md px-4 shadow lg:w-1/2"
+            >
               <Image
                 src="/images/about/all_certified.png"
                 alt="certifications"
                 width={700}
                 height={320}
-                className="drop-shadow-three lg: mx-0 min-h-80 max-w-full rounded-lg lg:mr-0"
+                className="drop-shadow-three lg: mx-0 min-h-80 max-w-full rounded-md lg:mr-0"
                 style={{ objectFit: "cover" }}
               />
             </AnimatedDiv>

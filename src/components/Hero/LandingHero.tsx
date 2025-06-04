@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { AnimatedDiv, AnimatedLink } from "../Animation";
 
 const LandingHero = () => {
@@ -44,12 +45,10 @@ const LandingHero = () => {
             <div className="flex justify-center">
               <AnimatedLink
                 href="/about"
-                className="group relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-red-600 px-8 py-4 font-bold text-white shadow-lg hover:bg-red-600 hover:shadow-xl"
+                className="group relative inline-flex items-center justify-center overflow-hidden rounded-md bg-red-600 px-8 py-4 font-bold text-white shadow-lg hover:bg-red-600 hover:shadow-xl"
               >
                 <span className="relative">Learn More</span>
-                <span className="ml-3 transition-transform duration-300 group-hover:translate-x-1">
-                  →
-                </span>
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </AnimatedLink>
             </div>
           </AnimatedDiv>

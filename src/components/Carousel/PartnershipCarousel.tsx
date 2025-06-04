@@ -29,17 +29,58 @@ const PartnershipCarousel = () => {
   }, []);
 
   const images = [
-    "/images/partner/ap-01.png",
-    "/images/partner/ap-02.png",
-    "/images/partner/ap-03.png",
     "/images/partner/ap-04.png",
     "/images/partner/ap-05.png",
     "/images/partner/ap-06.png",
     "/images/partner/ap-07.png",
+    "/images/partner/ap-08.png",
+    "/images/partner/ap-09.png",
+    "/images/partner/ap-10.png",
+    "/images/partner/ap-11.png",
+    "/images/partner/ap-12.png",
+    "/images/partner/bitzer_290.jpeg",
+    "/images/partner/csc.png",
+    "/images/partner/cubigel_290.png",
+    "/images/partner/henry_290.jpeg",
+    "/images/partner/invotech_290.jpeg",
+    "/images/partner/lu-ve-contardo_290.jpeg",
+    "/images/partner/partmer-ap-01.png",
+    "/images/partner/partmer-ap-03.png",
+    "/images/partner/partmer-ap-11.png",
+    "/images/partner/partmer-ap-12.png",
+    "/images/partner/partmer-ap-14.png",
+    "/images/partner/partmer-ap-15.png",
+    "/images/partner/partmer-ap-16.png",
+    "/images/partner/partmer-ap-19.png",
+    "/images/partner/partmer-ap-20.png",
+    "/images/partner/partmer-ap-23.png",
+    "/images/partner/partmer-ap-24.png",
+    "/images/partner/partmer-ap-25.png",
+    "/images/partner/partmer-ap-26.png",
+    "/images/partner/partmer-ap-27.png",
+    "/images/partner/partmer-ap-28.png",
+    "/images/partner/partmer-ap-29.png",
+    "/images/partner/partmer-ap-30.png",
+    "/images/partner/partmer-ap-31.png",
+    "/images/partner/partmer-ap-32.png",
+    "/images/partner/partmer-ap-33.png",
+    "/images/partner/partmer-ap-34.png",
+    "/images/partner/partmer-ap-35.png",
+    "/images/partner/partmer-ap-36.png",
+    "/images/partner/partmer-ap-37.png",
+    "/images/partner/partmer-ap-38.png",
+    "/images/partner/partmer-ap-39.png",
+    "/images/partner/partmer-ap-40.png",
+    "/images/partner/partmer-ap-41.png",
+    "/images/partner/partmer-ap-42.png",
+    "/images/partner/toyo_290.jpeg",
+    "/images/partner/ap-01.png",
+    "/images/partner/ap-02.png",
+    "/images/partner/ap-03.png",
   ];
 
   return (
-    <section className="dark:bg-gray-dark flex bg-slate-700 py-16">
+    <section className="dark:bg-gray-dark flex bg-slate-700 py-8 md:py-12 lg:py-20">
       <div className="relative mx-auto flex w-full items-center justify-center">
         <Swiper
           modules={[Navigation, Autoplay]}

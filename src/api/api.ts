@@ -82,6 +82,12 @@ export async function getProjects(
   return fetcher<PagedResponse<Projects[]>>(url, { method: "GET", ...options });
 }
 
+/** Get Project by ID */
+export async function getProjectById(id: number, options?: RequestInit) {
+  const url = `${API_BASE_URL}/project/${id}`;
+  return fetcher<ApiResponse<Projects>>(url, options);
+}
+
 /** Get News List */
 export async function getNews(
   params: {

@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import SectionTitle from "../Common/SectionTitle";
-import ProjectMap from "../Map/ProjectMap";
+import ProjectMap from "./ProjectMap";
 import { Projects } from "@/types/projects";
 import { AnimatedDiv } from "../Animation";
 
@@ -51,7 +51,10 @@ const OurProject = ({ projectData }: { projectData: Projects[] }) => {
             </div>
           </div>
 
-          <AnimatedDiv variant="slideLeft" className="w-full px-4 lg:w-1/2">
+          <AnimatedDiv
+            variant="slideLeft"
+            className="h-[500px] w-full px-4 lg:w-1/2"
+          >
             <ProjectMap projectData={projectData} />
           </AnimatedDiv>
         </div>

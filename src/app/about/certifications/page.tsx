@@ -1,11 +1,11 @@
-import Certification1 from "@/components/About/Certification1";
-import Certification2 from "@/components/About/Certification2";
+import CertificationSection from "@/components/About/CertificationSection";
 import BreadcrumbWithBgImg from "@/components/Common/BreadcrumbWithBgImg";
 
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Quality Certification and Approvals",
+  title:
+    "Quality Certification and Approvals | United Panel-System (M) Sdn. Bhd.",
   description:
     "Our UR® panels are certified to meet international quality and safety standards, ensuring reliability and durability.",
   // other metadata
@@ -24,8 +24,7 @@ const CertificationPage = () => {
           { label: "Quality Certifications & Approvals" },
         ]}
       />
-      <Certification1 />
-      <Certification2 />
+      <CertificationSection />
     </>
   );
 };

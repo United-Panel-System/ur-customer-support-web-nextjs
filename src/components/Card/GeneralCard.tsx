@@ -13,7 +13,7 @@ const GeneralCard = ({ item }) => {
       }}
       whileTap={{ scale: 0.97 }}
       transition={{ duration: 0.1 }}
-      className="group shadow-one hover:shadow-two dark:bg-dark dark:hover:shadow-gray-dark relative h-full overflow-hidden rounded-xs bg-white duration-300"
+      className="group shadow-one hover:shadow-two dark:bg-dark dark:hover:shadow-gray-dark relative h-full overflow-hidden rounded-md bg-white duration-300"
     >
       <Link href={url} className="relative block aspect-37/22 w-full">
         <Image src={image} alt="image" fill />
@@ -27,7 +27,7 @@ const GeneralCard = ({ item }) => {
             {title}
           </Link>
         </h3>
-        <p className="text-body-color dark:text-body-color-dark text-base font-medium">
+        <p className="text-body-color dark:text-body-color-dark text-base">
           {description}
         </p>
       </div>

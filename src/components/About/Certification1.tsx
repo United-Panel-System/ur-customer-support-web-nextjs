@@ -10,7 +10,7 @@ const checkIcon = (
 
 const Certification1 = () => {
   const List = ({ text }) => (
-    <div className="dark:bg-dark mb-4 rounded-lg bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-2xl">
+    <div className="dark:bg-dark mb-4 rounded-md bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-2xl">
       <p className="text-body-color dark:text-body-color-dark flex items-center text-lg font-medium">
         <span className="bg-primary/10 text-primary mr-4 inline-flex h-[30px] w-[30px] flex-shrink-0 items-center justify-center rounded-md shadow-md transition duration-200 ease-in-out hover:shadow-xl">
           {checkIcon}
@@ -61,7 +61,7 @@ const Certification1 = () => {
                     alt="Certified Image"
                     width={600}
                     height={400}
-                    className="drop-shadow-three transform rounded-lg transition duration-200 ease-in-out hover:scale-105"
+                    className="drop-shadow-three transform rounded-md transition duration-200 ease-in-out hover:scale-105"
                   />
                 </div>
                 <div className="flex w-full justify-center">
@@ -70,7 +70,7 @@ const Certification1 = () => {
                     alt="FM Approved Image"
                     width={600}
                     height={400}
-                    className="drop-shadow-three transform rounded-lg transition duration-200 ease-in-out hover:scale-105"
+                    className="drop-shadow-three transform rounded-md transition duration-200 ease-in-out hover:scale-105"
                   />
                 </div>
               </AnimatedDiv>

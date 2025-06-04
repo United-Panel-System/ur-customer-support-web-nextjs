@@ -21,39 +21,6 @@ const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
   ssr: false,
 });
 
-const dummyProjects: Projects[] = [
-  {
-    id: 1,
-    name: "Commercial Cold Room",
-    description: "Large-scale cold storage facility for commercial use",
-    imageUrls: ["/images/blog/blog-01.jpg"],
-    latitude: 1.3521,
-    longitude: 103.8198,
-    isActive: true,
-    date: "2023-05-15",
-  },
-  {
-    id: 2,
-    name: "Medical Refrigeration",
-    description: "Specialized refrigeration for medical supplies",
-    imageUrls: ["/images/blog/blog-01.jpg"],
-    latitude: 1.2903,
-    longitude: 103.8515,
-    isActive: true,
-    date: "2023-07-22",
-  },
-  {
-    id: 3,
-    name: "Industrial Freezer",
-    description: "Heavy-duty freezer for industrial applications",
-    imageUrls: ["/images/blog/blog-01.jpg"],
-    latitude: 1.4927,
-    longitude: 103.7414,
-    isActive: true,
-    date: "2023-09-10",
-  },
-];
-
 const ProjectMap = ({ projectData }: { projectData: Projects[] }) => {
   const [isClient, setIsClient] = useState(false);
   const [svgIcon, setSvgIcon] = useState<any>(null);
@@ -80,10 +47,11 @@ const ProjectMap = ({ projectData }: { projectData: Projects[] }) => {
   if (!isClient || !svgIcon) return null;
 
   return (
-    <div className="relative h-[500px] w-full">
+    <div className="relative h-full w-full">
       <MapContainer
         center={[1.4927, 103.7414]}
         zoom={10}
+        scrollWheelZoom={false}
         style={{ height: "100%", width: "100%" }}
       >
         <TileLayer

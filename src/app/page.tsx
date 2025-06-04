@@ -8,6 +8,8 @@ import OurProject from "@/components/Projects";
 import OurServices from "@/components/Services/OurService";
 import { Metadata } from "next";
 import { AboutUsStickyScroll } from "@/components/About/AboutUsStickyScroll";
+import { Statistic } from "@/components/Projects/Statistic";
+import { ShippingSection } from "@/components/Services/ShippingSection";
 
 // Metadata for SEO
 export const metadata: Metadata = {
@@ -35,12 +37,14 @@ export default async function Home() {
     <>
       <ScrollUp />
       <LandingHero />
+      <Statistic />
       <OurProducts />
       <OurServices />
       <OurProject projectData={projects.data} />
       <PartnershipCarousel />
       <NewsSection newsData={news.data} />
-      <AboutUsStickyScroll
+      <ShippingSection />
+      {/* <AboutUsStickyScroll
         content={[
           {
             title: "Our Story",
@@ -61,7 +65,7 @@ export default async function Home() {
             image: "/images/about/manufacturingPlant.png",
           },
         ]}
-      />
+      /> */}
     </>
   );
 }

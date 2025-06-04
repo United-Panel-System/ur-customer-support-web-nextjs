@@ -24,6 +24,19 @@ export default async function RootLayout({
       </head>
 
       <body className={`bg-[#FCFCFC] dark:bg-black ${inter.className}`}>
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-XQTL49RNLM"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-XQTL49RNLM');
+        `}
+        </Script>
+
         {/* Botpress Chatbot */}
         <Script
           src="https://cdn.botpress.cloud/webchat/v2.3/inject.js"

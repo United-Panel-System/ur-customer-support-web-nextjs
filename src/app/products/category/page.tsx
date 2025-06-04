@@ -4,7 +4,7 @@ import ProductCategorySection from "@/components/Products/ProductCategory";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Product Categories",
+  title: "Product Categories | United Panel-System (M) Sdn. Bhd.s",
   description:
     "Explore the range of product categories offered by United Panel System (M) Sdn. Bhd., including premium panel systems and construction solutions tailored for industrial and commercial needs.",
 };

@@ -16,7 +16,7 @@ const AboutUs2 = ({ item }) => {
                 alt="about-image"
                 width={700}
                 height={320}
-                className="drop-shadow-three lg: mx-0 mb-8 min-h-80 max-w-full rounded-lg lg:mr-0"
+                className="drop-shadow-three lg: mx-0 mb-8 min-h-80 max-w-full rounded-md lg:mr-0"
                 style={{ objectFit: "cover" }}
               />
             </AnimatedDiv>

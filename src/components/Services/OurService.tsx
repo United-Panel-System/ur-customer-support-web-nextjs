@@ -1,3 +1,4 @@
+"use client";
 import { AnimatedDiv } from "../Animation";
 import GeneralIconCard from "../Card/GeneralIconCard";
 import SectionTitle from "../Common/SectionTitle";

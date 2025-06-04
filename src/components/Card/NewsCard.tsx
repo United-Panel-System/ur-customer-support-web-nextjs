@@ -9,7 +9,7 @@ const NewsCard = ({ news }: { news: News }) => {
   const { title, imageUrls, date, description } = news;
 
   return (
-    <div className="group shadow-one hover:shadow-two dark:bg-dark dark:hover:shadow-gray-dark relative h-full overflow-hidden rounded-xs bg-white duration-300">
+    <div className="group shadow-one hover:shadow-two dark:bg-dark dark:hover:shadow-gray-dark relative h-full overflow-hidden rounded-md rounded-xs bg-white duration-300">
       <Link
         href={`/news/${slugify(news.title, { lower: true })}-${news.id}`}
         className="relative block w-full"
@@ -38,13 +38,13 @@ const NewsCard = ({ news }: { news: News }) => {
               {title}
             </div>
           </h3>
-          <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
+          <p className="dark:text-body-color-dark mb-4 text-sm text-gray-500">
             {formatDate(date)}
           </p>
 
           {description ? (
             <div
-              className="text-body-color line-clamp-3 text-base font-medium text-gray-700 dark:border-white/10 dark:text-gray-400"
+              className="text-body-color dark:text-body-color-dark line-clamp-3 text-base font-medium dark:border-white/10"
               style={{
                 display: "-webkit-box",
                 WebkitBoxOrient: "vertical",

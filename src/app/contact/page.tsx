@@ -9,7 +9,7 @@ import { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact Us | United Panel-System (M) Sdn. Bhd.",
   description: "For product and service enquires, kindly contact us",
   // other metadata
 };

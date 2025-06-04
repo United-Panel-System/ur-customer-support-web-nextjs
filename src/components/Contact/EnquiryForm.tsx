@@ -350,7 +350,7 @@ const EnquiryForm: React.FC = () => {
                     <AnimatedButton
                       variant="slideUp"
                       type="submit"
-                      className="bg-primary shadow-submit hover:bg-primary/90 dark:shadow-submit-dark cursor-pointer rounded-lg px-9 py-4 text-base font-medium text-white"
+                      className="bg-primary shadow-submit hover:bg-primary/90 dark:shadow-submit-dark cursor-pointer rounded-md px-9 py-4 text-base font-medium text-white"
                     >
                       Submit Enquiry
                     </AnimatedButton>

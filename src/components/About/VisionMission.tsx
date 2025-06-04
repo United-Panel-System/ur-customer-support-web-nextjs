@@ -12,13 +12,13 @@ const VisionMission = () => {
                 src="/images/about/target.svg"
                 alt="target image"
                 fill
-                className="drop-shadow-three rounded-lg dark:hidden dark:drop-shadow-none"
+                className="drop-shadow-three rounded-md dark:hidden dark:drop-shadow-none"
               />
               <Image
                 src="/images/about/target.svg"
                 alt="about image"
                 fill
-                className="drop-shadow-three hidden rounded-lg dark:block dark:drop-shadow-none"
+                className="drop-shadow-three hidden rounded-md dark:block dark:drop-shadow-none"
               />
             </div>
           </AnimatedDiv>
@@ -26,7 +26,7 @@ const VisionMission = () => {
             {/* Vision Section */}
             <AnimatedDiv
               variant="dropBounce"
-              className="dark:bg-dark mb-4 rounded-lg bg-white p-8 shadow"
+              className="dark:bg-dark mb-4 rounded-md bg-white p-8 shadow"
             >
               <h3 className="mb-4 text-3xl font-extrabold text-blue-600 sm:text-4xl lg:text-3xl xl:text-4xl dark:text-white">
                 Our Vision
@@ -41,7 +41,7 @@ const VisionMission = () => {
             {/* Mission Section */}
             <AnimatedDiv
               variant="dropBounce"
-              className="dark:bg-dark rounded-lg bg-white p-8 shadow"
+              className="dark:bg-dark rounded-md bg-white p-8 shadow"
             >
               <h3 className="mb-4 text-3xl font-extrabold text-red-600 sm:text-4xl lg:text-3xl xl:text-4xl dark:text-white">
                 Our Mission

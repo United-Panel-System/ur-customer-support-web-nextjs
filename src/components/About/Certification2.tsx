@@ -16,7 +16,7 @@ const Certification2 = () => {
                   alt="Certified Image"
                   width={600}
                   height={400}
-                  className="drop-shadow-three transform rounded-lg transition duration-200 ease-in-out hover:scale-105"
+                  className="drop-shadow-three transform rounded-md transition duration-200 ease-in-out hover:scale-105"
                 />
               </div>
             </AnimatedDiv>

@@ -1,9 +1,16 @@
 "use client";
-import Image from "next/image";
+import { LucideIcon } from "lucide-react";
 import { AnimatedDiv } from "../Animation";
 import { useEffect, useState } from "react";
 
-// Custom hook to detect Tailwind dark mode
+interface GeneralIconCardProps {
+  item: {
+    icon: LucideIcon;
+    title: string;
+    description: string;
+  };
+}
+
 function useIsDark() {
   const [isDark, setIsDark] = useState(false);
   useEffect(() => {
@@ -22,43 +29,43 @@ function useIsDark() {
   return isDark;
 }
 
-const GeneralIconCard = ({ item }) => {
-  const { icon, iconLight, title, description } = item;
+const GeneralIconCard = ({ item }: GeneralIconCardProps) => {
+  const { icon: Icon, title, description } = item;
   const isDark = useIsDark();
 
   return (
     <AnimatedDiv
-      transition={{ duration: 0.6, type: "spring", bounce: 0.3 }}
+      variant="slideUp"
+      transition={{ duration: 0.4, type: "spring" }}
       whileHover={{
-        scale: 1.05,
+        y: -5,
         boxShadow: isDark
-          ? "0px 8px 20px rgba(255, 193, 213, 0.25)"
-          : "0px 8px 20px rgba(0, 0, 0, 0.15)",
+          ? "0 10px 25px -5px rgba(0, 0, 0, 0.3)"
+          : "0 10px 25px -5px rgba(6, 8, 15, 0.1)",
       }}
-      className="dark:bg-dark w-full cursor-pointer p-4"
     >
-      <div className="text-primary bg-primary/10 mx-auto mb-10 flex h-[70px] w-[70px] items-center justify-center rounded-md">
-        <Image
-          src={icon}
-          alt={title}
-          width={50}
-          height={50}
-          className="block dark:hidden"
-        />
-        <Image
-          src={iconLight}
-          alt={title}
-          width={50}
-          height={50}
-          className="hidden dark:block"
-        />
+      <div className="group border-stroke-stroke shadow-three hover:shadow-feature-2 dark:border-stroke-dark dark:bg-bg-color-dark relative flex h-full flex-col overflow-hidden rounded-lg border bg-white p-6 transition-all duration-300">
+        {/* Icon container with better contrast */}
+        <div
+          className={`mx-auto mb-6 flex h-[72px] w-[72px] items-center justify-center rounded-lg transition-all duration-300 ${isDark ? "bg-dark/20 text-primary group-hover:bg-primary/20 group-hover:shadow-[0_0_20px_rgba(230,57,70,0.3)]" : "bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white group-hover:shadow-[0_0_20px_rgba(230,57,70,0.2)]"}`}
+        >
+          <Icon size={32} />
+        </div>
+
+        <div className="flex flex-grow flex-col text-center">
+          <h3 className="mb-3 text-xl font-semibold text-black dark:text-gray-100">
+            {title}
+          </h3>
+          <p className="text-body-color dark:text-body-color-dark mb-4 flex-grow text-base leading-relaxed">
+            {description}
+          </p>
+        </div>
+
+        {/* Subtle animated border */}
+        <div
+          className={`absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-500 group-hover:w-full ${isDark ? "bg-primary/80" : "bg-primary"}`}
+        ></div>
       </div>
-      <h3 className="mb-5 text-center text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl dark:text-white">
-        {title}
-      </h3>
-      <p className="text-body-color dark:text-body-color-dark pr-[10px] text-center text-base leading-relaxed font-medium">
-        {description}
-      </p>
     </AnimatedDiv>
   );
 };

@@ -5,7 +5,7 @@ import { Metadata } from "next";
 import slugify from "slugify";
 
 export const metadata: Metadata = {
-  title: "Product List",
+  title: "Product List | United Panel-System (M) Sdn. Bhd.",
   description:
     "Explore high-quality panel systems and construction solutions offered by United Panel System (M) Sdn. Bhd. Browse our full product range tailored for industrial and commercial applications.",
 };

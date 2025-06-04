@@ -23,7 +23,7 @@ const AboutUs1 = ({ item }) => {
               variant="slideLeft"
               className="mb-8 w-full px-4 lg:mb-0 lg:w-1/2"
             >
-              <div className="relative aspect-video w-full overflow-hidden rounded-lg shadow-lg">
+              <div className="relative aspect-video w-full overflow-hidden rounded-md shadow-lg">
                 <Image
                   src={image}
                   alt="about-image"

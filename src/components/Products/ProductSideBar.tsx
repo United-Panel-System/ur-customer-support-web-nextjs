@@ -1,14 +1,11 @@
-"use client";
-
 import { ProductCategory } from "@/types/products";
-import { useRouter, useSearchParams } from "next/navigation";
 import slugify from "slugify";
 import { AnimatedDiv } from "../Animation";
 
 interface CategoryFilterProps {
   categories: ProductCategory[];
   currentCategory?: string;
-  searchQuery?: string;
+  handleCategoryFilter: (category: string) => void;
   className?: string;
   title?: string;
   allCategoryText?: string;
@@ -17,45 +14,11 @@ interface CategoryFilterProps {
 const ProductSideBar = ({
   categories = [],
   currentCategory = "",
-  searchQuery = "",
+  handleCategoryFilter,
   className = "",
   title = "Categories",
   allCategoryText = "All Category",
 }: CategoryFilterProps) => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const buildQueryString = (params: {
-    page?: number;
-    search?: string;
-    category?: string;
-  }) => {
-    const newParams = new URLSearchParams(searchParams.toString());
-    if (params.page) newParams.set("page", params.page.toString());
-    if (params.search !== undefined) {
-      params.search.trim()
-        ? newParams.set("search", params.search.trim())
-        : newParams.delete("search");
-    }
-    if (params.category !== undefined) {
-      params.category
-        ? newParams.set("category", params.category)
-        : newParams.delete("category");
-    }
-    return newParams.toString();
-  };
-
-  const handleCategoryFilter = (category: string) => {
-    router.push(
-      `/products?${buildQueryString({
-        page: 1,
-        search: searchQuery,
-        category: category ? slugify(category, { lower: true }) : "",
-      })}`,
-      { scroll: false },
-    );
-  };
-
   return (
     <div className={`w-full ${className}`}>
       {categories.length > 0 && (

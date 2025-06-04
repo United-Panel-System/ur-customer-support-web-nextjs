@@ -40,7 +40,7 @@ const BreadcrumbWithBgImg = ({
                 <h1 className="mb-5 text-2xl font-bold text-white sm:text-3xl dark:text-white">
                   {pageName}
                 </h1>
-                <p className="text-base leading-relaxed font-medium text-white">
+                <p className="hidden text-base leading-relaxed font-medium text-white xl:block">
                   {description}
                 </p>
               </AnimatedDiv>

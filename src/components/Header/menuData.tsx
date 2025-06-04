@@ -19,11 +19,17 @@ export const getMenuData = (productCategories: ProductCategory[]): Menu[] => {
     {
       id: 2,
       title: "About",
-      path: "/about",
+      path: `/about`,
       newTab: false,
       submenu: [
         {
           id: 21,
+          title: "About Us",
+          path: `/about`,
+          newTab: false,
+        },
+        {
+          id: 22,
           title: "Certifications",
           path: `/about/certifications`,
           newTab: false,
@@ -35,7 +41,15 @@ export const getMenuData = (productCategories: ProductCategory[]): Menu[] => {
       title: "Products",
       path: "/products/category",
       newTab: false,
-      submenu: mappedCategories,
+      submenu: [
+        {
+          id: 31,
+          title: "Product Categories",
+          path: `/products/category`,
+          newTab: false,
+        },
+        ...mappedCategories,
+      ],
     },
     {
       id: 3,

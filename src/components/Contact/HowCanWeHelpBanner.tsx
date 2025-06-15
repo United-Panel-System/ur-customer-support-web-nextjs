@@ -14,7 +14,7 @@ export const HowCanWeHelp = () => {
                 HOW CAN WE HELP?
               </h2>
               <p className="text-body-color mx-auto max-w-3xl text-base font-bold">
-                We' re here to help and answer any question you might have.
+                We&apos;re here to help and answer any question you might have.
               </p>
             </AnimatedDiv>
           </div>

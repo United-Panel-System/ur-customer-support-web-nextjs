@@ -15,7 +15,7 @@ const ProjectCTA = () => {
               Looking for Custom Cold Room or Refrigeration System?
             </h3>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-white/90">
-              Let's work together to design sustainable, efficient cold storage
+              Let&apos;s work together to design sustainable, efficient cold storage
               and panel systems that match your requirements.
             </p>
             <div className="mt-10">

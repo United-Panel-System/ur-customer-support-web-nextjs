@@ -14,7 +14,7 @@ const ServiceSection = () => {
             className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3"
           >
             {ourServicesData.map((service, index) => (
-              <AnimatedDiv variant="slideUp" staggerChildren={0.2}>
+              <AnimatedDiv key={index} variant="slideUp" staggerChildren={0.2}>
                 <GeneralIconCard key={index} item={service} />
               </AnimatedDiv>
             ))}

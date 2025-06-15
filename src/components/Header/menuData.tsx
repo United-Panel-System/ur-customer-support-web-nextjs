@@ -27,6 +27,7 @@ export const getMenuData = (productCategories: ProductCategory[]): Menu[] => {
           title: "About Us",
           path: `/about`,
           newTab: false,
+          hideOnDesktop: true,
         },
         {
           id: 22,
@@ -39,7 +40,7 @@ export const getMenuData = (productCategories: ProductCategory[]): Menu[] => {
     {
       id: 3,
       title: "Products",
-      path: "/products/category",
+      path: "/products",
       newTab: false,
       submenu: [
         {

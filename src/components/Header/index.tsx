@@ -58,9 +58,8 @@ const Header = ({ productCategories }: HeaderProps) => {
             <div className="px-4 xl:mr-12">
               <Link
                 href="/"
-                className={`header-logo flex items-center ${
-                  sticky ? "py-5 lg:py-2" : "py-5 lg:py-2"
-                }`}
+                className={`header-logo flex items-center ${sticky ? "py-5 lg:py-2" : "py-5 lg:py-2"
+                  }`}
               >
                 <Image
                   src="/images/logo/ur.png"
@@ -88,13 +87,13 @@ const Header = ({ productCategories }: HeaderProps) => {
                     const hasSubmenu = !!menuItem.submenu;
                     const isChildActive = hasSubmenu
                       ? menuItem.submenu.some((submenuItem) => {
-                          try {
-                            const submenuPath = submenuItem.path.split("?")[0];
-                            return usePathName === submenuPath;
-                          } catch {
-                            return false;
-                          }
-                        })
+                        try {
+                          const submenuPath = submenuItem.path.split("?")[0];
+                          return usePathName === submenuPath;
+                        } catch {
+                          return false;
+                        }
+                      })
                       : false;
 
                     return (
@@ -105,11 +104,10 @@ const Header = ({ productCategories }: HeaderProps) => {
                               {menuItem.path ? (
                                 <Link
                                   href={menuItem.path}
-                                  className={`after:bg-primary flex items-center py-2 text-base transition-colors duration-200 xl:mr-0 xl:inline-flex xl:px-0 xl:py-6 ${
-                                    isActive || isChildActive
+                                  className={`after:bg-primary flex items-center py-2 text-base transition-colors duration-200 xl:mr-0 xl:inline-flex xl:px-0 xl:py-6 ${isActive || isChildActive
                                       ? "text-primary dark:text-white"
                                       : "text-dark group-hover:text-primary dark:text-white/70 dark:group-hover:text-white"
-                                  }`}
+                                    }`}
                                 >
                                   {menuItem.title}
                                   <span className="pl-3">
@@ -117,11 +115,10 @@ const Header = ({ productCategories }: HeaderProps) => {
                                       width="25"
                                       height="24"
                                       viewBox="0 0 25 24"
-                                      className={`transition-transform duration-200 group-hover:rotate-180 ${
-                                        isActive || isChildActive
+                                      className={`transition-transform duration-200 group-hover:rotate-180 ${isActive || isChildActive
                                           ? "text-primary dark:text-white"
                                           : "text-dark group-hover:text-primary dark:text-white/70 dark:group-hover:text-white"
-                                      }`}
+                                        }`}
                                     >
                                       <path
                                         fillRule="evenodd"
@@ -134,11 +131,10 @@ const Header = ({ productCategories }: HeaderProps) => {
                                 </Link>
                               ) : (
                                 <div
-                                  className={`after:bg-primary group flex items-center py-2 text-base transition-colors duration-200 xl:mr-0 xl:inline-flex xl:px-0 xl:py-6 ${
-                                    isActive || isChildActive
+                                  className={`after:bg-primary group flex items-center py-2 text-base transition-colors duration-200 xl:mr-0 xl:inline-flex xl:px-0 xl:py-6 ${isActive || isChildActive
                                       ? "text-primary dark:text-white"
                                       : "text-dark group-hover:text-primary dark:text-white/70 dark:group-hover:text-white"
-                                  }`}
+                                    }`}
                                 >
                                   {menuItem.title}
                                   <span className="pl-3">
@@ -146,11 +142,10 @@ const Header = ({ productCategories }: HeaderProps) => {
                                       width="25"
                                       height="24"
                                       viewBox="0 0 25 24"
-                                      className={`transition-transform duration-200 group-hover:rotate-180 ${
-                                        isActive || isChildActive
+                                      className={`transition-transform duration-200 group-hover:rotate-180 ${isActive || isChildActive
                                           ? "text-primary dark:text-white"
                                           : "text-dark group-hover:text-primary dark:text-white/70 dark:group-hover:text-white"
-                                      }`}
+                                        }`}
                                     >
                                       <path
                                         fillRule="evenodd"
@@ -169,24 +164,25 @@ const Header = ({ productCategories }: HeaderProps) => {
                               className={`submenu dark:bg-dark invisible absolute top-full left-0 z-10 w-[250px] rounded-sm bg-white p-4 opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:top-full group-hover:opacity-100`}
                             >
                               {menuItem.submenu.map((submenuItem, subIdx) => (
-                                <Link
-                                  href={submenuItem.path}
-                                  key={subIdx}
-                                  className="text-dark hover:text-primary block rounded-sm px-3 py-2.5 text-sm dark:text-white/70 dark:hover:text-white"
-                                >
-                                  {submenuItem.title}
-                                </Link>
+                                (!submenuItem.hideOnDesktop) && (
+                                  <Link
+                                    href={submenuItem.path}
+                                    key={subIdx}
+                                    className="text-dark hover:text-primary block rounded-sm px-3 py-2.5 text-sm dark:text-white/70 dark:hover:text-white"
+                                  >
+                                    {submenuItem.title}
+                                  </Link>
+                                )
                               ))}
                             </div>
                           </div>
                         ) : menuItem.path ? (
                           <Link
                             href={menuItem.path}
-                            className={`relative flex py-2 text-base xl:mr-0 xl:inline-flex xl:px-0 xl:py-6 ${
-                              isActive
+                            className={`relative flex py-2 text-base xl:mr-0 xl:inline-flex xl:px-0 xl:py-6 ${isActive
                                 ? "text-primary dark:text-white"
                                 : "text-dark hover:text-primary dark:text-white/70 dark:hover:text-white"
-                            }`}
+                              }`}
                           >
                             {menuItem.title}
                           </Link>
@@ -211,19 +207,16 @@ const Header = ({ productCategories }: HeaderProps) => {
                 className="relative z-50 block rounded-md px-3 py-[6px]"
               >
                 <span
-                  className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
-                    navbarOpen ? "top-[7px] rotate-45" : ""
-                  }`}
+                  className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${navbarOpen ? "top-[7px] rotate-45" : ""
+                    }`}
                 />
                 <span
-                  className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
-                    navbarOpen ? "opacity-0" : ""
-                  }`}
+                  className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${navbarOpen ? "opacity-0" : ""
+                    }`}
                 />
                 <span
-                  className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
-                    navbarOpen ? "top-[-8px] -rotate-45" : ""
-                  }`}
+                  className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${navbarOpen ? "top-[-8px] -rotate-45" : ""
+                    }`}
                 />
               </button>
             </div>
@@ -233,11 +226,10 @@ const Header = ({ productCategories }: HeaderProps) => {
 
       {/* Mobile Fullscreen Nav */}
       <div
-        className={`fixed right-0 left-0 z-[1300] overflow-y-auto bg-white transition-all duration-300 ease-in-out xl:hidden dark:bg-gray-900 ${
-          navbarOpen
+        className={`fixed right-0 left-0 z-[1300] overflow-y-auto bg-white transition-all duration-300 ease-in-out xl:hidden dark:bg-gray-900 ${navbarOpen
             ? "top-[--header-height] h-[calc(100vh-var(--header-height))] opacity-100"
             : "top-[-100vh] h-0 opacity-0"
-        }`}
+          }`}
         style={
           { "--header-height": sticky ? "72px" : "88px" } as React.CSSProperties
         }

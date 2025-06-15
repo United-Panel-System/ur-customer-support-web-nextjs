@@ -12,8 +12,8 @@ const GeneralCard = ({ item }) => {
         boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.15)",
       }}
       whileTap={{ scale: 0.97 }}
-      transition={{ duration: 0.1 }}
-      className="group shadow-one hover:shadow-two dark:bg-dark dark:hover:shadow-gray-dark relative h-full overflow-hidden rounded-md bg-white duration-300"
+      transition={{ duration: 0.2 }}
+      className="group shadow-one hover:shadow-two dark:bg-dark dark:hover:shadow-gray-dark relative h-full overflow-hidden rounded-md bg-white"
     >
       <Link href={url} className="relative block aspect-37/22 w-full">
         <Image src={image} alt="image" fill />

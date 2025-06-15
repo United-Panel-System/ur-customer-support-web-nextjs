@@ -170,7 +170,8 @@ const ContactSection = () => {
                   <ContactNoHref
                     icon={<MapPin className="h-5 w-5" />}
                     label="Address"
-                    text="PTD 124299, Jalan Kempas Lama, Kampung Seelong Jaya, 81300 Skudai, Johor, Malaysia."
+                    text="No.15,Jalan 7/152, Taman Perindustrian Bukit OUG,
+58200 Kuala Lumpur,Wilayah Persekutuan Kuala Lumpur, Malaysia."
                   />
                   <ContactInfoWithHref
                     icon={<Phone className="h-5 w-5" />}
@@ -200,7 +201,7 @@ const ContactSection = () => {
                 className="w-full px-4 lg:w-1/2 lg:pr-10"
               >
                 <ContactSectionTitle
-                  title="Johor Bahru (Headquarters)"
+                  title="Kuala Lumpur (Refrigeration Equipment Center)"
                   paragraph="UNITED COOLING SYSTEMS SDN. BHD.(904175-X)"
                   mb="20px"
                   width=""

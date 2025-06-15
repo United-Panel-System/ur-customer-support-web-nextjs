@@ -139,7 +139,7 @@ export default function NewsList({
             {/* Desktop Search Bar */}
             <AnimatedDiv className="mb-8 hidden items-center justify-between lg:flex">
               <h2 className="text-dark text-3xl font-bold dark:text-white">
-                All News
+                News
               </h2>
               <div className="flex w-full max-w-lg items-center justify-end">
                 <AnimatedDiv variant="slideUp" staggerChildren={0.2}>
@@ -182,7 +182,6 @@ export default function NewsList({
                         whileTap={{ scale: 0.97 }}
                         transition={{ duration: 0.2 }}
                         key={index}
-                        className="h-full"
                       >
                         <NewsCard key={index} news={news} />
                       </AnimatedDiv>

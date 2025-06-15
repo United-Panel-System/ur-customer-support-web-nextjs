@@ -1,6 +1,5 @@
 import { getProjects } from "@/api/api";
 import BreadcrumbWithBgImg from "@/components/Common/BreadcrumbWithBgImg";
-import ProjectCTA from "@/components/CTA/ProjectCTA";
 import ProjectListMap from "@/components/Projects/ProjectListMap";
 
 import { Metadata } from "next";
@@ -28,7 +27,6 @@ const ProjectPage = async () => {
       />
 
       <ProjectListMap projectData={projects.data} />
-      <ProjectCTA />
     </>
   );
 };

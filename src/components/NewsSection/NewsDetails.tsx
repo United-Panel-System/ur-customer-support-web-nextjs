@@ -2,7 +2,6 @@
 import { News } from "@/types/news";
 import RelatedPost from "../Blog/RelatedPost";
 import { formatDate } from "@/lib/helper/dateformatter";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -10,6 +9,7 @@ import { useRouter } from "next/navigation";
 import slugify from "slugify";
 import { AnimatedDiv } from "../Animation";
 import { FiCalendar } from "react-icons/fi";
+import { ImageGallery } from "../Common/ImageGallery";
 interface NewsDetailsProps {
   news: News;
   moreNews: News[];
@@ -49,30 +49,13 @@ export default function NewsDetails({ news, moreNews }: NewsDetailsProps) {
                   </div>
                 </div>
               </div>
-              <div>
-                <Swiper
-                  spaceBetween={20}
-                  slidesPerView={1}
-                  pagination={{ clickable: true }}
-                  loop={true}
-                >
-                  {imageUrls.map((imgUrl, index) => (
-                    <SwiperSlide key={index}>
-                      <div className="relative w-full">
-                        <img
-                          src={imgUrl}
-                          alt="news-cover"
-                          className="mb-6 w-full object-cover"
-                        />
-                      </div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
+              <div className="mb-12">
+                <ImageGallery images={imageUrls} itemName={title} showThumbnails={false} variant={"news"} />
               </div>
               <div className="border-body-color/10 mb-12 border-b pb-12 lg:border-0">
                 {description ? (
                   <div
-                    className="text-body-color dark:text-body-color-dark text-base font-medium dark:border-white/10"
+                    className="prose prose-sm max-w-none text-body-color dark:text-body-color-dark dark:prose-invert"
                     dangerouslySetInnerHTML={{ __html: description }}
                   />
                 ) : (

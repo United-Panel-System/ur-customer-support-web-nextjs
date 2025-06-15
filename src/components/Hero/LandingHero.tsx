@@ -45,7 +45,7 @@ const LandingHero = () => {
             <div className="flex justify-center">
               <AnimatedLink
                 href="/about"
-                className="group relative inline-flex items-center justify-center overflow-hidden rounded-md bg-red-600 px-8 py-4 font-bold text-white shadow-lg hover:bg-red-600 hover:shadow-xl"
+                className="group relative inline-flex items-center justify-center overflow-hidden rounded-md bg-primary px-8 py-4 font-bold text-white shadow-lg hover:bg-primary hover:shadow-xl"
               >
                 <span className="relative">Learn More</span>
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />

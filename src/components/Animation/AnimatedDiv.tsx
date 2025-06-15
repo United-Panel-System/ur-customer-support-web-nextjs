@@ -6,7 +6,7 @@ import {
   useInView,
 } from "framer-motion";
 import { animationVariants, AnimationVariant } from "./variants";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
 type AnimatedDivProps = {
@@ -27,6 +27,7 @@ export const AnimatedDiv = ({
   children,
   ...props
 }: AnimatedDivProps) => {
+  const [hasMounted, setHasMounted] = useState(false);
   const controls = useAnimation();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -35,15 +36,15 @@ export const AnimatedDiv = ({
 
   const parentVariants = staggerChildren
     ? {
-        hidden: { opacity: 0 },
-        visible: {
-          opacity: 1,
-          transition: {
-            staggerChildren,
-            staggerDirection,
-          },
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: {
+          staggerChildren,
+          staggerDirection,
         },
-      }
+      },
+    }
     : animationVariants[variant];
 
   const childVariants = animationVariants[variant];
@@ -56,22 +57,26 @@ export const AnimatedDiv = ({
     }
   }, [controls, trigger, isInView, pathname, searchParams]);
 
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
   return (
     <motion.div
       ref={ref}
       key={pathname}
       className={className}
       initial="hidden"
-      animate={controls}
+      animate={hasMounted ? controls : undefined}
       variants={parentVariants}
       {...props}
     >
       {Array.isArray(children)
         ? children.map((child, i) => (
-            <motion.div key={i} variants={childVariants}>
-              {child}
-            </motion.div>
-          ))
+          <motion.div key={i} variants={childVariants}>
+            {child}
+          </motion.div>
+        ))
         : children}
     </motion.div>
   );

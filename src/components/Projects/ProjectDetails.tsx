@@ -55,13 +55,12 @@ const ProjectDetails = ({ project }: ProjectDetailsProps) => {
                 </div>
 
                 <div
-                  className={`grid gap-5 ${
-                    project.imageUrls.length === 1
-                      ? "grid-cols-1"
-                      : project.imageUrls.length === 2
-                        ? "grid-cols-2"
-                        : "grid-cols-2 md:grid-cols-3"
-                  }`}
+                  className={`grid gap-5 ${project.imageUrls.length === 1
+                    ? "grid-cols-1"
+                    : project.imageUrls.length === 2
+                      ? "grid-cols-2"
+                      : "grid-cols-2 md:grid-cols-3"
+                    }`}
                 >
                   {project.imageUrls.map((img, index) => (
                     <div
@@ -98,7 +97,7 @@ const ProjectDetails = ({ project }: ProjectDetailsProps) => {
           >
             <div className="relative h-full w-full max-w-7xl">
               <button
-                className="absolute top-6 right-6 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-white/20"
+                className="absolute top-6 right-6 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-white/20 cursor-pointer"
                 onClick={(e) => {
                   e.stopPropagation();
                   setSelectedImage(null);

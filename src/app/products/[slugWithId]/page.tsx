@@ -1,4 +1,4 @@
-import { getProducts, getProductById, getProductCategory } from "@/api/api";
+import { getProductById, getProductCategory } from "@/api/api";
 import BreadcrumbWithBgImg from "@/components/Common/BreadcrumbWithBgImg";
 import ProductDetails from "@/components/Products/ProductDetails";
 
@@ -6,13 +6,13 @@ import type { Metadata, ResolvingMetadata } from "next";
 import slugify from "slugify";
 
 type Props = {
-  params: { slugWithId: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+  params: Promise<{ slugWithId: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
 
 export async function generateMetadata(
   { params, searchParams }: Props,
-  parent: ResolvingMetadata,
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
   const { slugWithId } = await params;
   const id = slugWithId.split("-").pop();
@@ -24,7 +24,6 @@ export async function generateMetadata(
   }
 
   const product = await getProductById(Number(id));
-
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
@@ -36,16 +35,8 @@ export async function generateMetadata(
   };
 }
 
-const ProductDetailsPage = async ({
-  children,
-  params,
-}: Readonly<{
-  children: React.ReactNode;
-  params: { slugWithId?: string };
-}>) => {
+export default async function ProductDetailsPage({ params }: Props) {
   const { slugWithId } = await params;
-
-  // Extract the numeric ID at the end
   const id = slugWithId.split("-").pop();
 
   if (!id || isNaN(Number(id))) {
@@ -53,27 +44,13 @@ const ProductDetailsPage = async ({
   }
 
   const product = await getProductById(Number(id));
-
   const categories = await getProductCategory();
+
   const category = categories.data.find(
     (c) => c.id === product.data.productCategoryId,
   );
 
-  const categoryName = slugify(category.name, { lower: true });
-
-  // const allProduct = await getProducts(
-  //   {
-  //     pageSize: 4,
-  //     pageNumber: 1,
-  //     isActive: true,
-  //   },
-  //   { cache: "no-store" },
-  // );
-
-  // // Filter out the current detail products
-  // const moreProduct = allProduct.data
-  //   .filter((product) => product.id !== Number(id))
-  //   .slice(0, 3);
+  const categoryName = slugify(category?.name || "", { lower: true });
 
   return (
     <>
@@ -94,6 +71,4 @@ const ProductDetailsPage = async ({
       />
     </>
   );
-};
-
-export default ProductDetailsPage;
+}

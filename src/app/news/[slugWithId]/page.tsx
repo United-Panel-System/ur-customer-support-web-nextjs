@@ -5,13 +5,13 @@ import NewsDetails from "@/components/NewsSection/NewsDetails";
 import type { Metadata, ResolvingMetadata } from "next";
 
 type Props = {
-  params: { slugWithId: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+  params: Promise<{ slugWithId: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
 
 export async function generateMetadata(
   { params, searchParams }: Props,
-  parent: ResolvingMetadata,
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
   const { slugWithId } = await params;
   const id = slugWithId.split("-").pop();
@@ -23,7 +23,6 @@ export async function generateMetadata(
   }
 
   const news = await getNewsById(Number(id));
-
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
@@ -35,16 +34,8 @@ export async function generateMetadata(
   };
 }
 
-const NewsDetailsPage = async ({
-  children,
-  params,
-}: Readonly<{
-  children: React.ReactNode;
-  params: { slugWithId?: string };
-}>) => {
+export default async function NewsDetailsPage({ params }: Props) {
   const { slugWithId } = await params;
-
-  // Extract the numeric ID at the end
   const id = slugWithId.split("-").pop();
 
   if (!id || isNaN(Number(id))) {
@@ -61,7 +52,6 @@ const NewsDetailsPage = async ({
     { cache: "no-store" },
   );
 
-  // Filter out the current detail news
   const moreNews = allNews.data
     .filter((news) => news.id !== Number(id))
     .slice(0, 3);
@@ -81,6 +71,4 @@ const NewsDetailsPage = async ({
       <NewsDetails news={news.data} moreNews={moreNews} />
     </>
   );
-};
-
-export default NewsDetailsPage;
+}

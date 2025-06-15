@@ -48,7 +48,7 @@ const ProjectListMap = ({ projectData }: Props) => {
   const onListItemClick = useCallback(
     (project: Projects) => {
       if (mapRef.current) {
-        mapRef.current.setView([project.latitude, project.longitude], 13, {
+        mapRef.current.setView([project.latitude, project.longitude], 10, {
           animate: true,
         });
       }
@@ -95,11 +95,10 @@ const ProjectListMap = ({ projectData }: Props) => {
       <div
         key={project.id}
         style={style}
-        className={`cursor-pointer p-4 transition-all duration-200 ${
-          activeProjectId === project.id
-            ? "bg-gray-100 dark:bg-gray-700"
-            : "hover:bg-gray-50 dark:hover:bg-gray-700"
-        }`}
+        className={`cursor-pointer p-4 transition-all duration-200 ${activeProjectId === project.id
+          ? "bg-gray-100 dark:bg-gray-700"
+          : "hover:bg-gray-50 dark:hover:bg-gray-700"
+          }`}
         onClick={() => onListItemClick(project)}
       >
         <div className="flex items-start justify-between">
@@ -134,9 +133,8 @@ const ProjectListMap = ({ projectData }: Props) => {
             {/* Collapse/Expand Button - Always visible */}
             <button
               onClick={() => setIsListOpen(!isListOpen)}
-              className={`bg-primary hover:bg-primary/90 absolute top-1/2 z-1200 flex h-10 w-6 items-center justify-center rounded-r-md text-white shadow-md transition-all ${
-                isListOpen ? "left-80" : "left-0"
-              }`}
+              className={`bg-primary hover:bg-primary/90 absolute top-1/2 z-1200 flex h-10 w-6 items-center justify-center rounded-r-md text-white shadow-md transition-all ${isListOpen ? "left-80" : "left-0"
+                }`}
               style={{ transform: "translateY(-50%)" }}
             >
               {isListOpen ? (
@@ -148,9 +146,8 @@ const ProjectListMap = ({ projectData }: Props) => {
 
             {/* List Panel */}
             <div
-              className={`dark:bg-dark h-full overflow-hidden border-r border-gray-200 bg-white transition-all duration-300 ease-in-out ${
-                isListOpen ? "w-80" : "w-0"
-              }`}
+              className={`dark:bg-dark h-full overflow-hidden border-r border-gray-200 bg-white transition-all duration-300 ease-in-out ${isListOpen ? "w-80" : "w-0"
+                }`}
             >
               <div
                 className={`flex h-full flex-col ${!isListOpen && "hidden"}`}
@@ -188,16 +185,15 @@ const ProjectListMap = ({ projectData }: Props) => {
 
             {/* Map Panel */}
             <div
-              className={`h-full transition-all duration-300 ${
-                isListOpen ? "flex-1" : "w-full"
-              }`}
+              className={`h-full transition-all duration-300 ${isListOpen ? "flex-1" : "w-full"
+                }`}
             >
               <MapContainer
                 center={[1.4927, 103.7414]}
                 zoom={10}
                 scrollWheelZoom={false}
                 style={{ height: "100%", width: "100%" }}
-                whenCreated={(mapInstance) => (mapRef.current = mapInstance)}
+                ref={mapRef}
               >
                 <TileLayer
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -221,7 +217,7 @@ const ProjectListMap = ({ projectData }: Props) => {
                   >
                     <Popup
                       position={[project.latitude, project.longitude]}
-                      onClose={() => setActiveProjectId(null)}
+                    //onClose={() => setActiveProjectId(null)}
                     >
                       <ProjectPopup project={project} />
                     </Popup>

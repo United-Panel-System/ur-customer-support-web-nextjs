@@ -4,7 +4,7 @@ import { News } from "@/types/news";
 import { ProductCategory, Products } from "@/types/products";
 import { Projects } from "@/types/projects";
 
-const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:5000/api/v1";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1";
 
 /** Generic fetcher */
 async function fetcher<TResponse>(

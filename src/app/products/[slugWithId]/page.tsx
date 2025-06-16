@@ -3,6 +3,7 @@ import BreadcrumbWithBgImg from "@/components/Common/BreadcrumbWithBgImg";
 import ProductDetails from "@/components/Products/ProductDetails";
 
 import type { Metadata, ResolvingMetadata } from "next";
+import { notFound } from "next/navigation";
 import slugify from "slugify";
 
 type Props = {
@@ -40,11 +41,18 @@ export default async function ProductDetailsPage({ params }: Props) {
   const id = slugWithId.split("-").pop();
 
   if (!id || isNaN(Number(id))) {
-    return <div>Invalid Product ID</div>;
+    notFound();
   }
 
-  const product = await getProductById(Number(id));
-  const categories = await getProductCategory();
+  let product;
+  let categories;
+
+  try {
+    product = await getProductById(Number(id));
+    categories = await getProductCategory();
+  } catch (error) {
+    notFound();
+  }
 
   const category = categories.data.find(
     (c) => c.id === product.data.productCategoryId,

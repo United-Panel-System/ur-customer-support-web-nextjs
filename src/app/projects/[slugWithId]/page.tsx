@@ -3,6 +3,7 @@ import BreadcrumbWithBgImg from "@/components/Common/BreadcrumbWithBgImg";
 import ProjectDetails from "@/components/Projects/ProjectDetails";
 
 import type { Metadata, ResolvingMetadata } from "next";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: Promise<{ slugWithId: string }>
@@ -39,10 +40,15 @@ export default async function ProjectDetailsPage({ params }: Props) {
   const id = slugWithId.split("-").pop();
 
   if (!id || isNaN(Number(id))) {
-    return <div>Invalid Project ID</div>;
+    notFound();
   }
 
-  const project = await getProjectById(Number(id));
+  let project;
+  try {
+    project = await getProjectById(Number(id));
+  } catch (error) {
+    notFound();
+  }
 
   return (
     <>

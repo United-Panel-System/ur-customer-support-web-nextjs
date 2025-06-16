@@ -8,9 +8,9 @@ const CertificationPreview = () => {
     <section id="about" className="pt-16 md:pt-20 lg:pt-28">
       <div className="container">
         <div className="border-body-color/[.15] border-b pb-16 md:pb-20 lg:pb-28 dark:border-white/[.15]">
-          <div className="-mx-4 flex flex-wrap items-center">
+          <div className="-mx-4 flex flex-col-reverse flex-wrap items-center lg:flex-row">
             {/* Text Section */}
-            <AnimatedDiv staggerChildren={0.3} className="w-full px-4 lg:w-1/2">
+            <div className="w-full px-4 lg:w-1/2">
               <SectionTitle
                 title="Our Certifications"
                 paragraph="We maintain the highest industry standards through rigorous certifications that validate our commitment to quality and safety." // Use the passed description
@@ -27,19 +27,19 @@ const CertificationPreview = () => {
                   </AnimatedLink>
                 </div>
               </AnimatedDiv>
-            </AnimatedDiv>
+            </div>
 
             {/* Image Section */}
             <AnimatedDiv
               variant="slideUp"
-              className="bg-gray-light w-full rounded-md px-4 shadow lg:w-1/2"
+              className="w-full rounded-md mb-8 px-4 shadow lg:w-1/2"
             >
               <Image
                 src="/images/about/all_certified.png"
                 alt="certifications"
                 width={700}
                 height={320}
-                className="drop-shadow-three lg: mx-0 min-h-80 max-w-full rounded-md lg:mr-0"
+                className="bg-gray-light drop-shadow-three lg: mx-0 min-h-80 max-w-full rounded-md lg:mr-0"
                 style={{ objectFit: "cover" }}
               />
             </AnimatedDiv>

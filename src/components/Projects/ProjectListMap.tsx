@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback, use } from "react";
 import dynamic from "next/dynamic";
 import "leaflet/dist/leaflet.css";
 import { Projects } from "@/types/projects";
@@ -83,6 +83,12 @@ const ProjectListMap = ({ projectData }: Props) => {
     });
   }, []);
 
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      setIsListOpen(false);
+    }
+  }, []);
+
   const ProjectRow = ({
     index,
     style,
@@ -133,7 +139,7 @@ const ProjectListMap = ({ projectData }: Props) => {
             {/* Collapse/Expand Button - Always visible */}
             <button
               onClick={() => setIsListOpen(!isListOpen)}
-              className={`bg-primary hover:bg-primary/90 absolute top-1/2 z-1200 flex h-10 w-6 items-center justify-center rounded-r-md text-white shadow-md transition-all ${isListOpen ? "left-80" : "left-0"
+              className={`bg-primary hover:bg-primary/90 absolute top-1/2 z-1200 flex h-10 w-6 items-center justify-center rounded-r-md text-white shadow-md transition-all cursor-pointer ${isListOpen ? "left-80" : "left-0"
                 }`}
               style={{ transform: "translateY(-50%)" }}
             >
@@ -217,7 +223,6 @@ const ProjectListMap = ({ projectData }: Props) => {
                   >
                     <Popup
                       position={[project.latitude, project.longitude]}
-                    //onClose={() => setActiveProjectId(null)}
                     >
                       <ProjectPopup project={project} />
                     </Popup>

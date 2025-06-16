@@ -30,7 +30,6 @@ export const AnimatedDiv = ({
   const [hasMounted, setHasMounted] = useState(false);
   const controls = useAnimation();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.1, once: true });
 
@@ -55,7 +54,7 @@ export const AnimatedDiv = ({
     } else if (isInView) {
       controls.start("visible");
     }
-  }, [controls, trigger, isInView, pathname, searchParams]);
+  }, [controls, trigger, isInView, pathname]);
 
   useEffect(() => {
     setHasMounted(true);

@@ -55,7 +55,7 @@ const Header = ({ productCategories }: HeaderProps) => {
         <div className="container">
           <div className="relative -mx-4 flex items-center justify-between">
             {/* Logo */}
-            <div className="px-4 xl:mr-12">
+            <div className="px-4 xl:mr-8">
               <Link
                 href="/"
                 className={`header-logo flex items-center ${sticky ? "py-5 lg:py-2" : "py-5 lg:py-2"
@@ -69,7 +69,8 @@ const Header = ({ productCategories }: HeaderProps) => {
                 />
                 <div className="ml-3 flex flex-col">
                   <span className="hidden text-lg font-semibold sm:block">
-                    UNITED PANEL-SYSTEM(M) SDN BHD
+                    UNITED PANEL-SYSTEM(M)
+                    SDN BHD
                   </span>
                   <span className="hidden text-xs font-normal text-wrap lg:block">
                     ASEAN&apos;s First & Only PIR Double Belt Continuous Line
@@ -105,8 +106,8 @@ const Header = ({ productCategories }: HeaderProps) => {
                                 <Link
                                   href={menuItem.path}
                                   className={`after:bg-primary flex items-center py-2 text-base transition-colors duration-200 xl:mr-0 xl:inline-flex xl:px-0 xl:py-6 ${isActive || isChildActive
-                                      ? "text-primary dark:text-white"
-                                      : "text-dark group-hover:text-primary dark:text-white/70 dark:group-hover:text-white"
+                                    ? "text-primary dark:text-white"
+                                    : "text-dark group-hover:text-primary dark:text-white/70 dark:group-hover:text-white"
                                     }`}
                                 >
                                   {menuItem.title}
@@ -116,8 +117,8 @@ const Header = ({ productCategories }: HeaderProps) => {
                                       height="24"
                                       viewBox="0 0 25 24"
                                       className={`transition-transform duration-200 group-hover:rotate-180 ${isActive || isChildActive
-                                          ? "text-primary dark:text-white"
-                                          : "text-dark group-hover:text-primary dark:text-white/70 dark:group-hover:text-white"
+                                        ? "text-primary dark:text-white"
+                                        : "text-dark group-hover:text-primary dark:text-white/70 dark:group-hover:text-white"
                                         }`}
                                     >
                                       <path
@@ -132,8 +133,8 @@ const Header = ({ productCategories }: HeaderProps) => {
                               ) : (
                                 <div
                                   className={`after:bg-primary group flex items-center py-2 text-base transition-colors duration-200 xl:mr-0 xl:inline-flex xl:px-0 xl:py-6 ${isActive || isChildActive
-                                      ? "text-primary dark:text-white"
-                                      : "text-dark group-hover:text-primary dark:text-white/70 dark:group-hover:text-white"
+                                    ? "text-primary dark:text-white"
+                                    : "text-dark group-hover:text-primary dark:text-white/70 dark:group-hover:text-white"
                                     }`}
                                 >
                                   {menuItem.title}
@@ -143,8 +144,8 @@ const Header = ({ productCategories }: HeaderProps) => {
                                       height="24"
                                       viewBox="0 0 25 24"
                                       className={`transition-transform duration-200 group-hover:rotate-180 ${isActive || isChildActive
-                                          ? "text-primary dark:text-white"
-                                          : "text-dark group-hover:text-primary dark:text-white/70 dark:group-hover:text-white"
+                                        ? "text-primary dark:text-white"
+                                        : "text-dark group-hover:text-primary dark:text-white/70 dark:group-hover:text-white"
                                         }`}
                                     >
                                       <path
@@ -180,8 +181,8 @@ const Header = ({ productCategories }: HeaderProps) => {
                           <Link
                             href={menuItem.path}
                             className={`relative flex py-2 text-base xl:mr-0 xl:inline-flex xl:px-0 xl:py-6 ${isActive
-                                ? "text-primary dark:text-white"
-                                : "text-dark hover:text-primary dark:text-white/70 dark:hover:text-white"
+                              ? "text-primary dark:text-white"
+                              : "text-dark hover:text-primary dark:text-white/70 dark:hover:text-white"
                               }`}
                           >
                             {menuItem.title}
@@ -204,7 +205,7 @@ const Header = ({ productCategories }: HeaderProps) => {
                 onClick={navbarToggleHandler}
                 id="navbarToggler"
                 aria-label="Mobile Menu"
-                className="relative z-50 block rounded-md px-3 py-[6px]"
+                className="relative z-50 block rounded-md px-3 py-5"
               >
                 <span
                   className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${navbarOpen ? "top-[7px] rotate-45" : ""
@@ -227,8 +228,8 @@ const Header = ({ productCategories }: HeaderProps) => {
       {/* Mobile Fullscreen Nav */}
       <div
         className={`fixed right-0 left-0 z-[1300] overflow-y-auto bg-white transition-all duration-300 ease-in-out xl:hidden dark:bg-gray-900 ${navbarOpen
-            ? "top-[--header-height] h-[calc(100vh-var(--header-height))] opacity-100"
-            : "top-[-100vh] h-0 opacity-0"
+          ? "top-[--header-height] h-[calc(100vh-var(--header-height))] opacity-100"
+          : "top-[-100vh] h-0 opacity-0"
           }`}
         style={
           { "--header-height": sticky ? "72px" : "88px" } as React.CSSProperties

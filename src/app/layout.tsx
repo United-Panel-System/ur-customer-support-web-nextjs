@@ -73,7 +73,7 @@ export default async function RootLayout({
 import { Providers } from "./providers";
 import { getProductCategory } from "@/api/api";
 import Script from "next/script";
-import WhatsAppBtn from "@/components/CTA/WhatsappBtn"; import Head from "next/head";
+import WhatsAppBtn from "@/components/CTA/WhatsappBtn";
 import { getOrganizationSchema } from "@/lib/seo/schema";
 import { Metadata } from "next";
 

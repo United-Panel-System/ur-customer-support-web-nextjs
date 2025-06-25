@@ -145,11 +145,6 @@ export const getProductSchema = (product: Products) => {
             "@type": "Brand",
             name: PRODUCT_BRAND
         },
-        offers: {
-            "@type": "Offer",
-            priceCurrency: "MYR",
-            url
-        },
         mainEntityOfPage: {
             "@type": "WebPage",
             "@id": url

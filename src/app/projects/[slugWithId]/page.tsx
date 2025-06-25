@@ -28,9 +28,11 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: `${project.data.name} | United Panel-System (M) Sdn. Bhd.`,
+    title: `${project.data.name}`,
     description: project.data.description,
     openGraph: {
+      title: `${project.data.name}`,
+      description: project.data.description,
       images: [project.data.imageUrls[0], ...previousImages],
     },
   };
@@ -53,14 +55,12 @@ export default async function ProjectDetailsPage({ params }: Props) {
 
   return (
     <>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(getProjectSchema(project.data)),
-          }}
-        />
-      </head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getProjectSchema(project.data)).replace(/</g, '\\u003c'),
+        }}
+      />
       <BreadcrumbWithBgImg
         pageName={project.data.name}
         description=""

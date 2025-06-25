@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Error Page | United Panel-System (M) Sdn. Bhd.",
+  title: "Error Page",
   description: "This is Error Page",
   // other metadata
 };

@@ -29,9 +29,11 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: `${product.data.name} | United Panel-System (M) Sdn. Bhd.`,
+    title: `${product.data.name}`,
     description: product.data.description,
     openGraph: {
+      title: `${product.data.name}`,
+      description: product.data.description,
       images: [product.data.imageUrls[0], ...previousImages],
     },
   };
@@ -63,14 +65,12 @@ export default async function ProductDetailsPage({ params }: Props) {
 
   return (
     <>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(getProductSchema(product.data)),
-          }}
-        />
-      </head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getProductSchema(product.data)).replace(/</g, '\\u003c'),
+        }}
+      />
       <BreadcrumbWithBgImg
         pageName={product.data.name}
         description=""

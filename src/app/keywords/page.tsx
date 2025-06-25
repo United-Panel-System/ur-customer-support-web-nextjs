@@ -4,7 +4,7 @@ import BreadcrumbWithBgImg from "@/components/Common/BreadcrumbWithBgImg";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Keyword Index | United Panel-System (M) Sdn. Bhd.",
+  title: "Keyword Index",
   description: "Comprehensive list of keywords related to coldroom, refrigeration systems, compressors, HVACR, panels, and more.",
   // other metadata
 };

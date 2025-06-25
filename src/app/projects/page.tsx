@@ -6,7 +6,7 @@ import { getProjectListSchema } from "@/lib/seo/schema";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Projects | United Panel-System (M) Sdn. Bhd.",
+  title: "Projects",
   description:
     "Discover our portfolio of completed and ongoing projects across various sectors. Each project reflects our commitment to quality, sustainability, and customer satisfaction through smart engineering and reliable execution.",
   // other metadata
@@ -21,14 +21,12 @@ const ProjectPage = async () => {
   );
   return (
     <>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(getProjectListSchema(projects.data)),
-          }}
-        />
-      </head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getProjectListSchema(projects.data)).replace(/</g, '\\u003c'),
+        }}
+      />
       <BreadcrumbWithBgImg
         pageName="Projects"
         description="Discover our projects across industries—built with care, quality, and a focus on your satisfaction."

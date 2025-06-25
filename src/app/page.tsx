@@ -15,7 +15,13 @@ import { ShippingSection } from "@/components/Services/ShippingSection";
 export const metadata: Metadata = {
   title: "United Panel-System (M) Sdn. Bhd.",
   description:
-    "ASEAN's First & Only PIR Double Belt Continuous Line | Solution for your cold storage needs | PIR, PU and PS Panels Malaysia",
+    "UNITED PANEL-SYSTEM has been specialising in the production of PU & PS panels for walk-in cold rooms. Being the largest multi-purpose manufacturing plant in Malaysia, we offer a complete range of products for commercial & industrial refrigeration systems",
+  keywords: [
+    "cold", "company", "companies", "design", "insulated", "johor", "johor bahru", "malaysia",
+    "manufacturer", "manufacturers", "manufacturing", "panel", "panels", "ps", "pu", "room",
+    "storage", "suppliers", "supplier", "polyurethane", "polystyrene", "refrigeration",
+    "system", "united"
+  ],
 };
 
 // SSG: Fetch data at build time using async function

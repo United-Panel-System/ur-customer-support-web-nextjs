@@ -7,6 +7,31 @@ import "../styles/index.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  title: {
+    template: "%s | United Panel-System (M) Sdn. Bhd.",
+    default: "United Panel-System (M) Sdn. Bhd.",
+  },
+  description:
+    "UNITED PANEL-SYSTEM has been specialising in the production of PU & PS panels for walk-in cold rooms. Being the largest multi-purpose manufacturing plant in Malaysia, we offer a complete range of products for commercial & industrial refrigeration systems.",
+  openGraph: {
+    title: {
+      template: "%s | United Panel-System (M) Sdn. Bhd.",
+      default: "United Panel-System (M) Sdn. Bhd.",
+    },
+    description:
+      "UNITED PANEL-SYSTEM has been specialising in the production of PU & PS panels for walk-in cold rooms...",
+    url: BASE_URL,
+    siteName: "United Panel-System",
+    type: "website",
+    images: [
+      {
+        url: `${BASE_URL}/images/logo.png`,
+        width: 600,
+        height: 315,
+        alt: "United Panel-System Logo",
+      },
+    ],
+  },
   icons: {
     icon: "/images/logo.png",
   },
@@ -33,7 +58,7 @@ export default async function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(getOrganizationSchema()),
+            __html: JSON.stringify(getOrganizationSchema()).replace(/</g, '\\u003c'),
           }}
         />
         <Script
@@ -76,4 +101,5 @@ import Script from "next/script";
 import WhatsAppBtn from "@/components/CTA/WhatsappBtn";
 import { getOrganizationSchema } from "@/lib/seo/schema";
 import { Metadata } from "next";
+import { BASE_URL } from "@/lib/seo/config";
 

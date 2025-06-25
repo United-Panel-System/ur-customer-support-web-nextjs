@@ -8,7 +8,7 @@ import BreadcrumbWithBgImg from "@/components/Common/BreadcrumbWithBgImg";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | United Panel-System (M) Sdn. Bhd.",
+  title: "About Us",
   description:
     "Since 1978, UNITED PANEL-SYSTEM (M) SDN. BHD. has been specializing in the production of high-quality insulated panels and refrigeration systems for the industrial sector.",
   // other metadata

@@ -5,7 +5,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "Quality Certification and Approvals | United Panel-System (M) Sdn. Bhd.",
+    "Quality Certification and Approvals",
   description:
     "Our UR® panels are certified to meet international quality and safety standards, ensuring reliability and durability.",
   // other metadata

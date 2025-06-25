@@ -8,7 +8,7 @@ import { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
-  title: "Contact Us | United Panel-System (M) Sdn. Bhd.",
+  title: "Contact Us",
   description: "For product and service enquires, kindly contact us",
   // other metadata
 };
@@ -16,14 +16,12 @@ export const metadata: Metadata = {
 const ContactPage = () => {
   return (
     <>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(getContactSchema()),
-          }}
-        />
-      </head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(getContactSchema()).replace(/</g, '\\u003c'),
+        }}
+      />
       <Toaster position="top-center" />
       <BreadcrumbWithBgImg
         pageName="Contact Us"

@@ -5,7 +5,7 @@ import ServiceSection from "@/components/Services/ServiceSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Services | United Panel-System (M) Sdn. Bhd.",
+  title: "Services",
   description:
     "Explore our high-performance insulated panels engineered for industrial and commercial excellence.",
   // other metadata

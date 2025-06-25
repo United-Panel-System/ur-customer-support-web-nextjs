@@ -4,11 +4,10 @@ import ProductListSection from "@/components/Products/ProductListSection";
 import { BASE_URL } from "@/lib/seo/config";
 import { getPaginatedProductSchema } from "@/lib/seo/schema";
 import { Metadata } from "next";
-import Head from "next/head";
 import slugify from "slugify";
 
 export const metadata: Metadata = {
-  title: "Product List | United Panel-System (M) Sdn. Bhd.",
+  title: "Product List",
   description:
     "Explore high-quality panel systems and construction solutions offered by United Panel System (M) Sdn. Bhd. Browse our full product range tailored for industrial and commercial applications.",
 };
@@ -52,17 +51,15 @@ const ProductListPage = async ({
 
   return (
     <>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schema),
-          }}
-        />
-        <link rel="canonical" href={canonicalUrl} />
-        {prevUrl && <link rel="prev" href={prevUrl} />}
-        {nextUrl && <link rel="next" href={nextUrl} />}
-      </head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schema).replace(/</g, '\\u003c'),
+        }}
+      />
+      <link rel="canonical" href={canonicalUrl} />
+      {prevUrl && <link rel="prev" href={prevUrl} />}
+      {nextUrl && <link rel="next" href={nextUrl} />}
       <BreadcrumbWithBgImg
         pageName="Products"
         description="Explore high-quality panel systems and construction solutions offered by United Panel System (M) Sdn. Bhd. Browse our full product range tailored for industrial and commercial applications."

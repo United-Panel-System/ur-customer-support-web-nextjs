@@ -13,7 +13,7 @@ import { ShippingSection } from "@/components/Services/ShippingSection";
 
 // Metadata for SEO
 export const metadata: Metadata = {
-  title: "United Panel-System (M) Sdn. Bhd.",
+  title: "Solution For Your Cold Storage Needs",
   description:
     "UNITED PANEL-SYSTEM has been specialising in the production of PU & PS panels for walk-in cold rooms. Being the largest multi-purpose manufacturing plant in Malaysia, we offer a complete range of products for commercial & industrial refrigeration systems",
   keywords: [

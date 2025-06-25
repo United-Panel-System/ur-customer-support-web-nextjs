@@ -8,14 +8,14 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | United Panel-System (M) Sdn. Bhd.",
+    template: "%s | PIR, PU and PS Panels Malaysia | United Panel-System (M) Sdn. Bhd.",
     default: "United Panel-System (M) Sdn. Bhd.",
   },
   description:
     "UNITED PANEL-SYSTEM has been specialising in the production of PU & PS panels for walk-in cold rooms. Being the largest multi-purpose manufacturing plant in Malaysia, we offer a complete range of products for commercial & industrial refrigeration systems.",
   openGraph: {
     title: {
-      template: "%s | United Panel-System (M) Sdn. Bhd.",
+      template: "%s | PIR, PU and PS Panels Malaysia | United Panel-System (M) Sdn. Bhd.",
       default: "United Panel-System (M) Sdn. Bhd.",
     },
     description:

@@ -34,7 +34,8 @@
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "next-sitemap.config.js",
   ],
   "exclude": [
     "node_modules"

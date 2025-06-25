@@ -1,6 +1,7 @@
 import { getProjectById } from "@/api/api";
 import BreadcrumbWithBgImg from "@/components/Common/BreadcrumbWithBgImg";
 import ProjectDetails from "@/components/Projects/ProjectDetails";
+import { getProjectSchema } from "@/lib/seo/schema";
 
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
@@ -52,6 +53,14 @@ export default async function ProjectDetailsPage({ params }: Props) {
 
   return (
     <>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getProjectSchema(project.data)),
+          }}
+        />
+      </head>
       <BreadcrumbWithBgImg
         pageName={project.data.name}
         description=""

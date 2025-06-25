@@ -6,6 +6,12 @@ import "../styles/index.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+export const metadata: Metadata = {
+  icons: {
+    icon: "/images/logo.png",
+  },
+};
+
 export default async function RootLayout({
   children,
 }: {
@@ -20,10 +26,16 @@ export default async function RootLayout({
       */}
 
       <head>
-        <link rel="icon" type="image/png" href="/images/favicon.png" />
+        <link rel="icon" type="image/png" href="/images/logo.png" />
       </head>
 
       <body className={`bg-[#FCFCFC] dark:bg-black ${inter.className}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getOrganizationSchema()),
+          }}
+        />
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-XQTL49RNLM"
@@ -61,4 +73,7 @@ export default async function RootLayout({
 import { Providers } from "./providers";
 import { getProductCategory } from "@/api/api";
 import Script from "next/script";
-import WhatsAppBtn from "@/components/CTA/WhatsappBtn";
+import WhatsAppBtn from "@/components/CTA/WhatsappBtn"; import Head from "next/head";
+import { getOrganizationSchema } from "@/lib/seo/schema";
+import { Metadata } from "next";
+

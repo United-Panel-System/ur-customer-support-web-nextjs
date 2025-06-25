@@ -1,7 +1,10 @@
 import { getProductCategory, getProducts } from "@/api/api";
 import BreadcrumbWithBgImg from "@/components/Common/BreadcrumbWithBgImg";
 import ProductListSection from "@/components/Products/ProductListSection";
+import { BASE_URL } from "@/lib/seo/config";
+import { getPaginatedProductSchema } from "@/lib/seo/schema";
 import { Metadata } from "next";
+import Head from "next/head";
 import slugify from "slugify";
 
 export const metadata: Metadata = {
@@ -38,8 +41,28 @@ const ProductListPage = async ({
     isActive: true,
   });
 
+  const schema = getPaginatedProductSchema(products.data, currentPage);
+  const canonicalUrl = `${BASE_URL}/products${currentPage > 1 ? `?page=${currentPage}` : ""}`;
+  const prevUrl =
+    currentPage > 1 ? `${BASE_URL}/products?page=${currentPage - 1}` : null;
+  const nextUrl =
+    currentPage < products.totalCount
+      ? `${BASE_URL}/products?page=${currentPage + 1}`
+      : null;
+
   return (
     <>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schema),
+          }}
+        />
+        <link rel="canonical" href={canonicalUrl} />
+        {prevUrl && <link rel="prev" href={prevUrl} />}
+        {nextUrl && <link rel="next" href={nextUrl} />}
+      </head>
       <BreadcrumbWithBgImg
         pageName="Products"
         description="Explore high-quality panel systems and construction solutions offered by United Panel System (M) Sdn. Bhd. Browse our full product range tailored for industrial and commercial applications."

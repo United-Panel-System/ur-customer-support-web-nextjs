@@ -1,6 +1,8 @@
 import { getNews } from "@/api/api";
 import BreadcrumbWithBgImg from "@/components/Common/BreadcrumbWithBgImg";
 import NewsList from "@/components/NewsSection/NewsList";
+import { BASE_URL } from "@/lib/seo/config";
+import { getPaginatedNewsSchema } from "@/lib/seo/schema";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -34,8 +36,28 @@ const NewsPage = async ({
     // },
   );
 
+  const schema = getPaginatedNewsSchema(news.data, currentPage);
+  const canonicalUrl = `${BASE_URL}/news${currentPage > 1 ? `?page=${currentPage}` : ""}`;
+  const prevUrl =
+    currentPage > 1 ? `${BASE_URL}/news?page=${currentPage - 1}` : null;
+  const nextUrl =
+    currentPage < news.totalCount
+      ? `${BASE_URL}/news?page=${currentPage + 1}`
+      : null;
+
   return (
     <>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schema),
+          }}
+        />
+        <link rel="canonical" href={canonicalUrl} />
+        {prevUrl && <link rel="prev" href={prevUrl} />}
+        {nextUrl && <link rel="next" href={nextUrl} />}
+      </head>
       <BreadcrumbWithBgImg
         pageName="News"
         description="Keep up with our latest projects, innovations, and milestones."

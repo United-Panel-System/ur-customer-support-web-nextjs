@@ -1,6 +1,7 @@
 import { getProjects } from "@/api/api";
 import BreadcrumbWithBgImg from "@/components/Common/BreadcrumbWithBgImg";
 import ProjectListMap from "@/components/Projects/ProjectListMap";
+import { getProjectListSchema } from "@/lib/seo/schema";
 
 import { Metadata } from "next";
 
@@ -20,6 +21,14 @@ const ProjectPage = async () => {
   );
   return (
     <>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getProjectListSchema(projects.data)),
+          }}
+        />
+      </head>
       <BreadcrumbWithBgImg
         pageName="Projects"
         description="Discover our projects across industries—built with care, quality, and a focus on your satisfaction."

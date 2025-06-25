@@ -1,6 +1,7 @@
 import { getNews, getNewsById } from "@/api/api";
 import BreadcrumbWithBgImg from "@/components/Common/BreadcrumbWithBgImg";
 import NewsDetails from "@/components/NewsSection/NewsDetails";
+import { getNewsSchema } from "@/lib/seo/schema";
 
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
@@ -65,6 +66,14 @@ export default async function NewsDetailsPage({ params }: Props) {
 
   return (
     <>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getNewsSchema(news.data)),
+          }}
+        />
+      </head>
       <BreadcrumbWithBgImg
         pageName={news.data.title}
         description=""

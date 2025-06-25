@@ -1,11 +1,11 @@
-import Breadcrumb from "@/components/Common/Breadcrumb";
 import BreadcrumbWithBgImg from "@/components/Common/BreadcrumbWithBgImg";
-import Contact from "@/components/Contact";
 import ContactSection from "@/components/Contact/ContactSection";
 import EnquiryForm from "@/components/Contact/EnquiryForm";
 import { HowCanWeHelp } from "@/components/Contact/HowCanWeHelpBanner";
+import { getContactSchema } from "@/lib/seo/schema";
 
 import { Metadata } from "next";
+import Head from "next/head";
 import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
@@ -17,6 +17,14 @@ export const metadata: Metadata = {
 const ContactPage = () => {
   return (
     <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getContactSchema()),
+          }}
+        />
+      </Head>
       <Toaster position="top-center" />
       <BreadcrumbWithBgImg
         pageName="Contact Us"

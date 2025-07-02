@@ -1,13 +1,13 @@
 export enum EnquiryTypeEnum {
-  ProductEnquiry = 1,
+  ProductEnquiry = 0,
   ColdRoomDesign,
   ConsultancyAndSiteSurvey,
   ColdRoomRepairAndMaintenance,
 }
 
 export const EnquiryTypeMap: Record<number, string> = {
-  1: `Product Enquiry`,
-  2: `Cold Room Design`,
-  3: `Consultancy and Site Survey Appointment`,
-  4: `Cold Room Repair and Maintenance`,
+  0: `Product Enquiry`,
+  1: `Cold Room Design`,
+  2: `Consultancy and Site Survey Appointment`,
+  3: `Cold Room Repair and Maintenance`,
 };

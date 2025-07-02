@@ -2,7 +2,10 @@
 
 import { motion } from "framer-motion";
 
+const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP || '60177023282';
+
 export default function WhatsAppBtn() {
+  const whatsappUrl = `https://wa.me/${whatsappNumber}`;
   return (
     <motion.a
       initial={{ opacity: 0, scale: 1 }}
@@ -13,7 +16,7 @@ export default function WhatsAppBtn() {
       }}
       whileTap={{ scale: 0.96 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      href="https://wa.me/60123456789" // Replace with your WhatsApp number
+      href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed right-6 bottom-26 z-1000 flex h-16 w-16 items-center justify-center rounded-full bg-green-500 shadow-lg hover:bg-green-600"

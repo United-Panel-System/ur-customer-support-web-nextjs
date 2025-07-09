@@ -31,19 +31,19 @@ export async function GET() {
     ...products.map((p: any) => ({
       loc: `${SITE_URL}/products/${p.slug}`,
       changefreq: 'weekly',
-      priority: 0.8,
+      priority: 0.9,
       lastmod: new Date().toISOString(),
     })),
     ...news.map((n: any) => ({
       loc: `${SITE_URL}/news/${n.slug}`,
       changefreq: 'daily',
-      priority: 0.6,
+      priority: 0.7,
       lastmod: new Date().toISOString(),
     })),
     ...projects.map((prj: any) => ({
       loc: `${SITE_URL}/projects/${prj.slug}`,
       changefreq: 'monthly',
-      priority: 0.7,
+      priority: 0.8,
       lastmod: new Date().toISOString(),
     })),
   ]

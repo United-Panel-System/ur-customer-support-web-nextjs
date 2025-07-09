@@ -17,7 +17,7 @@ module.exports = {
     '/sitemap-dynamic.xml',
   ],
   transform: async (config, path) => {
-    let priority = 0.7;
+    let priority = 0.6;
     let changefreq = 'monthly';
 
     if (path === '/') {
@@ -28,6 +28,9 @@ module.exports = {
       changefreq = 'yearly';
     } else if (path === '/about' || path.startsWith('/about/')) {
       priority = 0.6;
+      changefreq = 'yearly';
+    } else if (path === '/services') {
+      priority = 0.7;
       changefreq = 'yearly';
     }
 

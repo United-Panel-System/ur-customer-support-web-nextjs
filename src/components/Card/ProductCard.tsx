@@ -15,6 +15,13 @@ const ProductCard = ({ product }: { product: Products }) => {
       >
         {/* Image Section - Responsive */}
         <div className="relative h-40 w-full sm:h-48">
+          {/* Manufacturer Badge */}
+          {manufacturer && (
+            <div className="absolute top-2 right-2 z-10 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-gray-200 shadow-md max-w-[70%] truncate">
+              {manufacturer}
+            </div>
+          )}
+
           <Image
             src={
               imageUrls != null && imageUrls.length > 0

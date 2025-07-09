@@ -62,14 +62,6 @@ export default function ProductDetails({
     document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
   };
 
-  const handleThumbnailClick = (index: number) => {
-    if (!swiperRef.current) {
-      console.error("Swiper instance not found");
-      return;
-    }
-    swiperRef.current.slideTo(index);
-  };
-
   return (
     <section className="pt-[50px] pb-[120px]">
       <div className="container">
@@ -115,6 +107,12 @@ export default function ProductDetails({
                     <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
                       Product Details
                     </h2>
+                    {product.manufacturer && (
+                      <div className="mb-4 rounded-md bg-gray-100 px-4 py-2 text-sm text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                        <span className="font-medium text-gray-600 dark:text-gray-400">Manufacturer:</span>{" "}
+                        {product.manufacturer}
+                      </div>
+                    )}
                     {product.description ? (
                       <div
                         className="text-body-color dark:text-body-color-dark text-justify"

@@ -17,7 +17,7 @@ const OurProject = ({ projectData }: { projectData: Projects[] }) => {
       variant="slideUp"
       className="text-body-color dark:text-body-color-dark mb-5 flex items-center text-lg font-medium"
     >
-      <span className="bg-primary/10 text-primary mr-4 inline-flex h-[30px] w-[30px] flex-shrink-0 items-center justify-center rounded-md shadow-md transition duration-200 ease-in-out hover:shadow-xl">
+      <span className="bg-primary/10 dark:bg-primary text-primary dark:text-white mr-4 inline-flex h-[30px] w-[30px] flex-shrink-0 items-center justify-center rounded-md shadow-md transition duration-200 ease-in-out hover:shadow-xl">
         {checkIcon}
       </span>
       {text}

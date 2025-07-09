@@ -1,12 +1,12 @@
 import Image from "next/image";
 import SectionTitle from "../Common/SectionTitle";
-import { ContactInfoWithHref, ContactNoHref } from "./ContactInfo";
+import { ContactInfo } from "./ContactInfo";
 import { AnimatedDiv } from "../Animation";
 import {
   MapPin,
   Mail,
   Phone,
-  Printer, // Using Printer icon for fax
+  Printer,
 } from "lucide-react";
 
 const ContactSectionTitle = ({
@@ -23,19 +23,15 @@ const ContactSectionTitle = ({
   mb?: string;
 }) => {
   return (
-    <>
-      <div
-        className={`w-full ${center ? "mx-auto text-center" : ""}`}
-        style={{ maxWidth: width, marginBottom: mb }}
-      >
-        <h2 className="mb-4 text-3xl leading-tight! font-bold text-black sm:text-4xl md:text-[35px] dark:text-white">
-          {title}
-        </h2>
-        <p className="text-body-color text-base leading-relaxed!">
-          {paragraph}
-        </p>
-      </div>
-    </>
+    <div
+      className={`w-full ${center ? "mx-auto text-center" : ""}`}
+      style={{ maxWidth: width, marginBottom: mb }}
+    >
+      <h2 className="mb-4 text-3xl leading-tight! font-bold text-black sm:text-4xl md:text-[35px] dark:text-white">
+        {title}
+      </h2>
+      <p className="text-body-color text-base leading-relaxed!">{paragraph}</p>
+    </div>
   );
 };
 
@@ -64,52 +60,48 @@ const ContactSection = () => {
                   width=""
                 />
                 <div className="space-y-6">
-                  <ContactNoHref
+                  <ContactInfo
                     icon={<MapPin className="h-5 w-5" />}
                     label="Address"
-                    text="PTD 124299, Jalan Kempas Lama, Kampung Seelong Jaya, 81300 Skudai, Johor, Malaysia."
+                    items={[
+                      {
+                        text:
+                          "PTD 124299, Jalan Kempas Lama, Kampung Seelong Jaya, 81300 Skudai, Johor, Malaysia.",
+                      },
+                    ]}
                   />
-                  <div className="flex items-center gap-4">
-                    <div className="bg-primary/10 dark:bg-primary/20 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md p-2 shadow-sm">
-                      <Phone className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <span className="text-xs font-medium tracking-wider text-gray-500 uppercase dark:text-gray-400">
-                        Telephone
-                      </span>
-                      <div className="mt-1 flex gap-2">
-                        <a
-                          href="tel:+6075951588"
-                          className="hover:text-primary dark:hover:text-primary/90 text-gray-700 dark:text-gray-300"
-                        >
-                          +607 5951588
-                        </a>
-                        <span className="text-gray-400">/</span>
-                        <a
-                          href="tel:+6075951288"
-                          className="hover:text-primary dark:hover:text-primary/90 text-gray-700 dark:text-gray-300"
-                        >
-                          +607 5951288
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <ContactNoHref
+                  <ContactInfo
+                    icon={<Phone className="h-5 w-5" />}
+                    label="Telephone"
+                    items={[
+                      { text: "+607 5951588", href: "tel:+6075951588" },
+                      { text: "+607 5951288", href: "tel:+6075951288" },
+                    ]}
+                  />
+                  <ContactInfo
                     icon={<Printer className="h-5 w-5" />}
                     label="Facsimile"
-                    text="+607 5951177 / 5951122"
+                    items={[{ text: "+607 5951177 / 5951122" }]}
                   />
-                  <ContactInfoWithHref
+                  <ContactInfo
                     icon={<Mail className="h-5 w-5" />}
                     label="Email"
-                    text="united@ur.com.my"
-                    href="mailto:united@ur.com.my"
+                    items={[
+                      {
+                        text: "united@ur.com.my",
+                        href: "mailto:united@ur.com.my",
+                      },
+                    ]}
                   />
-                  <ContactInfoWithHref
+                  <ContactInfo
                     icon={<Mail className="h-5 w-5" />}
                     label="Exports / International Enquiry"
-                    text="ireneloh@ur.com.my"
-                    href="mailto:ireneloh@ur.com.my"
+                    items={[
+                      {
+                        text: "ireneloh@ur.com.my",
+                        href: "mailto:ireneloh@ur.com.my",
+                      },
+                    ]}
                   />
                 </div>
               </AnimatedDiv>
@@ -167,22 +159,25 @@ const ContactSection = () => {
                   width=""
                 />
                 <div className="space-y-6">
-                  <ContactNoHref
+                  <ContactInfo
                     icon={<MapPin className="h-5 w-5" />}
                     label="Address"
-                    text="No.15,Jalan 7/152, Taman Perindustrian Bukit OUG,
-58200 Kuala Lumpur,Wilayah Persekutuan Kuala Lumpur, Malaysia."
+                    items={[
+                      {
+                        text:
+                          "No.15, Jalan 7/152, Taman Perindustrian Bukit OUG, 58200 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia.",
+                      },
+                    ]}
                   />
-                  <ContactInfoWithHref
+                  <ContactInfo
                     icon={<Phone className="h-5 w-5" />}
                     label="Telephone"
-                    text="+603 77831181"
-                    href="tel:+60377831181"
+                    items={[{ text: "+603 77831181", href: "tel:+60377831181" }]}
                   />
-                  <ContactNoHref
+                  <ContactInfo
                     icon={<Printer className="h-5 w-5" />}
                     label="Facsimile"
-                    text="+603 77831161"
+                    items={[{ text: "+603 77831161" }]}
                   />
                 </div>
               </AnimatedDiv>
@@ -207,21 +202,25 @@ const ContactSection = () => {
                   width=""
                 />
                 <div className="space-y-6">
-                  <ContactNoHref
+                  <ContactInfo
                     icon={<MapPin className="h-5 w-5" />}
                     label="Address"
-                    text="No.6, Jalan 6/152, Taman Perindustrian Bukit OUG, 58200 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia."
+                    items={[
+                      {
+                        text:
+                          "No.6, Jalan 6/152, Taman Perindustrian Bukit OUG, 58200 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia.",
+                      },
+                    ]}
                   />
-                  <ContactInfoWithHref
+                  <ContactInfo
                     icon={<Phone className="h-5 w-5" />}
                     label="Telephone"
-                    text="+603 77702800"
-                    href="tel:+60377702800"
+                    items={[{ text: "+603 77702800", href: "tel:+60377702800" }]}
                   />
-                  <ContactNoHref
+                  <ContactInfo
                     icon={<Printer className="h-5 w-5" />}
                     label="Facsimile"
-                    text="+603 77706800"
+                    items={[{ text: "+603 77706800" }]}
                   />
                 </div>
               </AnimatedDiv>

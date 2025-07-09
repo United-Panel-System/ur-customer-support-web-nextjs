@@ -85,7 +85,7 @@ const PartnershipCarousel = () => {
         <Swiper
           modules={[Navigation, Autoplay]}
           slidesPerView={itemsPerSlide}
-          spaceBetween={20}
+          spaceBetween={30}
           loop={true}
           autoplay={{
             delay: 3000,
@@ -96,7 +96,8 @@ const PartnershipCarousel = () => {
         >
           {images.map((src, index) => (
             <SwiperSlide key={index}>
-              <div className="flex w-full items-center justify-center overflow-visible px-8 py-8">
+              <div className="flex h-full items-center justify-center overflow-visible px-2 py-2">
+
                 <motion.div
                   whileHover={{
                     scale: 1.08,
@@ -104,18 +105,20 @@ const PartnershipCarousel = () => {
                     zIndex: 6,
                   }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  className="flex w-full max-w-[160px] items-center justify-center sm:max-w-[180px] md:max-w-[220px]"
+                  className="flex h-full w-full items-center justify-center"
                 >
-                  <Image
-                    src={src}
-                    alt={`Partner ${index + 1}`}
-                    width={200}
-                    height={100}
-                    className="h-auto w-full rounded object-contain shadow-md"
-                  />
+                  <div className="relative aspect-[2/1] w-full">
+                    <Image
+                      src={src}
+                      alt={`Partner ${index + 1}`}
+                      fill
+                      className="object-fit rounded shadow-md"
+                    />
+                  </div>
                 </motion.div>
               </div>
             </SwiperSlide>
+
           ))}
         </Swiper>
       </div>

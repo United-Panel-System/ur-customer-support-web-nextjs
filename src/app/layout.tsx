@@ -76,11 +76,11 @@ export default async function RootLayout({
 
         {/* Botpress Chatbot */}
         <Script
-          src="https://cdn.botpress.cloud/webchat/v2.3/inject.js"
+          src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"
           strategy="afterInteractive"
         />
         <Script
-          src="https://files.bpcontent.cloud/2025/04/19/04/20250419045059-BJL35QGB.js"
+          src="https://files.bpcontent.cloud/2025/07/16/15/20250716155644-MH80SNP6.js"
           strategy="afterInteractive"
         />
         <Providers>

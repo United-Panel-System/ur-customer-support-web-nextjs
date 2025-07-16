@@ -9,7 +9,6 @@ module.exports = {
     includeNonIndexSitemaps: false,
   },
   exclude: [
-    '/products/*',
     '/projects/*',
     '/news/*',
     '/error',

@@ -13,7 +13,7 @@ const LandingHero = () => {
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/banner/banner1.png"
-          alt="United-Panel System Factory"
+          alt="United Panel-System Factory"
           fill
           priority
           quality={100}
@@ -31,7 +31,7 @@ const LandingHero = () => {
         >
           <AnimatedDiv variant="slideUp" className="mb-6">
             <h1 className="text-4xl leading-tight font-extrabold text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] sm:text-5xl md:text-6xl lg:text-7xl">
-              United-Panel System (M)
+              United Panel-System (M)
             </h1>
           </AnimatedDiv>
 

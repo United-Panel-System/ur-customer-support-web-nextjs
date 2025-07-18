@@ -37,7 +37,7 @@ export default function NewsDetails({ news, moreNews }: NewsDetailsProps) {
                   <div className="mr-10 mb-5 flex items-center">
                     <div className="w-full">
                       <span className="text-body-color dark:text-body-color-dark mb-1 text-base font-medium">
-                        By <span> United-Panel System (M) Sdn. Bdn.</span>
+                        By <span> United Panel-System (M) Sdn. Bdn.</span>
                       </span>
                     </div>
                   </div>

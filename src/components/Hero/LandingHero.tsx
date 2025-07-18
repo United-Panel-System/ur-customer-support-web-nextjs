@@ -30,13 +30,13 @@ const LandingHero = () => {
           className="mx-auto max-w-4xl text-center"
         >
           <AnimatedDiv variant="slideUp" className="mb-6">
-            <h1 className="text-4xl leading-tight font-extrabold text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] sm:text-5xl md:text-6xl lg:text-7xl">
+            <h1 className="text-[clamp(1.5rem,6vw,4.5rem)] font-extrabold text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] whitespace-nowrap leading-tight">
               United Panel-System (M)
             </h1>
           </AnimatedDiv>
 
           <AnimatedDiv variant="slideUp" className="mb-8">
-            <p className="mx-auto max-w-2xl text-xl font-bold text-white/90 drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)] sm:text-2xl">
+            <p className="mx-auto max-w-2xl text-base sm:text-lg md:text-xl font-bold text-white/90 drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)] text-center">
               ASEAN&apos;s First & Only PIR Double Belt Continuous Line
             </p>
           </AnimatedDiv>

@@ -75,14 +75,15 @@ export default async function RootLayout({
         </Script>
 
         {/* Botpress Chatbot */}
-        <Script
+        {/* <Script
           src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"
           strategy="afterInteractive"
         />
         <Script
           src="https://files.bpcontent.cloud/2025/07/16/15/20250716155644-MH80SNP6.js"
           strategy="afterInteractive"
-        />
+        /> */}
+        <BotpressChat />
         <Providers>
           <Header productCategories={categories.data} />
           {children}
@@ -102,4 +103,5 @@ import WhatsAppBtn from "@/components/CTA/WhatsappBtn";
 import { getOrganizationSchema } from "@/lib/seo/schema";
 import { Metadata } from "next";
 import { BASE_URL } from "@/lib/seo/config";
+import BotpressChat from "@/components/CTA/BotpressChat";
 

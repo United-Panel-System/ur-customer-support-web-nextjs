@@ -53,11 +53,11 @@ const ourProductsData = [
       "Our tailored cold storage and refrigeration solutions are designed for exceptional temperature control and energy efficiency. Perfect for food processing, warehousing, and other industrial needs.",
   },
   {
-    image: "/images/products/door.png",
-    title: "Insulated Doors & Accessories",
-    url: "/products?category=door",
+    image: "/images/products/refrigeration.png",
+    title: "Refrigeration Parts",
+    url: "/products?category=refrigeration",
     description:
-      "Complement your storage systems with our insulated doors and accessories. Engineered to maintain thermal integrity and enhance the performance of cold storage and refrigeration systems.",
+      "We are the authorised distributor for a variety of world-renowned brands in the industry.",
   },
 ];
 

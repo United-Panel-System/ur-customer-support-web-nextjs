@@ -34,9 +34,10 @@ const ProjectDetails = ({ project }: ProjectDetailsProps) => {
               </div>
 
               {/* Description */}
-              <p className="text-body-color dark:text-body-color-dark text-base leading-relaxed! md:text-lg">
-                {project.description}
-              </p>
+              <div
+                className="prose prose-sm max-w-none text-body-color dark:text-body-color-dark dark:prose-invert description md:text-lg"
+                dangerouslySetInnerHTML={{ __html: project.description }}
+              />
             </div>
           </div>
 

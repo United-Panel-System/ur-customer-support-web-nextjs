@@ -142,3 +142,53 @@ layer(base);
     @apply inline-flex;
   }
 }
+
+/* Give spacing so list markers align nicely */
+.description ul,
+.description ol {
+  padding-left: 1.5em;
+  margin: 0.5em 0;
+  list-style: none; /* disable default so we can control */
+}
+
+/* --- Unordered list bullets --- */
+.description ul > li::before {
+  content: "• "; /* disc */
+}
+.description ul li.ql-indent-1::before {
+  padding-left: 1.5em;
+  content: "◦ "; /* circle */
+}
+.description ul li.ql-indent-2::before {
+  padding-left: 3em;
+  content: "▪ "; /* square */
+}
+
+/* --- Ordered list numbers --- */
+.description ol li::before {
+  content: counter(list-0, decimal) ". ";
+}
+.description ol li.ql-indent-1::before {
+  padding-left: 1.5em;
+  content: counter(list-1, lower-alpha) ". ";
+}
+.description ol li.ql-indent-2::before {
+  padding-left: 3em;
+  content: counter(list-2, lower-roman) ". ";
+}
+
+/* Counters setup */
+.description ol {
+  counter-reset: list-0;
+}
+.description ol li {
+  counter-increment: list-0;
+}
+.description ol li.ql-indent-1 {
+  counter-reset: list-1;
+  counter-increment: list-1;
+}
+.description ol li.ql-indent-2 {
+  counter-reset: list-2;
+  counter-increment: list-2;
+}

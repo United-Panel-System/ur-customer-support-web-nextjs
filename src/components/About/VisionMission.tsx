@@ -32,10 +32,8 @@ const VisionMission = () => {
                 Our Vision
               </h3>
               <p className="text-body-color dark:text-body-color-dark text-base leading-relaxed font-medium sm:leading-relaxed md:text-lg">
-                At UNITED PANEL-SYSTEM (M) SDN. BHD., we take pride in producing
-                high-quality products that meet global standards. Our goal is to
-                be a leader in the industry, constantly striving for excellence
-                in innovation, service, and sustainability.
+                All of us at UR® take great pride in the quality products that we manufacture and provide.
+                We aim to be a leader in our field and we will continue to strive towards products and service excellence.
               </p>
             </AnimatedDiv>
             {/* Mission Section */}
@@ -47,12 +45,14 @@ const VisionMission = () => {
                 Our Mission
               </h3>
               <p className="text-body-color dark:text-body-color-dark text-base leading-relaxed font-medium sm:leading-relaxed md:text-lg">
-                We embrace advanced technology and automation to ensure
-                precision and efficiency in our production. By manufacturing
-                everything in-house, we maintain the highest standards of
-                quality and service. Our durable, well-aligned panels are
-                trusted by businesses in hospitality, retail, and industrial
-                sectors worldwide.
+                We adopt a highly advanced technological approach in our production methods.
+                Production lines are automated and equipped with compressors and temperature controls.
+                Our finished panel products are well-aligned - a step still significantly difficult
+                to achieve in the current field due to the high level of expertise and costs involved.
+                We do not outsource our work and customers are assured with our high standards of
+                quality and service control. Our reliable products have gained the acceptance and
+                recognition from our customers and are widely used in restaurants, hotels, resorts,
+                bakeries, supermarkets and other commercial/industrial industries.
               </p>
             </AnimatedDiv>
           </div>

@@ -40,6 +40,7 @@ export const ContactInfo: React.FC<ContactInfoProps> = ({
             <a
               key={index}
               href={item.href}
+              target="_blank"
               className="hover:text-primary dark:hover:text-primary text-sm text-gray-700 transition-colors sm:text-base dark:text-gray-300"
             >
               {item.text}

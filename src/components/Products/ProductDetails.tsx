@@ -115,7 +115,7 @@ export default function ProductDetails({
                     )}
                     {product.description ? (
                       <div
-                        className="text-body-color dark:text-body-color-dark text-justify"
+                        className="text-body-color dark:text-body-color-dark text-justify description"
                         dangerouslySetInnerHTML={{
                           __html: product.description,
                         }}

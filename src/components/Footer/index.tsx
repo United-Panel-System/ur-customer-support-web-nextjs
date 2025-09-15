@@ -1,8 +1,9 @@
 "use client";
+import { ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { JSX } from "react";
-import { FiBriefcase, FiFacebook, FiMail, FiMapPin, FiPhone } from "react-icons/fi";
+import { FiBriefcase, FiFacebook, FiMail, FiMapPin, FiPhone, FiShoppingBag } from "react-icons/fi";
 
 // Types
 type FooterLinkItem = {
@@ -89,6 +90,11 @@ const FOOTER_SECTIONS: FooterSection[] = [
       {
         label: "PTD 124299, Jalan Kempas Lama, Kampung Seelong Jaya, 81300 Skudai, Johor, Malaysia.",
         icon: <FiMapPin className="text-lg" />
+      },
+      {
+        href: "https://uncs.my",
+        label: "uncs.my",
+        icon: <FiShoppingBag className="text-lg" />
       },
     ],
   },

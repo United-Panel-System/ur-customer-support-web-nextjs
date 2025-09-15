@@ -53,7 +53,7 @@ const ProductCard = ({ product }: { product: Products }) => {
           {description ? (
             <div className="hidden sm:block">
               <div
-                className="text-body-color dark:text-body-color-dark line-clamp-3 text-sm font-medium sm:text-base dark:border-white/10"
+                className="text-body-color dark:text-body-color-dark line-clamp-3 text-sm font-medium sm:text-base dark:border-white/10 description"
                 style={{
                   display: "-webkit-box",
                   WebkitBoxOrient: "vertical",

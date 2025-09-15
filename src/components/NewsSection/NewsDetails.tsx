@@ -55,7 +55,7 @@ export default function NewsDetails({ news, moreNews }: NewsDetailsProps) {
               <div className="border-body-color/10 mb-12 border-b pb-12 lg:border-0">
                 {description ? (
                   <div
-                    className="prose prose-sm max-w-none text-body-color dark:text-body-color-dark dark:prose-invert"
+                    className="prose prose-sm max-w-none text-body-color dark:text-body-color-dark dark:prose-invert description"
                     dangerouslySetInnerHTML={{ __html: description }}
                   />
                 ) : (

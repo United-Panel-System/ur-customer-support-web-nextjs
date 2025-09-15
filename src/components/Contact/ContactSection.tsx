@@ -7,6 +7,7 @@ import {
   Mail,
   Phone,
   Printer,
+  ShoppingBag,
 } from "lucide-react";
 
 const ContactSectionTitle = ({
@@ -221,6 +222,11 @@ const ContactSection = () => {
                     icon={<Printer className="h-5 w-5" />}
                     label="Facsimile"
                     items={[{ text: "+603 77706800" }]}
+                  />
+                  <ContactInfo
+                    icon={<ShoppingBag className="h-5 w-5" />}
+                    label="E-Commerce Website"
+                    items={[{ text: "uncs.my", href: "https://uncs.my" }]}
                   />
                 </div>
               </AnimatedDiv>

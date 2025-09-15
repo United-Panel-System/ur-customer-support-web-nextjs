@@ -35,6 +35,12 @@ export const getMenuData = (productCategories: ProductCategory[]): Menu[] => {
           path: `/about/certifications`,
           newTab: false,
         },
+        {
+          id: 22,
+          title: "Partners",
+          path: `/about/partners`,
+          newTab: false,
+        },
       ],
     },
     {

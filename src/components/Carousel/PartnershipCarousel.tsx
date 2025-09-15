@@ -2,17 +2,35 @@
 
 import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
-
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import SectionTitle from "../Common/SectionTitle";
+
+const allImages = [
+  // Exclusive
+  { src: "/images/partner/bitzer_290.jpeg", alt: "Bitzer", type: "Exclusive" },
+  { src: "/images/partner/lu-ve-contardo_290.jpeg", alt: "LU-VE", type: "Exclusive" },
+
+  // Authorised
+  { src: "/images/partner/ap-01.png", alt: "Hailiang", type: "Authorised" },
+  { src: "/images/partner/ap-02.png", alt: "Grant Ice Systems", type: "Authorised" },
+  { src: "/images/partner/ap-03.png", alt: "FERMOD", type: "Authorised" },
+  { src: "/images/partner/ap-04.png", alt: "Danfoss", type: "Authorised" },
+  { src: "/images/partner/ap-05.png", alt: "Every Control Group", type: "Authorised" },
+  { src: "/images/partner/ap-06.png", alt: "EMERSON Climate Technologies", type: "Authorised" },
+  { src: "/images/partner/ap-07.png", alt: "Alco Controls", type: "Authorised" },
+  { src: "/images/partner/ap-08.png", alt: "EBMPAPST", type: "Authorised" },
+  { src: "/images/partner/ap-09.png", alt: "Embraco", type: "Authorised" },
+  { src: "/images/partner/ap-10.png", alt: "Maneurop", type: "Authorised" },
+  { src: "/images/partner/ap-11.png", alt: "Castel", type: "Authorised" },
+  { src: "/images/partner/ap-12.png", alt: "Guntner", type: "Authorised" },
+];
 
 const PartnershipCarousel = () => {
-  const [itemsPerSlide, setItemsPerSlide] = useState(5);
+  const [itemsPerSlide, setItemsPerSlide] = useState(6);
 
   useEffect(() => {
     const updateItemsPerSlide = () => {
@@ -20,105 +38,65 @@ const PartnershipCarousel = () => {
       if (width < 640) setItemsPerSlide(2);
       else if (width < 768) setItemsPerSlide(3);
       else if (width < 1024) setItemsPerSlide(4);
-      else setItemsPerSlide(5);
+      else if (width < 1280) setItemsPerSlide(5);
+      else setItemsPerSlide(6);
     };
-
     updateItemsPerSlide();
     window.addEventListener("resize", updateItemsPerSlide);
     return () => window.removeEventListener("resize", updateItemsPerSlide);
   }, []);
 
-  const images = [
-    "/images/partner/ap-04.png",
-    "/images/partner/ap-05.png",
-    "/images/partner/ap-06.png",
-    "/images/partner/ap-07.png",
-    "/images/partner/ap-08.png",
-    "/images/partner/ap-09.png",
-    "/images/partner/ap-10.png",
-    "/images/partner/ap-11.png",
-    "/images/partner/ap-12.png",
-    "/images/partner/bitzer_290.jpeg",
-    "/images/partner/csc.png",
-    "/images/partner/cubigel_290.png",
-    "/images/partner/henry_290.jpeg",
-    "/images/partner/invotech_290.jpeg",
-    "/images/partner/lu-ve-contardo_290.jpeg",
-    "/images/partner/partmer-ap-01.png",
-    "/images/partner/partmer-ap-03.png",
-    "/images/partner/partmer-ap-11.png",
-    "/images/partner/partmer-ap-12.png",
-    "/images/partner/partmer-ap-14.png",
-    "/images/partner/partmer-ap-15.png",
-    "/images/partner/partmer-ap-16.png",
-    "/images/partner/partmer-ap-19.png",
-    "/images/partner/partmer-ap-20.png",
-    "/images/partner/partmer-ap-23.png",
-    "/images/partner/partmer-ap-24.png",
-    "/images/partner/partmer-ap-25.png",
-    "/images/partner/partmer-ap-26.png",
-    "/images/partner/partmer-ap-27.png",
-    "/images/partner/partmer-ap-28.png",
-    "/images/partner/partmer-ap-29.png",
-    "/images/partner/partmer-ap-30.png",
-    "/images/partner/partmer-ap-31.png",
-    "/images/partner/partmer-ap-32.png",
-    "/images/partner/partmer-ap-33.png",
-    "/images/partner/partmer-ap-34.png",
-    "/images/partner/partmer-ap-35.png",
-    "/images/partner/partmer-ap-36.png",
-    "/images/partner/partmer-ap-37.png",
-    "/images/partner/partmer-ap-38.png",
-    "/images/partner/partmer-ap-39.png",
-    "/images/partner/partmer-ap-40.png",
-    "/images/partner/partmer-ap-41.png",
-    "/images/partner/partmer-ap-42.png",
-    "/images/partner/toyo_290.jpeg",
-    "/images/partner/ap-01.png",
-    "/images/partner/ap-02.png",
-    "/images/partner/ap-03.png",
-  ];
-
   return (
-    <section className="dark:bg-gray-dark flex bg-slate-700 py-8 md:py-12 lg:py-20">
-      <div className="relative mx-auto flex w-full items-center justify-center">
+    <section className="bg-slate-700 dark:bg-gray-dark py-10 md:py-16 lg:py-20">
+      <div className="container mx-auto">
+        {/* <h2 className="mb-8 text-center text-xl md:text-2xl font-bold text-white">
+          Our Distributorships
+        </h2> */}
+        <SectionTitle
+          title="Our Distributorships"
+          paragraph=""
+          center
+          mb="40px"
+        />
+
         <Swiper
-          modules={[Navigation, Autoplay]}
+          modules={[Autoplay]}
           slidesPerView={itemsPerSlide}
           spaceBetween={30}
-          loop={true}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          navigation={false}
-          className="partner-swiper"
+          loop
+          autoplay={{ delay: 2500, disableOnInteraction: false }}
+          speed={1000}
         >
-          {images.map((src, index) => (
+          {allImages.map((item, index) => (
             <SwiperSlide key={index}>
-              <div className="flex h-full items-center justify-center overflow-visible px-2 py-2">
-
-                <motion.div
-                  whileHover={{
-                    scale: 1.08,
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.12)",
-                    zIndex: 6,
-                  }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="flex h-full w-full items-center justify-center"
+              <motion.div
+                whileHover={{ scale: 1.08, boxShadow: "0 4px 20px rgba(0,0,0,0.12)" }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="flex flex-col items-center p-3"
+              >
+                {/* Badge */}
+                <span
+                  className={`mb-2 rounded-full px-3 py-1 text-xs font-semibold text-white ${item.type === "Exclusive"
+                    ? "bg-yellow-500"
+                    : "bg-blue-500"
+                    }`}
                 >
-                  <div className="relative aspect-[2/1] w-full">
-                    <Image
-                      src={src}
-                      alt={`Partner ${index + 1}`}
-                      fill
-                      className="object-fit rounded shadow-md"
-                    />
-                  </div>
-                </motion.div>
-              </div>
-            </SwiperSlide>
+                  {item.type}
+                </span>
 
+                {/* Logo */}
+                <div className="relative aspect-[2/1] w-full rounded bg-white p-2 shadow-md">
+                  <a href="/about/partners">
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      fill
+                      className="object-contain"
+                    />
+                  </a>
+                </div>
+              </motion.div>
+            </SwiperSlide>
           ))}
         </Swiper>
       </div>
